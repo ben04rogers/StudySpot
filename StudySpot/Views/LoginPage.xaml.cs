@@ -17,5 +17,9 @@ namespace StudySpot.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
+
+        void LoginButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
     }
 }
