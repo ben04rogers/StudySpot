@@ -14,9 +14,9 @@
     <Folder Include="assets\images\" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="assets\images\studyspotlogo.png" />
+    <None Remove="assets\images\logo_transparent.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="assets\images\studyspotlogo.png" />
+    <EmbeddedResource Include="assets\images\logo_transparent.png" />
   </ItemGroup>
 </Project>

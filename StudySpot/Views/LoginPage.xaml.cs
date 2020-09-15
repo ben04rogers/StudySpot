@@ -19,7 +19,7 @@ namespace StudySpot.Views
 
             var assembly = typeof(LoginPage);
 
-            LogoImage.Source = ImageSource.FromResource("StudySpot.assets.images.studyspotlogo.png", assembly);
+            LogoImage.Source = ImageSource.FromResource("StudySpot.assets.images.logo_transparent.png", assembly);
         }
 
         void LoginButton_Clicked(System.Object sender, System.EventArgs e)
