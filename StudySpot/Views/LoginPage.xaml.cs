@@ -16,9 +16,17 @@ namespace StudySpot.Views
         {
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
+
+            var assembly = typeof(LoginPage);
+
+            LogoImage.Source = ImageSource.FromResource("StudySpot.assets.images.studyspotlogo.png", assembly);
         }
 
         void LoginButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
+
+        void SignUpButton_Clicked(System.Object sender, System.EventArgs e)
         {
         }
     }

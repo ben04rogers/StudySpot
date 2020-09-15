@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="StudySpot.Views.LoginPage" Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Entry Placeholder="Email address" Keyboard="Email"></Entry>
-            <Entry Placeholder="Password" IsPassword="True"></Entry>
-            <Button x:Name="LoginButton" Text="Login" Clicked="LoginButton_Clicked"></Button>
+        
+
+        <StackLayout Padding="10, 0, 10, 0" VerticalOptions="Center">
+            <Image x:Name="LogoImage" Aspect="AspectFit" HorizontalOptions="FillAndExpand" HeightRequest="150"></Image>
+            <Button x:Name="LoginButton" Text="Login" TextColor="White" Margin="0, 10, 0, 10" BackgroundColor="#00A6FF" Clicked="LoginButton_Clicked"/>
+            <Button x:Name="SignUpButton" Text="Sign Up" TextColor="White" BackgroundColor="#F95F62" Clicked="SignUpButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
