@@ -89,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StudySpot\StudySpot.csproj">
-      <Project>{167FB71F-DC64-4304-8285-F7E72BD1F1A0}</Project>
+      <Project>{B0770022-5C2B-4E00-8468-FA1D833798CE}</Project>
       <Name>StudySpot</Name>
     </ProjectReference>
   </ItemGroup>
