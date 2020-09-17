@@ -23,10 +23,10 @@
         </ResourceDictionary>
     </Shell.Resources>
     <TabBar>
-        <ShellContent Title="Home" Icon="tab_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-        <ShellContent Title="Messages" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
-        <ShellContent Title="Tasks" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
-        <ShellContent Title="Announcements" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Title="Home" Icon="tab_about.png" Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
+        <ShellContent Title="Messages" Icon="tab_feed.png" Route="MessagePage" ContentTemplate="{DataTemplate local:MessagesPage}" />
+        <ShellContent Title="Tasks" Icon="tab_feed.png" Route="TasksPage" ContentTemplate="{DataTemplate local:TasksPage}" />
+        <ShellContent Title="Announcements" Icon="tab_feed.png" Route="AnnouncementsPage" ContentTemplate="{DataTemplate local:AnnouncementsPage}" />
 
     </TabBar>
     <!--

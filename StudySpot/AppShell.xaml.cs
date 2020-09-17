@@ -11,8 +11,20 @@ namespace StudySpot
         public AppShell()
         {
             InitializeComponent();
+
+            // Default shell routes
+
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+
+            // Our routes
+
+            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            Routing.RegisterRoute(nameof(MessagesPage), typeof(MessagesPage));
+            Routing.RegisterRoute(nameof(TasksPage), typeof(TasksPage));
+            Routing.RegisterRoute(nameof(AnnouncementsPage), typeof(AnnouncementsPage));
+
+
         }
 
     }
