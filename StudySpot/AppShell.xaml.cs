@@ -12,12 +12,12 @@ namespace StudySpot
         {
             InitializeComponent();
 
-            // Default shell routes 
+            // Default shell routes
 
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
 
-            // Our navbar routes
+            // Our routes
 
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(MessagesPage), typeof(MessagesPage));

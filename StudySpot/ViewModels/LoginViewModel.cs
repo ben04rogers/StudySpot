@@ -17,9 +17,8 @@ namespace StudySpot.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            // Navigate to new shell after login
-
-            Application.Current.MainPage = new AppShell();
+            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
     }
 }
