@@ -1,6 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="StudySpot.Views.MessagesPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="StudySpot.Views.MessagesPage"
+             xmlns:local="clr-namespace:StudySpot.ViewModels"
+             Title="My Messages">
+
+
+
     <ContentPage.Content>
-        <Label Text="MESSAGES PAGE"></Label>
+        <StackLayout>
+
+            <!-- <Label Text="MESSAGES PAGE"></Label> -->
+
+            <Button x:Name="TestBTN" Text="View All"
+                    TextColor="White"
+                    WidthRequest="250"
+                    HorizontalOptions="Center"
+                    CornerRadius="90"
+                    Margin="0, 10, 0, 10"
+                    Padding="0, 20, 0, 20"
+                    BackgroundColor="#00a6ff"
+                    Command="{Binding GoToMessage}"
+                    CommandParameter="Important_CAB303"/>
+
+
+            <Button x:Name="TestBTN2" Text="Unread"
+                    TextColor="Black"
+                    WidthRequest="250"
+                    HorizontalOptions="End"
+                    CornerRadius="90"
+                    Margin="0, 10, 0, 10"
+                    Padding="0, 20, 0, 20"
+                    BackgroundColor="#FAFAFA"
+                    Command="{Binding GoToMessage}"
+                    CommandParameter="Important_CAB303"/>
+
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
