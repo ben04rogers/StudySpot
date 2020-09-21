@@ -1,19 +1,78 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StudySpot.Views.FeedPage"
              xmlns:local="clr-namespace:StudySpot.ViewModels"
+             x:Class="StudySpot.Views.FeedPage"
              Title="My Feed">
 
     <ContentPage.BindingContext>
         <local:FeedViewModel/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="My Feed" />
-            <Label Text="Announcements" />
-            <Label Text="Important" />
+        <StackLayout Padding="20, 20, 20, 20">
+            <!-- Announcements -->
+            <Label Text="Announcements" FontSize="Subtitle" FontAttributes="Bold" />
+                <!-- Important -->
+            <Label Text="Important" FontSize="Subtitle" />
+            <StackLayout x:Name="Important">
+                <!-- Tab -->
+                <Grid BackgroundColor="#FAFAFA"
+                      Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Template -->
+                    <BoxView Color="Blue"
+                             CornerRadius="5, 0, 5, 0"
+                             WidthRequest="20"
+                             HeightRequest="50"
+                             Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
+                    <Frame BackgroundColor="Blue"
+                           CornerRadius="15" HasShadow="False"
+                           Margin="8, 6, 0, 0" Padding="0, 2, 0, 2"
+                           Grid.Row="0" Grid.Column="1">
+                        <Label Text="CAB303"
+                               FontAttributes="Bold"
+                               TextColor="White" BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Center" />
+                    </Frame>
+                    <Label Text="28 Jul | Room Change"
+                           Margin="5, 0" TextColor="Black"
+                           Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+                    <Label Text=">"
+                           FontFamily="" FontSize="25"
+                           TextColor="Blue"
+                           Padding="0, 0, 15, 0"
+                           VerticalTextAlignment="Center" HorizontalTextAlignment="End"
+                           Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
+                    
+                    <!-- Make Clickable (button on top of whole thing) -->
+                    <Button Command="{Binding GoToAnnouncements}"
+                            CommandParameter="Important_CAB303"
+                            BackgroundColor="Transparent"
+                            Grid.Row="0"  Grid.Column="0"
+                            Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                </Grid>
+            </StackLayout>
+                <!-- Reminders -->
+            <Label Text="Reminders" FontSize="Subtitle" />
+            <StackLayout x:Name="Reminders">
+            </StackLayout>
+
+            <!-- Due Dates -->
+            <Label Text="Due Dates" FontSize="Subtitle" FontAttributes="Bold" />
+            <StackLayout x:Name="DueDates">
+            </StackLayout>
+
+            <!-- Grades -->
+            <StackLayout x:Name="Grades">
+                <Label Text="Grades" FontSize="Subtitle" FontAttributes="Bold" />
+            </StackLayout>
+
+        </StackLayout>
+            <!--
             <Button x:Name="ImportantCAB303" Text="{Binding AnnouncementText}"
                     TextColor="Black"
                     WidthRequest="250"
@@ -34,6 +93,6 @@
                     BackgroundColor="#FAFAFA"
                     Command="{Binding GoToAnnouncements}"
                     CommandParameter="Important_IAB305"/>
-        </StackLayout>
+            -->
     </ContentPage.Content>
 </ContentPage>
