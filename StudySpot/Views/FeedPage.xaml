@@ -24,11 +24,13 @@
                     </Grid.ColumnDefinitions>
                     
                     <!-- Template -->
+                    <!-- Rounded, coloured box on the left -->
                     <BoxView Color="Blue"
                              CornerRadius="5, 0, 5, 0"
                              WidthRequest="20"
                              HeightRequest="50"
                              Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
+                    <!-- Rounded 'unit code' text box -->
                     <Frame BackgroundColor="Blue"
                            CornerRadius="15" HasShadow="False"
                            Margin="8, 6, 0, 0" Padding="0, 2, 0, 2"
@@ -38,9 +40,12 @@
                                TextColor="White" BackgroundColor="Transparent"
                                HorizontalTextAlignment="Center" />
                     </Frame>
+                    <!-- Content -->
                     <Label Text="28 Jul | Room Change"
                            Margin="5, 0" TextColor="Black"
                            Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+                    
+                    <!-- Button -->
                     <Label Text=">"
                            FontFamily="" FontSize="25"
                            TextColor="Blue"
@@ -48,7 +53,7 @@
                            VerticalTextAlignment="Center" HorizontalTextAlignment="End"
                            Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
                     
-                    <!-- Make Clickable (button on top of whole thing) -->
+                    <!-- Make Clickable (button covering entire thing) -->
                     <Button Command="{Binding GoToAnnouncements}"
                             CommandParameter="Important_CAB303"
                             BackgroundColor="Transparent"
