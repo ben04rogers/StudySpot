@@ -5,7 +5,21 @@
     x:Class="StudySpot.Views.HomePage"
     Title="Home">
     <ContentPage.Content>
-        
-        
+
+        <Grid ColumnSpacing="10" Padding="20, 20, 20, 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Text="Hi User," FontSize="Title"></Label>
+            <Label Grid.Row="0" Grid.Column="1" Text="Profile" FontSize="Title"></Label>
+            <Label Grid.Row="1" Grid.ColumnSpan="2" Text="You have 4 new messages"></Label>
+            <Label></Label>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -15,8 +15,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="assets\images\logo_transparent.png" />
+    <None Remove="assets\images\profile.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="assets\images\logo_transparent.png" />
+    <EmbeddedResource Include="assets\images\profile.png" />
   </ItemGroup>
 </Project>
