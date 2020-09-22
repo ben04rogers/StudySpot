@@ -1,6 +1,49 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="StudySpot.Views.AnnouncementsPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:StudySpot.ViewModels"
+             x:Class="StudySpot.Views.AnnouncementsPage"
+             Title="My Announcements">
+    
+    <ContentPage.BindingContext>
+        <local:AnnouncementsViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
-        <Label Text="ANNOUNCEMENTS PAGE"></Label>
+        <StackLayout Padding="20">
+            <Label Text="ANNOUNCEMENTS PAGE"></Label>
+        
+            <ListView x:Name="AnnouncementList"
+                      ItemsSource="{Binding GetAnnouncements}"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="LightGray" Margin="0, 3" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                
+                                <Label Text="{Binding Date}"
+                                       FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Center"
+                                       Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
+                                <Label Text="{Binding Title}"
+                                       FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Start"
+                                       Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" />
+                                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a tincidunt sem. Phasellus mollis sit amet turpis in rutrum. Sed aliquam ac urna id scelerisque. "
+                                       TextColor="Black" VerticalTextAlignment="Start" LineBreakMode="WordWrap"
+                                       Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />
+                                <!--<Label Text="{Binding Description}"
+                                       TextColor="Black" VerticalTextAlignment="Start"
+                                       Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />-->
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
