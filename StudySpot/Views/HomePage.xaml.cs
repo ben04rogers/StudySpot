@@ -14,8 +14,9 @@ namespace StudySpot.Views
             var assembly = typeof(HomePage);
 
             ProfileImage.Source = ImageSource.FromResource("StudySpot.assets.images.profile.png", assembly);
+
         }
 
-        
+
     }
 }

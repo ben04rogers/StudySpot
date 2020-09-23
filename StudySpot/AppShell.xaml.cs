@@ -8,8 +8,12 @@ namespace StudySpot
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {
+        Dictionary<string, Type> routes = new Dictionary<string, Type>();
+        public Dictionary<string, Type> Routes { get { return routes; } }
+
         public AppShell()
         {
+
             InitializeComponent();
 
             // Default shell routes 
@@ -24,7 +28,18 @@ namespace StudySpot
             Routing.RegisterRoute(nameof(TasksPage), typeof(TasksPage));
             Routing.RegisterRoute(nameof(AnnouncementsPage), typeof(AnnouncementsPage));
 
+            RegisterRoutes();
+        }
 
+        void RegisterRoutes()
+        {
+            routes.Add("classes", typeof(ClassesPage));
+            routes.Add("messages", typeof(MessagesPage));
+
+            foreach (var item in routes)
+            {
+                Routing.RegisterRoute(item.Key, item.Value);
+            }
         }
 
     }
