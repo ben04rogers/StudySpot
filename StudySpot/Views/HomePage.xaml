@@ -200,8 +200,6 @@
                             Grid.Row="0"  Grid.Column="2"
                             Grid.RowSpan="2"  Grid.ColumnSpan="2"/>
 
-                     
-
                 <Label Text="Lorem ispum dolor sit amet..."
                            Margin="10, 0" TextColor="#47525E" FontSize="Small"
                            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
