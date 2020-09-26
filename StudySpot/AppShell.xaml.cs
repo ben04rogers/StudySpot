@@ -13,28 +13,19 @@ namespace StudySpot
 
         public AppShell()
         {
-
             InitializeComponent();
-
-            // Default shell routes 
-
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
-
-            // Our navbar routes
-
-            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
-            Routing.RegisterRoute(nameof(MessagesPage), typeof(MessagesPage));
-            Routing.RegisterRoute(nameof(TasksPage), typeof(TasksPage));
-            Routing.RegisterRoute(nameof(AnnouncementsPage), typeof(AnnouncementsPage));
-
             RegisterRoutes();
+            BindingContext = this;
         }
 
         void RegisterRoutes()
         {
-            routes.Add("classes", typeof(ClassesPage));
-            routes.Add("messages", typeof(MessagesPage));
+            routes.Add("TasksPage", typeof(TasksPage));
+            routes.Add("MessagesPage", typeof(MessagesPage));
+            routes.Add("LoginPage", typeof(LoginPage));
+            routes.Add("HomePage", typeof(HomePage));
+            routes.Add("FeedPage", typeof(FeedPage));
+            routes.Add("AnnouncementsPage", typeof(AnnouncementsPage));
 
             foreach (var item in routes)
             {
