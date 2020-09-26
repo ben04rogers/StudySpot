@@ -1,13 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:StudySpot.ViewModels"
+             xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
+             xmlns:controls="clr-namespace:StudySpot.Controls"
              x:Class="StudySpot.Views.FeedPage"
              Title="My Feed">
 
     <ContentPage.BindingContext>
-        <local:FeedViewModel/>
+        <viewmodel:FeedViewModel/>
     </ContentPage.BindingContext>
+
+    <Shell.TitleView>
+        <controls:TopNavBar />
+    </Shell.TitleView>
 
     <ContentPage.Content>
         <StackLayout Padding="20">

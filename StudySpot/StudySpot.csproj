@@ -21,4 +21,14 @@
     <EmbeddedResource Include="assets\images\logo_transparent.png" />
     <EmbeddedResource Include="assets\images\profile.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Controls\TopNavBar.xaml.cs">
+      <DependentUpon>TopNavBar.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\TopNavBar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

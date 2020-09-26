@@ -19,6 +19,7 @@ namespace StudySpot.ViewModels
         public AnnouncementsViewModel()
         {
             // Initialise
+            Title = "Announcements";
             GetAnnouncements = new ObservableCollection<Announcement>();
 
             GetData();

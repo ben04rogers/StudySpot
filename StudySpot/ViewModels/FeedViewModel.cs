@@ -30,6 +30,8 @@ namespace StudySpot.ViewModels
         public FeedViewModel()
         {
             // Initialise
+            Title = "My Feed";
+
             announcementText = new List<string>();
             announcementTextIndex = -1;
             // Button click method with parameter

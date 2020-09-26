@@ -28,6 +28,15 @@ namespace StudySpot.ViewModels
             set { SetProperty(ref title, value); }
         }
 
+        // Property for Top Nav Bar
+        public string Date
+        {
+            get
+            {
+                return DateTime.Today.ToString("D");
+            }
+        }
+
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)
