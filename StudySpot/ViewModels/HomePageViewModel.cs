@@ -17,12 +17,12 @@ namespace StudySpot.ViewModels
 
         async void GoToClassesPage()
         {
-            await Shell.Current.GoToAsync($"classes");
+            await Shell.Current.GoToAsync("ClassesPage");
         }
 
         async void GoToMessagesPage()
         {
-            await Shell.Current.GoToAsync($"messages");
+            await Shell.Current.GoToAsync("MessagesPage");
         }
 
     }
