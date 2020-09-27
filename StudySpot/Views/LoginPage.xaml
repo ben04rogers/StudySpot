@@ -2,25 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="StudySpot.Views.LoginPage" Shell.NavBarIsVisible="False">
     <ContentPage.Content>
 
-        <StackLayout Padding="10, 0, 10, 0" VerticalOptions="Center" Margin="70, 0, 70, 0">
+        <StackLayout Padding="10, 0, 10, 0" VerticalOptions="Center">
             <Image x:Name="LogoImage" Aspect="AspectFit" HorizontalOptions="FillAndExpand" HeightRequest="200"></Image>
-
-            <Entry Placeholder="Email"
-                   x:Name="EmailEntry"
-                   WidthRequest="250"
-                   HorizontalOptions="Center"
-                   Margin="0, 10, 0, 10"
-                   ></Entry>
-
-            <Entry Placeholder="Password"
-                   x:Name="PasswordEntry"
-                   WidthRequest="250"
-                   HorizontalOptions="Center"
-                   IsPassword="True"
-                   ></Entry>
-
-            <Label Text="Forgot Password" HorizontalOptions="End"></Label>
-
             <Button x:Name="LoginButton" Text="Login"
                     TextColor="White"
                     WidthRequest="250"
@@ -40,7 +23,7 @@
                     Margin="0, 10, 0, 10"
                     Padding="0, 20, 0, 20"
                     BackgroundColor="#F95F62"
-                    Command="{Binding SignUpCommand}"/>
+                    Clicked="SignUpButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
