@@ -11,6 +11,8 @@ namespace StudySpot.ViewModels
 
         public HomePageViewModel()
         {
+            Title = "Home";
+
             GoToClasses = new Command(GoToClassesPage);
             GoToMessages = new Command(GoToMessagesPage);
         }
