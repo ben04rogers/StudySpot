@@ -1,8 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
+using MvvmHelpers;
 
 namespace StudySpot.ViewModels
 {
+    [QueryProperty("Email", "email")]
     public class HomePageViewModel : BaseViewModel
     {
         public Command GoToClasses { get; }
@@ -25,6 +27,18 @@ namespace StudySpot.ViewModels
         async void GoToMessagesPage()
         {
             await Shell.Current.GoToAsync("MessagesPage");
+        }
+
+        string email;
+        public string Email
+        {
+            get => email;
+            set
+            {
+                SetProperty(ref email, Uri.UnescapeDataString(value)); //MvvmHelpers Implementation
+                OnPropertyChanged(nameof(Email));
+
+            }
         }
 
     }

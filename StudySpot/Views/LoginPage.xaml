@@ -1,15 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="StudySpot.Views.LoginPage" Shell.NavBarIsVisible="False">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="StudySpot.Views.LoginPage"
+             xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
+             Shell.NavBarIsVisible="False">
+
+
+    <ContentPage.BindingContext>
+        <viewmodel:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
 
         <StackLayout Padding="10, 0, 10, 0" VerticalOptions="Center" Margin="70, 0, 70, 0">
             <Image x:Name="LogoImage" Aspect="AspectFit" HorizontalOptions="FillAndExpand" HeightRequest="200"></Image>
-
+            
             <Entry Placeholder="Email"
                    x:Name="EmailEntry"
                    WidthRequest="250"
                    HorizontalOptions="Center"
                    Margin="0, 10, 0, 10"
+                   Text="{Binding Email}"
                    ></Entry>
 
             <Entry Placeholder="Password"

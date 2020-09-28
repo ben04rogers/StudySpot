@@ -11,9 +11,9 @@ namespace StudySpot.Views
         {
             InitializeComponent();
 
-            var assembly = typeof(HomePage);
+            //var assembly = typeof(HomePage);
 
-            ProfileImage.Source = ImageSource.FromResource("StudySpot.assets.images.profile.png", assembly);
+            //ProfileImage.Source = ImageSource.FromResource("StudySpot.assets.images.profile.png", assembly);
 
         }
 

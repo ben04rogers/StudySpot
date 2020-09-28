@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using MvvmHelpers;
+
 
 namespace StudySpot.ViewModels
 {
@@ -15,11 +17,13 @@ namespace StudySpot.ViewModels
             LoginCommand = new Command(OnLoginClicked);
         }
 
-        private async void OnLoginClicked(object obj)
+        private void OnLoginClicked(object obj)
         {
             // Navigate to new shell after login
 
             Application.Current.MainPage = new AppShell();
         }
+
     }
+
 }
