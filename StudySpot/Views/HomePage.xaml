@@ -21,7 +21,7 @@
             <StackLayout Padding="20, 20, 20, 20">
 
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding Email, StringFormat='Hello, {0:F0}!'}"
+                    <Label Text="{Binding Email, StringFormat='Hi, {0:F0}!'}"
                            FontSize="Title"
                            FontAttributes="Bold"></Label>
                     <Image Source="profile.png" HorizontalOptions="EndAndExpand" HeightRequest="35" Margin="0, 0, 10, 0"></Image>
