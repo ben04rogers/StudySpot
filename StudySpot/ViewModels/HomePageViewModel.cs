@@ -54,11 +54,11 @@ namespace StudySpot.ViewModels
             {
                 new TodaysClass
                 {
-                    UnitCode = "Test",
+                    UnitCode = "CAB303",
                     Time = "9:00",
                     TimePeriod = "AM",
-                    LessonType = "Online Test",
-                    Platform = "ZOOM"
+                    LessonType = "Online Workshop",
+                    Platform = "Zoom ID: 937109249"
                 }
             };
         }
