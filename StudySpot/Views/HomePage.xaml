@@ -32,6 +32,9 @@
                     <Button Text="See all" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToClasses}"></Button>
                 </StackLayout>
 
+                <!-- TETSTING DATA TEMPLATE LIST -->
+                
+                
                 <!-- Todays Classes -->
 
                 <!-- First card (Classes) -->
