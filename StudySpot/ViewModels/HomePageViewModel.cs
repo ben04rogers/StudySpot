@@ -10,6 +10,8 @@ namespace StudySpot.ViewModels
     public class HomePageViewModel : BaseViewModel
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
+        public ObservableCollection<Student> StudentUser { get; set; }
+
         public Command GoToTodaysClasses { get; }
         public Command GoToMessages { get; }
 
@@ -77,6 +79,20 @@ namespace StudySpot.ViewModels
                     Platform = "Microsoft Teams"
                 }
             };
+
+            StudentUser = new ObservableCollection<Student>()
+            {
+                new Student
+                {
+                    FirstName = "Ben",
+                    LastName = "Rogers",
+                    Id = "1",
+                    Email = "ben@rogers.com",
+                    Password = "testpassword123"
+                }
+            };
+
+
         }
 
     }
