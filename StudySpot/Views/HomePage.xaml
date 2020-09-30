@@ -29,7 +29,7 @@
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Todays Classes (3)" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
-                    <Button Text="See all" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToClasses}"></Button>
+                    <Button Text="See all" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToTodaysClasses}"></Button>
                 </StackLayout>
 
                 <!-- Todays Classes List -->

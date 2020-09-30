@@ -10,7 +10,7 @@ namespace StudySpot.ViewModels
     public class HomePageViewModel : BaseViewModel
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
-        public Command GoToClasses { get; }
+        public Command GoToTodaysClasses { get; }
         public Command GoToMessages { get; }
 
 
@@ -21,13 +21,13 @@ namespace StudySpot.ViewModels
 
             Title = "Home";
 
-            GoToClasses = new Command(GoToClassesPage);
+            GoToTodaysClasses = new Command(GoToTodaysClassesPage);
             GoToMessages = new Command(GoToMessagesPage);
         }
 
-        async void GoToClassesPage()
+        async void GoToTodaysClassesPage()
         {
-            await Shell.Current.GoToAsync("ClassesPage");
+            await Shell.Current.GoToAsync("TodaysClassesPage");
         }
 
         async void GoToMessagesPage()

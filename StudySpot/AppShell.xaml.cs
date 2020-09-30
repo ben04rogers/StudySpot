@@ -26,7 +26,7 @@ namespace StudySpot
             routes.Add("HomePage", typeof(HomePage));
             routes.Add("FeedPage", typeof(FeedPage));
             routes.Add("AnnouncementsPage", typeof(AnnouncementsPage));
-            routes.Add("ClassesPage", typeof(ClassesPage));
+            routes.Add("TodaysClassesPage", typeof(TodaysClassesPage));
 
             foreach (var item in routes)
             {
