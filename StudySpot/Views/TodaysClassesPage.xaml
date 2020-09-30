@@ -15,8 +15,76 @@
     </Shell.TitleView>
     
     <ContentPage.Content>
-        <StackLayout>
-            <Label>This is the new page</Label>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="20, 20, 20, 20">
+                <ListView x:Name="TodaysClassesList" 
+                          ItemsSource="{Binding TodaysClasses}"
+                          RowHeight="80">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="#FAFAFA" Margin="0, 0, 0, 10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Rounded, coloured box on the left -->
+                                    <BoxView Color="#00A6FF"
+                                         CornerRadius="5, 0, 5, 0"
+                                         WidthRequest="20"
+                                         HeightRequest="50"
+                                         Grid.Row="0" 
+                                         Grid.RowSpan="2" 
+                                         Grid.Column="0" />
+                                    <!-- Rounded 'unit code' text box -->
+                                    <Frame BackgroundColor="#00A6FF"
+                                         CornerRadius="15" HasShadow="False"
+                                         Margin="8, 6, 5, 0" Padding="0, 2, 0, 2"
+                                         Grid.Row="0" Grid.Column="4">
+                                        <Label Text="{Binding UnitCode}"
+                                           FontAttributes="Bold"
+                                           TextColor="White" BackgroundColor="Transparent"
+                                           HorizontalTextAlignment="Center" />
+                                    </Frame>
+                                    <!-- Content -->
+                                    <Label Text="{Binding Time}"
+                                           Margin="10, 10, 0, 0" 
+                                           TextColor="#47525E" 
+                                           FontAttributes="Bold" 
+                                           FontSize="Subtitle"
+                                           Grid.Row="0" Grid.Column="1"/>
+
+                                    <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" RowSpacing="0">
+                                        <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" VerticalOptions="Center">
+                                            <Image Source="laptop.png"></Image>
+                                            <Label Text="{Binding LessonType}"></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalOptions="Center">
+                                            <Image Source="zoom.png"></Image>
+                                            <Label Text="{Binding Platform}"></Label>
+                                        </StackLayout>
+                                    </Grid>
+
+                                    <!-- Button -->
+                                    <Button BackgroundColor="Transparent"
+                                        Grid.Row="0"  Grid.Column="2"
+                                        Grid.RowSpan="2"  Grid.ColumnSpan="2"/>
+
+                                    <Label Text="{Binding TimePeriod}"
+                                       Margin="15, 0, 0, 0" TextColor="#969FAA"
+                                       Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+
+                                    <!-- Button -->
+                                    <Button Command="{Binding GoToClasses}"
+                                        BackgroundColor="Transparent"
+                                        Grid.Row="0"  Grid.Column="0"
+                                        Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
