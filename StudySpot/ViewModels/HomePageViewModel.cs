@@ -59,6 +59,22 @@ namespace StudySpot.ViewModels
                     TimePeriod = "AM",
                     LessonType = "Online Workshop",
                     Platform = "Zoom ID: 937109249"
+                },
+                new TodaysClass
+                {
+                    UnitCode = "IAB330",
+                    Time = "11:00",
+                    TimePeriod = "AM",
+                    LessonType = "Online Tutorial",
+                    Platform = "Microsoft Teams"
+                },
+                new TodaysClass
+                {
+                    UnitCode = "IAB330",
+                    Time = "11:00",
+                    TimePeriod = "AM",
+                    LessonType = "Online Tutorial",
+                    Platform = "Microsoft Teams"
                 }
             };
         }
