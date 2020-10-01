@@ -13,8 +13,14 @@ namespace StudySpot.ViewModels
         public ObservableCollection<Student> StudentUser { get; set; }
         public ObservableCollection<Message> RecentMessages { get; set; }
 
+
+        // Button commands
         public Command GoToTodaysClasses { get; }
         public Command GoToMessages { get; }
+        public Command GoToUnit1 { get; }
+        public Command GoToUnit2 { get; }
+        public Command GoToUnit3 { get; }
+        public Command GoToUnit4 { get; }
 
         public HomePageViewModel()
         {
@@ -25,8 +31,12 @@ namespace StudySpot.ViewModels
 
             GoToTodaysClasses = new Command(GoToTodaysClassesPage);
             GoToMessages = new Command(GoToMessagesPage);
+            GoToUnit1 = new Command(GoToUnit1Page);
+            GoToUnit2 = new Command(GoToUnit2Page);
+            GoToUnit3 = new Command(GoToUnit3Page);
+            GoToUnit4 = new Command(GoToUnit4Page);
         }
-
+        // 'My Units' Buttons 
         async void GoToTodaysClassesPage()
         {
             await Shell.Current.GoToAsync("TodaysClassesPage");
@@ -35,6 +45,24 @@ namespace StudySpot.ViewModels
         async void GoToMessagesPage()
         {
             await Shell.Current.GoToAsync("MessagesPage");
+        }
+
+        async void GoToUnit1Page()
+        {
+            await Shell.Current.GoToAsync("Unit1Page");
+        }
+
+        async void GoToUnit2Page()
+        {
+            await Shell.Current.GoToAsync("Unit2Page");
+        }
+        async void GoToUnit3Page()
+        {
+            await Shell.Current.GoToAsync("Unit3Page");
+        }
+        async void GoToUnit4Page()
+        {
+            await Shell.Current.GoToAsync("Unit4Page");
         }
 
         string email;

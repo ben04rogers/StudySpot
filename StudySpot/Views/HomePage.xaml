@@ -106,9 +106,7 @@
                     </ListView>
                 </ScrollView>
 
-                
-                
-
+               
                 <!-- leaving for later
                 
                     <Grid BackgroundColor="#FAFAFA"
@@ -160,7 +158,6 @@
 \                -->
 
                 <!-- Messsages List -->
-
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Messages (3)" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
@@ -301,22 +298,26 @@
                         <Button CornerRadius="10"
                             WidthRequest="100"
                             HeightRequest="100"
-                            BackgroundColor="#00A6FF">
+                            BackgroundColor="#00A6FF"
+                            Command="{Binding GoToUnit1}">
                         </Button>
                         <Button CornerRadius="10"
                             WidthRequest="100"
                             HeightRequest="100"
-                            BackgroundColor="#F95F62">
+                            BackgroundColor="#F95F62"
+                            Command="{Binding GoToUnit2}">
                         </Button>
                         <Button CornerRadius="10"
                             WidthRequest="100"
                             HeightRequest="100"
-                            BackgroundColor="#13CE66">
+                            BackgroundColor="#13CE66"
+                            Command="{Binding GoToUnit3}">
                         </Button>
                         <Button CornerRadius="10"
                             WidthRequest="100"
                             HeightRequest="100"
-                            BackgroundColor="#FFD185">
+                            BackgroundColor="#FFD185"
+                            Command="{Binding GoToUnit4}">
                         </Button>
                     </StackLayout>
                 </ScrollView>
