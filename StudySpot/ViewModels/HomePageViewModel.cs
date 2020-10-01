@@ -11,10 +11,10 @@ namespace StudySpot.ViewModels
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
         public ObservableCollection<Student> StudentUser { get; set; }
+        public ObservableCollection<Message> RecentMessages { get; set; }
 
         public Command GoToTodaysClasses { get; }
         public Command GoToMessages { get; }
-
 
         public HomePageViewModel()
         {
@@ -92,8 +92,27 @@ namespace StudySpot.ViewModels
                 }
             };
 
-
+            RecentMessages = new ObservableCollection<Message>()
+            {
+                new Message
+                {
+                    Sender = "LECTURER JAMES",
+                    UnitCode = "IAB303",
+                    Content = "Please refer to CRA for more details"
+                },
+                new Message
+                {
+                    Sender = "TUTOR JAKES ROSS",
+                    UnitCode = "CAB202",
+                    Content = "Assignment marks are available..."
+                },
+                new Message
+                {
+                    Sender = "TUTOR BOB SMITH",
+                    UnitCode = "CAB301",
+                    Content = "Great work! Looks great"
+                }
+            };
         }
-
     }
 }
