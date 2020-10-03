@@ -12,11 +12,17 @@ namespace StudySpot.ViewModels
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
 
+        public String ClassCountMessage { get; set; }
+
         public TodaysClassesPageViewModel()
         {
             SetupData();
 
             Title = "Todays Classes";
+
+            // Todays Class Count Message 
+            String ClassCountMessageLabel = $"You have {TodaysClasses.Count} classes today";
+            ClassCountMessage = ClassCountMessageLabel;
         }
 
 
