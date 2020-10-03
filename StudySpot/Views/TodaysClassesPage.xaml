@@ -20,7 +20,8 @@
                 <Label Margin="0, 0, 0, 10"  Text="{Binding ClassCountMessage}"></Label>
                 <ListView x:Name="TodaysClassesList" 
                           ItemsSource="{Binding TodaysClasses}"
-                          RowHeight="80">
+                          RowHeight="80"
+                          SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

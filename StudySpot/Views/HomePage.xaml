@@ -40,7 +40,8 @@
                 <ScrollView HeightRequest="160">
                     <ListView x:Name="TodaysClassesList" 
                           ItemsSource="{Binding TodaysClasses}"
-                          RowHeight="80">
+                          RowHeight="80"
+                          SeparatorVisibility="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -119,7 +120,8 @@
                 <ScrollView HeightRequest="160">
                     <ListView x:Name="RecentMesssagesList" 
                           ItemsSource="{Binding RecentMessages}"
-                          RowHeight="80">
+                          RowHeight="80"
+                          SeparatorVisibility="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
