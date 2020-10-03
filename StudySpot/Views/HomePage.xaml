@@ -30,12 +30,12 @@
                 </StackLayout>
                 -->
 
+                <!-- Todays Classes List -->
+
                 <StackLayout Orientation="Horizontal">
                     <Label Text="{Binding TodaysClassesCount}" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
                     <Button Text="See all" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToTodaysClasses}"></Button>
                 </StackLayout>
-
-                <!-- Todays Classes List -->
 
                 <ScrollView HeightRequest="160">
                     <ListView x:Name="TodaysClassesList" 
@@ -78,11 +78,13 @@
                                         <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" RowSpacing="0">
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" VerticalOptions="Center">
                                                 <Image Source="laptop.png"></Image>
-                                                <Label Text="{Binding LessonType}"></Label>
+                                                <Label Text="{Binding LessonType}"
+                                                       FontAttributes="Bold"></Label>
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalOptions="Center">
                                                 <Image Source="zoom.png"></Image>
-                                                <Label Text="{Binding Platform}"></Label>
+                                                <Label Text="{Binding Platform}"
+                                                       FontAttributes="Bold"></Label>
                                             </StackLayout>
                                         </Grid>
 
@@ -106,6 +108,8 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </ScrollView>
+
+                <!-- Messages List -->
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="{Binding MessagesCount}" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
@@ -145,6 +149,7 @@
 
                                         <!-- Content -->
                                         <Label Text="{Binding Sender}"
+                                               FontAttributes="Bold"
                                                Margin="10, 10, 0, 0" TextColor="#47525E" FontSize="Small"
                                                Grid.Row="0" Grid.Column="2"
                                                Grid.RowSpan="1" Grid.ColumnSpan="2"/>
@@ -173,24 +178,32 @@
                 <ScrollView Orientation="Horizontal">
                     <StackLayout Orientation="Horizontal">
                         <Button CornerRadius="10"
+                            Text="CAB202"
+                            FontAttributes="Bold"
                             WidthRequest="100"
                             HeightRequest="100"
                             BackgroundColor="#00A6FF"
                             Command="{Binding GoToUnit1}">
                         </Button>
                         <Button CornerRadius="10"
+                            Text="IAB330"
+                            FontAttributes="Bold"
                             WidthRequest="100"
                             HeightRequest="100"
                             BackgroundColor="#F95F62"
                             Command="{Binding GoToUnit2}">
                         </Button>
                         <Button CornerRadius="10"
+                            Text="CAB303"
+                            FontAttributes="Bold"
                             WidthRequest="100"
                             HeightRequest="100"
                             BackgroundColor="#13CE66"
                             Command="{Binding GoToUnit3}">
                         </Button>
                         <Button CornerRadius="10"
+                            Text="CAB301"
+                            FontAttributes="Bold"
                             WidthRequest="100"
                             HeightRequest="100"
                             BackgroundColor="#FFD185"

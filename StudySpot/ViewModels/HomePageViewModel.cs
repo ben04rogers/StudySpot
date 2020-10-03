@@ -153,7 +153,7 @@ namespace StudySpot.ViewModels
                 },
                  new Message
                 {
-                    Sender = "TUTOR BOB SMITH",
+                    Sender = "TUTOR JOSH HAAN",
                     UnitCode = "CAB303",
                     UnitColor = "#13CE66",
                     Content = "Great work! Looks great"
