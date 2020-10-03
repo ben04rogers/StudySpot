@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="StudySpot.Views.LoginPage"
              xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             Title="Login">
 
 
     <ContentPage.BindingContext>
