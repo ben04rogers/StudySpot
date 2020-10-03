@@ -11,5 +11,6 @@ namespace StudySpot.Models
         public string TimePeriod { get; set; }
         public string LessonType { get; set; }
         public string Platform { get; set; }
+        public string UnitColor { get; set; }
     }
 }

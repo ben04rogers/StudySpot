@@ -88,7 +88,8 @@ namespace StudySpot.ViewModels
                     Time = "9:00",
                     TimePeriod = "AM",
                     LessonType = "Online Workshop",
-                    Platform = "Zoom ID: 937109249"
+                    Platform = "Zoom ID: 937109249",
+                    UnitColor = "#13CE66"
                 },
                 new TodaysClass
                 {
@@ -96,15 +97,19 @@ namespace StudySpot.ViewModels
                     Time = "11:00",
                     TimePeriod = "AM",
                     LessonType = "Online Tutorial",
-                    Platform = "Microsoft Teams"
+                    Platform = "Microsoft Teams",
+                    UnitColor = "#F95F62"
+
                 },
                 new TodaysClass
                 {
-                    UnitCode = "IAB330",
+                    UnitCode = "CAB202",
                     Time = "11:00",
                     TimePeriod = "AM",
                     LessonType = "Online Tutorial",
-                    Platform = "Microsoft Teams"
+                    Platform = "Microsoft Teams",
+                    UnitColor = "#00A6FF"
+
                 }
             };
 
@@ -122,24 +127,36 @@ namespace StudySpot.ViewModels
 
             RecentMessages = new ObservableCollection<Message>()
             {
-                new Message
-                {
-                    Sender = "LECTURER JAMES",
-                    UnitCode = "IAB303",
-                    Content = "Please refer to CRA for more details"
-                },
-                new Message
+                 new Message
                 {
                     Sender = "TUTOR JAKES ROSS",
                     UnitCode = "CAB202",
+                    UnitColor = "#00A6FF",
                     Content = "Assignment marks are available..."
                 },
-                new Message
+                  new Message
                 {
                     Sender = "TUTOR BOB SMITH",
                     UnitCode = "CAB301",
+                    UnitColor = "#FFD185",
+                    Content = "Room Change for tutorial today"
+                },
+                 new Message
+                {
+                    Sender = "TUTOR BOB SMITH",
+                    UnitCode = "CAB303",
+                    UnitColor = "#13CE66",
                     Content = "Great work! Looks great"
+                },
+                new Message
+                {
+                    Sender = "LECTURER JAMES",
+                    UnitCode = "IAB330",
+                    UnitColor = "#F95F62",
+                    Content = "Please refer to CRA for more details"
                 }
+               
+               
             };
         }
     }
