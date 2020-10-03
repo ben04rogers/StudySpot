@@ -29,7 +29,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <!-- Rounded, coloured box on the left -->
-                                    <BoxView Color="#00A6FF"
+                                    <BoxView Color="{Binding UnitColor}"
                                          CornerRadius="5, 0, 5, 0"
                                          WidthRequest="20"
                                          HeightRequest="50"
@@ -37,7 +37,7 @@
                                          Grid.RowSpan="2" 
                                          Grid.Column="0" />
                                     <!-- Rounded 'unit code' text box -->
-                                    <Frame BackgroundColor="#00A6FF"
+                                    <Frame BackgroundColor="{Binding UnitColor}"
                                          CornerRadius="15" HasShadow="False"
                                          Margin="8, 6, 5, 0" Padding="0, 2, 0, 2"
                                          Grid.Row="0" Grid.Column="4">

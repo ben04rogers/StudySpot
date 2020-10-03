@@ -14,6 +14,8 @@ namespace StudySpot.ViewModels
         public ObservableCollection<Message> RecentMessages { get; set; }
 
         public Student user;
+        public String TodaysClassesCount { get; set; }
+        public String MessagesCount { get; set; }
 
         // Button commands
         public Command GoToTodaysClasses { get; }
@@ -27,8 +29,18 @@ namespace StudySpot.ViewModels
         {
             // Test data
             SetupData();
+
+            // Top Welcome greeting
             String greeting = $"Welcome, {user.FirstName}";
             Title = greeting;
+
+            // Todays Classes Count Label
+            String ClassCountLabel = $"Todays Classes ({TodaysClasses.Count})";
+            TodaysClassesCount = ClassCountLabel;
+
+            // Messages Count Label
+            String MessagesCountLabel = $"Messages ({RecentMessages.Count})";
+            MessagesCount = MessagesCountLabel;
 
             GoToTodaysClasses = new Command(GoToTodaysClassesPage);
             GoToMessages = new Command(GoToMessagesPage);
@@ -111,7 +123,7 @@ namespace StudySpot.ViewModels
                     Platform = "Microsoft Teams",
                     UnitColor = "#00A6FF"
 
-                }
+                },
             };
 
             user = new Student

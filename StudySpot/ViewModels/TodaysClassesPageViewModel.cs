@@ -31,7 +31,8 @@ namespace StudySpot.ViewModels
                     Time = "9:00",
                     TimePeriod = "AM",
                     LessonType = "Online Workshop",
-                    Platform = "Zoom ID: 937109249"
+                    Platform = "Zoom ID: 937109249",
+                    UnitColor = "#13CE66"
                 },
                 new TodaysClass
                 {
@@ -39,15 +40,19 @@ namespace StudySpot.ViewModels
                     Time = "11:00",
                     TimePeriod = "AM",
                     LessonType = "Online Tutorial",
-                    Platform = "Microsoft Teams"
+                    Platform = "Microsoft Teams",
+                    UnitColor = "#F95F62"
+
                 },
                 new TodaysClass
                 {
-                    UnitCode = "IAB330",
+                    UnitCode = "CAB202",
                     Time = "11:00",
                     TimePeriod = "AM",
                     LessonType = "Online Tutorial",
-                    Platform = "Microsoft Teams"
+                    Platform = "Microsoft Teams",
+                    UnitColor = "#00A6FF"
+
                 }
             };
         }

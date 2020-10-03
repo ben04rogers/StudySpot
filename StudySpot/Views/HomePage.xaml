@@ -31,7 +31,7 @@
                 -->
                     
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Todays Classes (3)" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
+                    <Label Text="{Binding TodaysClassesCount}" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
                     <Button Text="See all" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToTodaysClasses}"></Button>
                 </StackLayout>
 
@@ -161,7 +161,7 @@
                 <!-- Messsages List -->
 
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Messages (3)" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
+                    <Label Text="{Binding MessagesCount}" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
                     <Button Text="See all" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToMessages}"></Button>
                 </StackLayout>
 
