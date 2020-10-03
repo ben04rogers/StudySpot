@@ -27,6 +27,7 @@ namespace StudySpot.ViewModels
 
         public HomePageViewModel()
         {
+
             // Test data
             SetupData();
 
