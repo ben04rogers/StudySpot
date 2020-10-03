@@ -10,9 +10,10 @@ namespace StudySpot.ViewModels
     public class HomePageViewModel : BaseViewModel
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
-        public ObservableCollection<Student> StudentUser { get; set; }
+        //public ObservableCollection<Student> StudentUser { get; set; }
         public ObservableCollection<Message> RecentMessages { get; set; }
 
+        public Student user;
 
         // Button commands
         public Command GoToTodaysClasses { get; }
@@ -26,8 +27,8 @@ namespace StudySpot.ViewModels
         {
             // Test data
             SetupData();
-
-            Title = "Home";
+            String greeting = $"Welcome, {user.FirstName}";
+            Title = greeting;
 
             GoToTodaysClasses = new Command(GoToTodaysClassesPage);
             GoToMessages = new Command(GoToMessagesPage);
@@ -113,16 +114,13 @@ namespace StudySpot.ViewModels
                 }
             };
 
-            StudentUser = new ObservableCollection<Student>()
+            user = new Student
             {
-                new Student
-                {
-                    FirstName = "Ben",
-                    LastName = "Rogers",
-                    Id = "1",
-                    Email = "ben@rogers.com",
-                    Password = "testpassword123"
-                }
+                FirstName = "James",
+                LastName = "Smith",
+                Id = "1",
+                Email = "james@gmail.com",
+                Password = "testpassword123"
             };
 
             RecentMessages = new ObservableCollection<Message>()

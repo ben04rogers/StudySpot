@@ -5,7 +5,7 @@
     xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
     xmlns:controls="clr-namespace:StudySpot.Controls"
     x:Class="StudySpot.Views.HomePage"
-    Title="Home">
+    Title="Welcome, User">
 
     <ContentPage.BindingContext>
         <viewmodel:HomePageViewModel/>
@@ -18,8 +18,8 @@
     <ContentPage.Content>
 
         <ScrollView HeightRequest="3000">
-            <StackLayout Padding="20, 20, 20, 20">
-
+            <StackLayout Padding="20, 5, 20, 20">
+                <!--
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Welcome, User"
                            FontSize="Title"
@@ -28,7 +28,8 @@
                     
                     <Image Source="profile.png" HorizontalOptions="EndAndExpand" HeightRequest="35" Margin="0, 0, 10, 0"></Image>
                 </StackLayout>
-
+                -->
+                    
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Todays Classes (3)" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
                     <Button Text="See all" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToTodaysClasses}"></Button>
