@@ -17,12 +17,11 @@ namespace StudySpot.ViewModels
             LoginCommand = new Command(OnLoginClicked);
         }
 
-        async void OnLoginClicked(object obj)
+        void OnLoginClicked(object obj)
         {
             // Navigate to new shell after login
 
             Application.Current.MainPage = new AppShell();
-            await Shell.Current.GoToAsync($"HomePage");
         }
 
     }
