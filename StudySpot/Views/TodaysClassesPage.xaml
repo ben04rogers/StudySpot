@@ -25,7 +25,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid BackgroundColor="#FAFAFA" Margin="0, 0, 0, 10">
+                                <Grid BackgroundColor="#FAFAFA" Margin="0, 3">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="10"/>
                                     </Grid.ColumnDefinitions>
@@ -67,20 +67,9 @@
                                         </StackLayout>
                                     </Grid>
 
-                                    <!-- Button -->
-                                    <Button BackgroundColor="Transparent"
-                                        Grid.Row="0"  Grid.Column="2"
-                                        Grid.RowSpan="2"  Grid.ColumnSpan="2"/>
-
                                     <Label Text="{Binding TimePeriod}"
                                        Margin="15, 0, 0, 0" TextColor="#969FAA"
                                        Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-
-                                    <!-- Button -->
-                                    <Button Command="{Binding GoToClasses}"
-                                        BackgroundColor="Transparent"
-                                        Grid.Row="0"  Grid.Column="0"
-                                        Grid.RowSpan="2"  Grid.ColumnSpan="4" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
