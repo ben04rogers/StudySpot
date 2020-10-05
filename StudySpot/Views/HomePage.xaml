@@ -19,6 +19,7 @@
 
         <ScrollView HeightRequest="3000">
             <StackLayout Padding="20, 5, 20, 20">
+                
                 <!--
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Welcome, User"
@@ -79,13 +80,12 @@
                                         <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" RowSpacing="0">
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" VerticalOptions="Center">
                                                 <Image Source="laptop.png"></Image>
-                                                <Label Text="{Binding LessonType}"
-                                                       FontAttributes="Bold"></Label>
+                                                <Label Text="{Binding LessonType}"></Label>
                                             </StackLayout>
+                                            
                                             <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalOptions="Center">
                                                 <Image Source="zoom.png"></Image>
-                                                <Label Text="{Binding Platform}"
-                                                       FontAttributes="Bold"></Label>
+                                                <Label Text="{Binding Platform}"></Label>
                                             </StackLayout>
                                         </Grid>
 
@@ -126,7 +126,7 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <Grid BackgroundColor="#FAFAFA"
-                                          Margin="0, 5, 0, 0"
+                                          Margin="0, 0, 0, 10"
                                           Grid.Row="0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="10"/>
@@ -181,6 +181,7 @@
                     <StackLayout Orientation="Horizontal">
                         <Button CornerRadius="10"
                             Text="CAB202"
+                            FontSize="Subtitle"
                             FontAttributes="Bold"
                             WidthRequest="100"
                             HeightRequest="100"
@@ -189,6 +190,7 @@
                         </Button>
                         <Button CornerRadius="10"
                             Text="IAB330"
+                            FontSize="Subtitle"
                             FontAttributes="Bold"
                             WidthRequest="100"
                             HeightRequest="100"
@@ -197,6 +199,7 @@
                         </Button>
                         <Button CornerRadius="10"
                             Text="CAB303"
+                            FontSize="Subtitle"
                             FontAttributes="Bold"
                             WidthRequest="100"
                             HeightRequest="100"
@@ -205,6 +208,7 @@
                         </Button>
                         <Button CornerRadius="10"
                             Text="CAB301"
+                            FontSize="Subtitle"
                             FontAttributes="Bold"
                             WidthRequest="100"
                             HeightRequest="100"
