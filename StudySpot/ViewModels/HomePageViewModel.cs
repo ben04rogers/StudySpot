@@ -102,7 +102,8 @@ namespace StudySpot.ViewModels
                     Time = "9:00",
                     TimePeriod = "AM",
                     LessonType = "Online Workshop",
-                    Platform = "Zoom ID: 937109249",
+                    Platform = "Zoom",
+                    Link = "www.test.com",
                     UnitColor = "#13CE66"
                 },
                 new TodaysClass
@@ -112,6 +113,7 @@ namespace StudySpot.ViewModels
                     TimePeriod = "AM",
                     LessonType = "Online Tutorial",
                     Platform = "Microsoft Teams",
+                    Link = "www.test.com",
                     UnitColor = "#F95F62"
 
                 },
@@ -122,6 +124,7 @@ namespace StudySpot.ViewModels
                     TimePeriod = "AM",
                     LessonType = "Online Tutorial",
                     Platform = "Microsoft Teams",
+                    Link = "www.test.com",
                     UnitColor = "#00A6FF"
 
                 },

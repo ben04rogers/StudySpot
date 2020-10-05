@@ -4,6 +4,9 @@ using System.Text;
 using MvvmHelpers;
 using StudySpot.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Contracts;
+using Xamarin.Forms;
+using StudySpot.Views;
 
 
 namespace StudySpot.ViewModels
@@ -12,6 +15,7 @@ namespace StudySpot.ViewModels
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
 
+        public Command ClassDetails { get; }
         public String ClassCountMessage { get; set; }
 
         public TodaysClassesPageViewModel()
@@ -23,6 +27,38 @@ namespace StudySpot.ViewModels
             // Todays Class Count Message 
             String ClassCountMessageLabel = $"You have {TodaysClasses.Count} classes today";
             ClassCountMessage = ClassCountMessageLabel;
+
+            // Class Details Button
+            ClassDetails = new Command(DisplayClassDetails);
+
+        }
+
+        TodaysClass todaysclass;
+
+        public TodaysClass SelectedTodaysClass
+        {
+            get => todaysclass;
+            set
+            {
+                SetProperty(ref todaysclass, value); //MvvmHelpers Implementation
+                OnPropertyChanged(nameof(SelectedTodaysClass));
+            }
+        }
+
+        async void DisplayClassDetails()
+        {
+
+            if (SelectedTodaysClass != null)
+            {
+                
+                await Application.Current.MainPage.DisplayAlert("Join via ", "" + SelectedTodaysClass.Platform + "\n" + SelectedTodaysClass.Link, "OK");
+
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Nothing Selected!", "OK");
+                return;
+            }
         }
 
 
@@ -37,7 +73,8 @@ namespace StudySpot.ViewModels
                     Time = "9:00",
                     TimePeriod = "AM",
                     LessonType = "Online Workshop",
-                    Platform = "Zoom ID: 937109249",
+                    Platform = "Zoom",
+                    Link = "9201291021",
                     UnitColor = "#13CE66"
                 },
                 new TodaysClass
@@ -47,6 +84,7 @@ namespace StudySpot.ViewModels
                     TimePeriod = "AM",
                     LessonType = "Online Tutorial",
                     Platform = "Microsoft Teams",
+                    Link = "https://teams.microsoft.com/IAB330",
                     UnitColor = "#F95F62"
 
                 },
@@ -57,6 +95,7 @@ namespace StudySpot.ViewModels
                     TimePeriod = "AM",
                     LessonType = "Online Tutorial",
                     Platform = "Microsoft Teams",
+                    Link = "https://teams.microsoft.com/CAB202",
                     UnitColor = "#00A6FF"
 
                 }
