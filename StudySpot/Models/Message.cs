@@ -10,5 +10,6 @@ namespace StudySpot.Models
         public string UnitCode { get; set; }
         public string UnitColor { get; set; }
         public string Content { get; set; }
+        public string UserImageName { get; set; }
     }
 }

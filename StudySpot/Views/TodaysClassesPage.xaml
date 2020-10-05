@@ -27,7 +27,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid BackgroundColor="#FAFAFA" Margin="0, 3">
+                                <Grid BackgroundColor="#FAFAFA" Margin="3, 3">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="10"/>
                                     </Grid.ColumnDefinitions>

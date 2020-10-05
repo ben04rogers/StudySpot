@@ -141,6 +141,10 @@
                                         </Frame>
 
                                         <!-- Content -->
+
+                                        <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Source="{Binding UserImageName}">
+                                            
+                                        </Image>
                                         <Label Text="{Binding Sender}"
                                                FontAttributes="Bold"
                                                Margin="10, 10, 0, 0" TextColor="#47525E" FontSize="Small"

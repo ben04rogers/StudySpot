@@ -145,31 +145,35 @@ namespace StudySpot.ViewModels
             {
                  new Message
                 {
-                    Sender = "TUTOR JAKES ROSS",
+                    Sender = "JAMES ROSS",
                     UnitCode = "CAB202",
                     UnitColor = "#00A6FF",
-                    Content = "Assignment marks are available..."
+                    Content = "Assignment marks are available...",
+                    UserImageName = "jamesross.png"
                 },
                   new Message
                 {
-                    Sender = "TUTOR BOB SMITH",
+                    Sender = "BOB SMITH",
                     UnitCode = "CAB301",
                     UnitColor = "#FFD185",
-                    Content = "Room Change for tutorial today"
+                    Content = "Room Change for tutorial today",
+                    UserImageName = "bobsmith.png"
                 },
                  new Message
                 {
-                    Sender = "TUTOR JOSH HAAN",
+                    Sender = "JOSH HAAN",
                     UnitCode = "CAB303",
                     UnitColor = "#13CE66",
-                    Content = "Great work! Looks great"
+                    Content = "Great work! Looks great",
+                    UserImageName = "joshhaan.png"
                 },
                 new Message
                 {
-                    Sender = "LECTURER JAMES",
+                    Sender = "JAKE THOMPSON",
                     UnitCode = "IAB330",
                     UnitColor = "#F95F62",
-                    Content = "Please refer to CRA for more details"
+                    Content = "Please refer to CRA for more details",
+                    UserImageName = "jakethompson.png"
                 }
                
                
