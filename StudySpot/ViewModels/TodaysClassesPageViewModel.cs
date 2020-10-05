@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
 using Xamarin.Forms;
 using StudySpot.Views;
+using Xamarin.Essentials;
 
 
 namespace StudySpot.ViewModels
@@ -30,7 +31,6 @@ namespace StudySpot.ViewModels
 
             // Class Details Button
             ClassDetails = new Command(DisplayClassDetails);
-
         }
 
         TodaysClass todaysclass;
@@ -51,8 +51,8 @@ namespace StudySpot.ViewModels
             if (SelectedTodaysClass != null)
             {
                 
-                await Application.Current.MainPage.DisplayAlert("Join via ", "" + SelectedTodaysClass.Platform + "\n" + SelectedTodaysClass.Link, "OK");
-
+                await Application.Current.MainPage.DisplayAlert("Join via ", "" + SelectedTodaysClass.Platform + "\n" + SelectedTodaysClass.Link, "Copy to clipboard");
+                await Clipboard.SetTextAsync(SelectedTodaysClass.Link);
             }
             else
             {

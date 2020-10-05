@@ -78,6 +78,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button Text="Class Details" Command="{Binding ClassDetails}"/>
+                <Entry></Entry>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
