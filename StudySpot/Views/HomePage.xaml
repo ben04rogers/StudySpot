@@ -42,7 +42,8 @@
                     <ListView x:Name="TodaysClassesList" 
                           ItemsSource="{Binding TodaysClasses}"
                           RowHeight="80"
-                          SeparatorVisibility="None">
+                          SeparatorVisibility="None"
+                          SelectionMode="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -110,7 +111,8 @@
                     <ListView x:Name="RecentMesssagesList" 
                           ItemsSource="{Binding RecentMessages}"
                           RowHeight="80"
-                          SeparatorVisibility="None">
+                          SeparatorVisibility="None"
+                          SelectionMode="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
