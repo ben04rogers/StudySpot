@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace StudySpot.Models
 {
@@ -13,5 +15,6 @@ namespace StudySpot.Models
         public string Platform { get; set; }
         public string Link { get; set; }
         public string UnitColor { get; set; }
+        public string ImageName { get; set; }
     }
 }

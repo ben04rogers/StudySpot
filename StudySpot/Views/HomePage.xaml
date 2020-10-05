@@ -84,7 +84,7 @@
                                             </StackLayout>
 
                                             <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalOptions="Center">
-                                                <Image Source="zoom.png"></Image>
+                                                <Image Source="{Binding ImageName}"></Image>
                                                 <Label Text="{Binding Platform}"></Label>
                                             </StackLayout>
                                         </Grid>

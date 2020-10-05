@@ -64,7 +64,7 @@
                                             <Label Text="{Binding LessonType}"></Label>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalOptions="Center">
-                                            <Image Source="zoom.png"></Image>
+                                            <Image Source="{Binding ImageName}"></Image>
                                             <Label Text="{Binding Platform}"></Label>
                                         </StackLayout>
                                     </Grid>
@@ -78,7 +78,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button Text="Class Details" Command="{Binding ClassDetails}"/>
-                <Entry></Entry>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

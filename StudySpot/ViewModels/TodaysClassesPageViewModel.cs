@@ -8,7 +8,7 @@ using System.Diagnostics.Contracts;
 using Xamarin.Forms;
 using StudySpot.Views;
 using Xamarin.Essentials;
-
+using System.Dynamic;
 
 namespace StudySpot.ViewModels
 {
@@ -18,6 +18,7 @@ namespace StudySpot.ViewModels
 
         public Command ClassDetails { get; }
         public String ClassCountMessage { get; set; }
+        public String PlatformImage { get; set; }
 
         public TodaysClassesPageViewModel()
         {
@@ -61,7 +62,6 @@ namespace StudySpot.ViewModels
             }
         }
 
-
         // Dummy Data to test with
         void SetupData()
         {
@@ -75,7 +75,8 @@ namespace StudySpot.ViewModels
                     LessonType = "Online Workshop",
                     Platform = "Zoom",
                     Link = "9201291021",
-                    UnitColor = "#13CE66"
+                    UnitColor = "#13CE66",
+                    ImageName = "zoom.png"
                 },
                 new TodaysClass
                 {
@@ -85,7 +86,9 @@ namespace StudySpot.ViewModels
                     LessonType = "Online Tutorial",
                     Platform = "Microsoft Teams",
                     Link = "https://teams.microsoft.com/IAB330",
-                    UnitColor = "#F95F62"
+                    UnitColor = "#F95F62",
+                    ImageName = "msteams.png"
+
 
                 },
                 new TodaysClass
@@ -96,8 +99,8 @@ namespace StudySpot.ViewModels
                     LessonType = "Online Tutorial",
                     Platform = "Microsoft Teams",
                     Link = "https://teams.microsoft.com/CAB202",
-                    UnitColor = "#00A6FF"
-
+                    UnitColor = "#00A6FF",
+                    ImageName = "msteams.png"
                 }
             };
         }

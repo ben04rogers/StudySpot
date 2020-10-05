@@ -104,7 +104,9 @@ namespace StudySpot.ViewModels
                     LessonType = "Online Workshop",
                     Platform = "Zoom",
                     Link = "www.test.com",
-                    UnitColor = "#13CE66"
+                    UnitColor = "#13CE66",
+                    ImageName = "zoom.png"
+
                 },
                 new TodaysClass
                 {
@@ -114,8 +116,8 @@ namespace StudySpot.ViewModels
                     LessonType = "Online Tutorial",
                     Platform = "Microsoft Teams",
                     Link = "www.test.com",
-                    UnitColor = "#F95F62"
-
+                    UnitColor = "#F95F62",
+                    ImageName = "msteams.png"
                 },
                 new TodaysClass
                 {
@@ -125,8 +127,8 @@ namespace StudySpot.ViewModels
                     LessonType = "Online Tutorial",
                     Platform = "Microsoft Teams",
                     Link = "www.test.com",
-                    UnitColor = "#00A6FF"
-
+                    UnitColor = "#00A6FF",
+                    ImageName = "msteams.png"
                 },
             };
 
