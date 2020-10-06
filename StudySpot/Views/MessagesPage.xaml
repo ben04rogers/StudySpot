@@ -1,40 +1,134 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
+             xmlns:controls="clr-namespace:StudySpot.Controls"
              x:Class="StudySpot.Views.MessagesPage"
-             xmlns:local="clr-namespace:StudySpot.ViewModels"
              Title="My Messages">
+        
+    <!-- Binding ViewModel -->
+    <ContentPage.BindingContext>
+        <viewmodel:MessagesViewModel/>
+    </ContentPage.BindingContext>
+    
+    <!-- Default Nav Components -->
+    <Shell.TitleView>
+        <controls:TopNavBar />
+    </Shell.TitleView>
 
-
-
+    <!-- Start of Contents -->
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView HeightRequest="5000">
+            <StackLayout Padding="25, 15, 25, 25">
+                <!--Left, Top, Right, Bottom  -->
+                
+                <!-- View All or Unread Messages Buttons -->
+                <StackLayout>
+                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"></RowDefinition>
+                            <!-- Height of Buttons Row -->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!-- Changes the width of the button column -->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-            <!-- <Label Text="MESSAGES PAGE"></Label> -->
+                        <!--View All-->
+                        <Button CornerRadius="90" 
+                            Text="View All" x:Name="cmdSubmit"
+                            Padding="0"
+                            BackgroundColor="#00A6FF"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            WidthRequest="100"
+                            HeightRequest="40"
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0" />
 
-            <Button x:Name="TestBTN" Text="View All"
-                    TextColor="White"
-                    WidthRequest="250"
-                    HorizontalOptions="Center"
-                    CornerRadius="90"
-                    Margin="0, 10, 0, 10"
-                    Padding="0, 20, 0, 20"
-                    BackgroundColor="#00a6ff"
-                    Command="{Binding GoToMessage}"
-                    CommandParameter="Important_CAB303"/>
+                        <!--Unread-->
+                        <Button CornerRadius="90" 
+                            Text="Unread" x:Name="cmdUnread" TextColor="Black"
+                            Padding="0"
+                            BackgroundColor="Transparent"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            WidthRequest="100"
+                            HeightRequest="40"
+                            HorizontalOptions="Start"
+                            VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1" />
+                    </Grid>
+                </StackLayout>
+                
+                
+                <!-- Message Blocks -->
+                <ListView x:Name="RecentMesssagesList" 
+                        ItemsSource="{Binding RecentMessages}"
+                        RowHeight="0"
+                        SeparatorVisibility="Default"     
+                        SelectionMode="None"
+                        HasUnevenRows="True"    >
+                          
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="#FAFAFA"
+                                        Margin="0, 8"
+                                        Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Unread Circle next to Message -->
+                                    <BoxView Color="{Binding MessageStatus}"
+                                        CornerRadius="90"
+                                        WidthRequest="10"
+                                        HeightRequest="10"
+                                        VerticalOptions="Center"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="0"/>
+
+                                    <!-- Rounded 'unit code' text box -->
+                                    <Frame BackgroundColor="{Binding UnitColor}"
+                                            CornerRadius="15" HasShadow="False"
+                                            Margin="8, 6, 5, 0" Padding="0, 2, 0, 2"
+                                            Grid.Row="0" Grid.Column="4">
+                                        <Label Text="{Binding UnitCode}"
+                                            FontAttributes="Bold"
+                                            TextColor="White" BackgroundColor="Transparent"
+                                            HorizontalTextAlignment="Center" />
+                                    </Frame>
+
+                                    <!-- Content -->
+
+                                    <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Source="{Binding UserImageName}">
+
+                                    </Image>
+                                    <Label Text="{Binding Sender}"
+                                            FontAttributes="Bold"
+                                            Margin="10, 10, 0, 0" TextColor="#47525E" FontSize="Small"
+                                            Grid.Row="0" Grid.Column="2"
+                                            Grid.RowSpan="1" Grid.ColumnSpan="2"/>
 
 
-            <Button x:Name="TestBTN2" Text="Unread"
-                    TextColor="Black"
-                    WidthRequest="250"
-                    HorizontalOptions="End"
-                    CornerRadius="90"
-                    Margin="0, 10, 0, 10"
-                    Padding="0, 20, 0, 20"
-                    BackgroundColor="#FAFAFA"
-                    Command="{Binding GoToMessage}"
-                    CommandParameter="Important_CAB303"/>
+                                    <Label Text="{Binding Content}"
+                                            Margin="10, 0" TextColor="#47525E" FontSize="Small"
+                                            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!-- End of Message Blocks -->
 
-        </StackLayout>
+
+
+                
+                
+                
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -11,5 +11,6 @@ namespace StudySpot.Models
         public string UnitColor { get; set; }
         public string Content { get; set; }
         public string UserImageName { get; set; }
+        public string MessageStatus { get; set; }
     }
 }
