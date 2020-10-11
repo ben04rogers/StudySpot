@@ -30,14 +30,19 @@ namespace StudySpot.ViewModels
             GetReminderAnnouncements = new ObservableCollection<Announcement>();
             GetDueDateFeed = new ObservableCollection<Assessment>();
             GetGradesFeed = new ObservableCollection<Grade>();
-            GetData();
+
+            // Get Data
+            GetImportantData();
+            GetReminderData();
+            GetDueDateData();
+            GetGradeData();
 
             // Button click method with parameter
             GoToAnnouncements = new Command<string>(onAnnouncementClick); 
             GoToDueDates = new Command<string>(onDueDateClick);
         }
 
-        private void GetData()
+        private void GetImportantData()
         {
             // Get newest announcement of each unit with type important
             // MAX(Date), Type = Important, Group by Unit
@@ -69,7 +74,9 @@ namespace StudySpot.ViewModels
                 Date = "1 Aug",
                 Title = "Quiz 5"
             });
-
+        }
+        private void GetReminderData()
+        {
             // Get newest announcement of each unit with type reminder
             // MAX(ResultDate), Type = Reminder, Group by Unit
             GetReminderAnnouncements.Add(new Announcement
@@ -100,7 +107,9 @@ namespace StudySpot.ViewModels
                 Date = "5 Aug",
                 Title = "Quiz question"
             });
-
+        }
+        private void GetDueDateData()
+        {
             // Get closest duedate for each unit
             // MIN(CurrentDate - DueDate), Group by Unit
             GetDueDateFeed.Add(new Assessment
@@ -131,7 +140,9 @@ namespace StudySpot.ViewModels
                 AssessmentName = "Quiz 7",
                 DueDate = "13 Aug"
             });
-
+        }
+        private void GetGradeData()
+        {
             // Get newest grades of each unit
             // MAX(ResultDate), Group by Unit
             GetGradesFeed.Add(new Grade

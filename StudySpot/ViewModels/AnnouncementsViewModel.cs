@@ -13,7 +13,8 @@ namespace StudySpot.ViewModels
         // Fields
 
         // Properties
-        public ObservableCollection<Announcement> GetAnnouncements { get; private set; }
+        public ObservableCollection<Announcement> GetImportant { get; private set; }
+        public ObservableCollection<Announcement> GetReminders { get; private set; }
 
         // Constructor
         public AnnouncementsViewModel()
@@ -21,36 +22,55 @@ namespace StudySpot.ViewModels
             // Initialise data
             Title = "Announcements";
             TopNavSubtitle = "CAB303";
-            GetAnnouncements = new ObservableCollection<Announcement>();
+            GetImportant = new ObservableCollection<Announcement>();
+            GetReminders = new ObservableCollection<Announcement>();
 
-            GetData();
+            GetImportantData();
+            GetReminderData();
         }
 
         // Methods
-        private void GetData()
+        private void GetImportantData()
         {
             // Get announcement text
-            GetAnnouncements.Add(new Announcement
+            // Unit = url get param, Type = Important
+            GetImportant.Add(new Announcement
             {
-                Unit = "CAB303",
-                UnitColour = "Blue",
                 Date = "21 Jul",
                 Title = "Annoucement 1",
-                Description = "Lorem Ipsum",
-                Type = "Important"
+                Description = "Lorem Ipsum"
             });
-            GetAnnouncements.Add(new Announcement
+            GetImportant.Add(new Announcement
             {
-                Unit = "CAB303",
-                UnitColour = "Blue",
                 Date = "28 Jul",
                 Title = "Annoucement 2",
                 Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
                 "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
                 "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
                 "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-                Type = "Important"
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+            });
+        }
+        private void GetReminderData()
+        {
+            // Get announcement text
+            // Unit = url get param, Type = Important
+            GetReminders.Add(new Announcement
+            {
+                Date = "5 Aug",
+                Title = "Reminder 1",
+                Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
+                "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+            });
+            GetReminders.Add(new Announcement
+            {
+                Date = "7 Aug",
+                Title = "Reminder 2",
+                Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem"
             });
         }
     }
