@@ -29,5 +29,6 @@ namespace StudySpot.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }

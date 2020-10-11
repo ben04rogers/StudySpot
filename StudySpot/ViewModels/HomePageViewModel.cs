@@ -6,7 +6,6 @@ using StudySpot.Models;
 
 namespace StudySpot.ViewModels
 {
-    [QueryProperty("Email", "email")]
     public class HomePageViewModel : BaseViewModel
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
@@ -18,6 +17,7 @@ namespace StudySpot.ViewModels
         public String MessagesCount { get; set; }
 
         // Button commands
+        public Command GoToSettings { get; }
         public Command GoToTodaysClasses { get; }
         public Command GoToMessages { get; }
         public Command GoToUnit1 { get; }
@@ -27,13 +27,12 @@ namespace StudySpot.ViewModels
 
         public HomePageViewModel()
         {
-
             // Test data
             SetupData();
 
             // Top Welcome greeting
             String greeting = $"Welcome {user.FirstName},";
-           Title = greeting;
+            Title = greeting;
 
             // Todays Classes Count Label
             String ClassCountLabel = $"Todays Classes ({TodaysClasses.Count})";
@@ -43,6 +42,7 @@ namespace StudySpot.ViewModels
             String MessagesCountLabel = $"Messages ({RecentMessages.Count})";
             MessagesCount = MessagesCountLabel;
 
+            GoToSettings = new Command(GoToSettingsPage);
             GoToTodaysClasses = new Command(GoToTodaysClassesPage);
             GoToMessages = new Command(GoToMessagesPage);
             GoToUnit1 = new Command(GoToUnit1Page);
@@ -50,7 +50,12 @@ namespace StudySpot.ViewModels
             GoToUnit3 = new Command(GoToUnit3Page);
             GoToUnit4 = new Command(GoToUnit4Page);
         }
-        // 'My Units' Buttons 
+
+        async void GoToSettingsPage()
+        {
+            await Shell.Current.GoToAsync("SettingsPage");
+        }
+
         async void GoToTodaysClassesPage()
         {
             await Shell.Current.GoToAsync("TodaysClassesPage");
@@ -79,17 +84,6 @@ namespace StudySpot.ViewModels
             await Shell.Current.GoToAsync("Unit4Page");
         }
 
-        string email;
-        public string Email
-        {
-            get => email;
-            set
-            {
-                SetProperty(ref email, Uri.UnescapeDataString(value)); //MvvmHelpers Implementation
-                OnPropertyChanged(nameof(Email));
-
-            }
-        }
 
         // Dummy Data to test with
         void SetupData()

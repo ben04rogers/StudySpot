@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
+             xmlns:controls="clr-namespace:StudySpot.Controls"
+             x:Class="StudySpot.Views.SettingsPage">
+
+    <ContentPage.BindingContext>
+        <viewmodel:SettingsPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <Shell.TitleView>
+        <controls:TopNavBarSettings/>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" BackgroundColor="{Binding BackgroundColor}">
+            <Label Text="Background" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
+            <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#00A6FF">
+                <RadioButton GroupName="colors"></RadioButton>
+            </Frame>
+            <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#13CE66">
+                <RadioButton GroupName="colors" Command="{Binding ChangeBgColorGreen}"></RadioButton>
+            </Frame>
+            <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#FFD185">
+                <RadioButton GroupName="colors"></RadioButton>
+            </Frame>
+            <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#F95F62">
+                <RadioButton GroupName="colors"></RadioButton>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

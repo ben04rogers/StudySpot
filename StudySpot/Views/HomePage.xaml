@@ -11,32 +11,24 @@
     <ContentPage.BindingContext>
         <viewmodel:HomePageViewModel/>
     </ContentPage.BindingContext>
-
-    <!--
-    <Shell.TitleView>
-        <controls:TopNavBar/>
-    </Shell.TitleView>
-    -->
     
     <ContentPage.Content>
 
         <ScrollView HeightRequest="3000">
             <StackLayout Padding="0, 20, 0, 0" BackgroundColor="#00A6FF">
 
-
                 <StackLayout Padding="20, 0, 20, 10" Orientation="Horizontal">
                     <Label Text="{Binding Title}"
                            FontSize="Title"
                            FontAttributes="Bold"
                            TextColor="White"></Label>
-                    <Image Source="icon_settings.png" HorizontalOptions="EndAndExpand" HeightRequest="35" Margin="0, 0, 20, 0"></Image>
+                    <ImageButton Source="icon_settings.png" Command="{Binding GoToSettings}" HorizontalOptions="EndAndExpand" HeightRequest="35" Margin="0, 0, 20, 0" BackgroundColor="Transparent"></ImageButton>
                 </StackLayout>
 
 
-                <Frame CornerRadius="20"  Padding="20, 0, 20, 20" BackgroundColor="White">
+                <Frame Padding="20, 0, 20, 20" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     <StackLayout>
                         <!-- Todays Classes List -->
-
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding TodaysClassesCount}" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
                             <Button Text="See all" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToTodaysClasses}"></Button>
