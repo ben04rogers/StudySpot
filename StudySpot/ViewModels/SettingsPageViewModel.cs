@@ -9,9 +9,11 @@ namespace StudySpot.ViewModels
 {
     class SettingsPageViewModel : BaseViewModel
     {
+
         public SettingsPageViewModel()
         {
             Title = "Dashboard ";
+
         }
     }
 }

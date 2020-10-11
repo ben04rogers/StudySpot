@@ -6,7 +6,6 @@ using StudySpot.Models;
 
 namespace StudySpot.ViewModels
 {
-    [QueryProperty("Email", "email")]
     public class HomePageViewModel : BaseViewModel
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
@@ -28,13 +27,12 @@ namespace StudySpot.ViewModels
 
         public HomePageViewModel()
         {
-
             // Test data
             SetupData();
 
             // Top Welcome greeting
             String greeting = $"Welcome {user.FirstName},";
-           Title = greeting;
+            Title = greeting;
 
             // Todays Classes Count Label
             String ClassCountLabel = $"Todays Classes ({TodaysClasses.Count})";
@@ -86,17 +84,6 @@ namespace StudySpot.ViewModels
             await Shell.Current.GoToAsync("Unit4Page");
         }
 
-        string email;
-        public string Email
-        {
-            get => email;
-            set
-            {
-                SetProperty(ref email, Uri.UnescapeDataString(value)); //MvvmHelpers Implementation
-                OnPropertyChanged(nameof(Email));
-
-            }
-        }
 
         // Dummy Data to test with
         void SetupData()
