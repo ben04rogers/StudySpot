@@ -18,6 +18,7 @@ namespace StudySpot.ViewModels
         public String MessagesCount { get; set; }
 
         // Button commands
+        public Command GoToSettings { get; }
         public Command GoToTodaysClasses { get; }
         public Command GoToMessages { get; }
         public Command GoToUnit1 { get; }
@@ -43,6 +44,7 @@ namespace StudySpot.ViewModels
             String MessagesCountLabel = $"Messages ({RecentMessages.Count})";
             MessagesCount = MessagesCountLabel;
 
+            GoToSettings = new Command(GoToSettingsPage);
             GoToTodaysClasses = new Command(GoToTodaysClassesPage);
             GoToMessages = new Command(GoToMessagesPage);
             GoToUnit1 = new Command(GoToUnit1Page);
@@ -50,7 +52,12 @@ namespace StudySpot.ViewModels
             GoToUnit3 = new Command(GoToUnit3Page);
             GoToUnit4 = new Command(GoToUnit4Page);
         }
-        // 'My Units' Buttons 
+
+        async void GoToSettingsPage()
+        {
+            await Shell.Current.GoToAsync("SettingsPage");
+        }
+
         async void GoToTodaysClassesPage()
         {
             await Shell.Current.GoToAsync("TodaysClassesPage");

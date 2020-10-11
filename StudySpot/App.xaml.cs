@@ -13,6 +13,7 @@ namespace StudySpot
         {
             InitializeComponent();
 
+            Device.SetFlags(new string[] { "RadioButton_Experimental" });
             DependencyService.Register<MockDataStore>();
             MainPage = new LoginPage();
         }
