@@ -33,7 +33,7 @@ namespace StudySpot.ViewModels
 
             // Top Welcome greeting
             String greeting = $"Welcome {user.FirstName},";
-            Title = greeting;
+           Title = greeting;
 
             // Todays Classes Count Label
             String ClassCountLabel = $"Todays Classes ({TodaysClasses.Count})";
