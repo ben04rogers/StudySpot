@@ -15,84 +15,283 @@
     </Shell.TitleView>
 
     <ContentPage.Content>
-        <StackLayout Padding="20">
-            <!-- Announcements -->
-            <Label Text="Announcements" FontSize="Subtitle" TextColor="Black" FontAttributes="Bold" />
-            <!-- Important -->
-            <Label Text="Important" FontSize="Small" TextColor="Black" />
-            <ListView x:Name="ImportantFeedList"
-                      ItemsSource="{Binding GetImportantAnnouncements}"
-                      HasUnevenRows="True"
-                      CachingStrategy="RecycleElement">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <!-- Tab -->
-                            <Grid BackgroundColor="#FAFAFA"
-                                    Grid.Row="0" Margin="0, 0, 0, 10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10"/>
-                                </Grid.ColumnDefinitions>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <!-- Announcements -->
+                <Label Text="Announcements" FontSize="Subtitle" TextColor="Black" FontAttributes="Bold" />
+                <!-- Important -->
+                <Label Text="Important" FontSize="Small" TextColor="Black" />
+                <ListView x:Name="ImportantFeedList"
+                          ItemsSource="{Binding GetImportantAnnouncements}"
+                          HeightRequest="300"
+                          HasUnevenRows="True" 
+                          CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Tab -->
+                                <Grid BackgroundColor="#FAFAFA"
+                                        Grid.Row="0" Margin="0, 0, 0, 10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <!-- Template -->
-                                <!-- Rounded, coloured box on the left -->
-                                <BoxView Color="{Binding UnitColour}"
+                                    <!-- Template -->
+                                    <!-- Rounded, coloured box on the left -->
+                                    <BoxView Color="{Binding UnitColour}"
+                                                    CornerRadius="5, 0, 5, 0"
+                                                    WidthRequest="20"
+                                                    HeightRequest="50"
+                                                    Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
+                                    <!-- Rounded 'unit code' text box -->
+                                    <Frame BackgroundColor="{Binding UnitColour}"
+                                                CornerRadius="15" HasShadow="False"
+                                                Margin="8, 6, 0, 0" Padding="0, 2, 0, 2"
+                                                Grid.Row="0" Grid.Column="1">
+                                        <Label Text="{Binding Unit}"
+                                                    FontAttributes="Bold"
+                                                    TextColor="White" BackgroundColor="Transparent"
+                                                    HorizontalTextAlignment="Center" />
+                                    </Frame>
+                                    <!-- Content -->
+                                    <Label Margin="5, 0" TextColor="Black"
+                                           Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Date}"/>
+                                                <Span Text=" | " />
+                                                <Span Text="{Binding Title}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <!-- Button -->
+                                    <Label Text=">"
+                                           FontFamily="" FontSize="25"
+                                           TextColor="{Binding UnitColour}"
+                                           Padding="0, 0, 15, 0"
+                                           VerticalTextAlignment="Center" HorizontalTextAlignment="End"
+                                           Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
+
+                                    <!-- Make Clickable (button covering entire thing) -->
+                                    <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
+                                            Command="{Binding GoToAnnouncements}"
+                                            CommandParameter="Important"
+                                            BackgroundColor="Transparent"
+                                            Grid.Row="0"  Grid.Column="0"
+                                            Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!-- Reminders -->
+                <Label Text="Reminders" FontSize="Small" TextColor="Black" />
+                <ListView x:Name="ReminderFeedList"
+                          ItemsSource="{Binding GetReminderAnnouncements}"
+                          HeightRequest="300"
+                          HasUnevenRows="True"
+                          CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Tab -->
+                                <Grid BackgroundColor="#FAFAFA"
+                                    Grid.Row="0" Margin="0, 0, 0, 10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Template -->
+                                    <!-- Rounded, coloured box on the left -->
+                                    <BoxView Color="{Binding UnitColour}"
                                                 CornerRadius="5, 0, 5, 0"
                                                 WidthRequest="20"
                                                 HeightRequest="50"
                                                 Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
-                                <!-- Rounded 'unit code' text box -->
-                                <Frame BackgroundColor="{Binding UnitColour}"
+                                    <!-- Rounded 'unit code' text box -->
+                                    <Frame BackgroundColor="{Binding UnitColour}"
                                             CornerRadius="15" HasShadow="False"
                                             Margin="8, 6, 0, 0" Padding="0, 2, 0, 2"
                                             Grid.Row="0" Grid.Column="1">
-                                    <Label Text="{Binding Unit}"
+                                        <Label Text="{Binding Unit}"
                                                 FontAttributes="Bold"
                                                 TextColor="White" BackgroundColor="Transparent"
                                                 HorizontalTextAlignment="Center" />
-                                </Frame>
-                                <!-- Content -->
-                                <Label Margin="5, 0" TextColor="Black"
+                                    </Frame>
+                                    <!-- Content -->
+                                    <Label Margin="5, 0" TextColor="Black"
                                        Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding Date}"/>
-                                            <Span Text=" | " />
-                                            <Span Text="{Binding Title}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Date}"/>
+                                                <Span Text=" | " />
+                                                <Span Text="{Binding Title}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
 
-                                <!-- Button -->
-                                <Label Text=">"
+                                    <!-- Button -->
+                                    <Label Text=">"
                                        FontFamily="" FontSize="25"
                                        TextColor="{Binding UnitColour}"
                                        Padding="0, 0, 15, 0"
                                        VerticalTextAlignment="Center" HorizontalTextAlignment="End"
                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
-                                <!-- Make Clickable (button covering entire thing) -->
-                                <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
+                                    <!-- Make Clickable (button covering entire thing) -->
+                                    <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
                                         Command="{Binding GoToAnnouncements}"
                                         CommandParameter="Important"
                                         BackgroundColor="Transparent"
                                         Grid.Row="0"  Grid.Column="0"
                                         Grid.RowSpan="2"  Grid.ColumnSpan="4" />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-            <!-- Reminders -->
-            <Label Text="Reminders" FontSize="Small" TextColor="Black" />
+                <BoxView HeightRequest="1" Color="LightGray" />
 
-            <!-- Due Dates -->
-            <Label Text="Due Dates" FontSize="Subtitle" FontAttributes="Bold" TextColor="Black" />
+                <!-- Due Dates -->
+                <Label Text="Due Dates" FontSize="Subtitle" FontAttributes="Bold" TextColor="Black" />
+                <ListView x:Name="DueDateFeedList"
+                          ItemsSource="{Binding GetDueDateFeed}"
+                          HeightRequest="300"
+                          HasUnevenRows="True"
+                          CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Tab -->
+                                <Grid BackgroundColor="#FAFAFA"
+                                    Grid.Row="0" Margin="0, 0, 0, 10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                    </Grid.ColumnDefinitions>
 
-            <!-- Grades -->
-            <Label Text="Grades" FontSize="Subtitle" FontAttributes="Bold" TextColor="Black" />
+                                    <!-- Template -->
+                                    <!-- Rounded, coloured box on the left -->
+                                    <BoxView Color="{Binding UnitColour}"
+                                                CornerRadius="5, 0, 5, 0"
+                                                WidthRequest="20"
+                                                HeightRequest="50"
+                                                Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
+                                    <!-- Rounded 'unit code' text box -->
+                                    <Frame BackgroundColor="{Binding UnitColour}"
+                                            CornerRadius="15" HasShadow="False"
+                                            Margin="8, 6, 0, 0" Padding="0, 2, 0, 2"
+                                            Grid.Row="0" Grid.Column="1">
+                                        <Label Text="{Binding Unit}"
+                                                FontAttributes="Bold"
+                                                TextColor="White" BackgroundColor="Transparent"
+                                                HorizontalTextAlignment="Center" />
+                                    </Frame>
+                                    <!-- Content -->
+                                    <Label Margin="5, 0" TextColor="Black"
+                                       Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding DueDate}"/>
+                                                <Span Text=" | " />
+                                                <Span Text="{Binding AssessmentName}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
 
-        </StackLayout>
+                                    <!-- Button -->
+                                    <Label Text=">"
+                                       FontFamily="" FontSize="25"
+                                       TextColor="{Binding UnitColour}"
+                                       Padding="0, 0, 15, 0"
+                                       VerticalTextAlignment="Center" HorizontalTextAlignment="End"
+                                       Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
+
+                                    <!-- Make Clickable (button covering entire thing) -->
+                                    <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
+                                        Command="{Binding GoToDueDates}"
+                                        CommandParameter="Important"
+                                        BackgroundColor="Transparent"
+                                        Grid.Row="0"  Grid.Column="0"
+                                        Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <BoxView HeightRequest="1" Color="LightGray" />
+
+                <!-- Grades -->
+                <Label Text="Grades" FontSize="Subtitle" FontAttributes="Bold" TextColor="Black" />
+                <ListView x:Name="GradesFeedList"
+                          ItemsSource="{Binding GetGradesFeed}"
+                          HeightRequest="300"
+                          HasUnevenRows="True"
+                          CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Tab -->
+                                <Grid BackgroundColor="#FAFAFA"
+                                    Grid.Row="0" Margin="0, 0, 0, 10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Template -->
+                                    <!-- Rounded, coloured box on the left -->
+                                    <BoxView Color="{Binding UnitColour}"
+                                                CornerRadius="5, 0, 5, 0"
+                                                WidthRequest="20"
+                                                HeightRequest="50"
+                                                Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
+                                    <!-- Rounded 'unit code' text box -->
+                                    <Frame BackgroundColor="{Binding UnitColour}"
+                                            CornerRadius="15" HasShadow="False"
+                                            Margin="8, 6, 0, 0" Padding="0, 2, 0, 2"
+                                            Grid.Row="0" Grid.Column="1">
+                                        <Label Text="{Binding Unit}"
+                                                FontAttributes="Bold"
+                                                TextColor="White" BackgroundColor="Transparent"
+                                                HorizontalTextAlignment="Center" />
+                                    </Frame>
+                                    <!-- Content -->
+                                    <Label Margin="5, 0" TextColor="Black"
+                                       Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding AssessmentName}"/>
+                                                <Span Text=" | " />
+                                                <Span Text="{Binding Result}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <!-- Button -->
+                                    <Label Text=">"
+                                       FontFamily="" FontSize="25"
+                                       TextColor="{Binding UnitColour}"
+                                       Padding="0, 0, 15, 0"
+                                       VerticalTextAlignment="Center" HorizontalTextAlignment="End"
+                                       Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
+
+                                    <!-- Make Clickable (button covering entire thing) -->
+                                    <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
+                                        Command="{Binding GoToGrades}"
+                                        CommandParameter="Important"
+                                        BackgroundColor="Transparent"
+                                        Grid.Row="0"  Grid.Column="0"
+                                        Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

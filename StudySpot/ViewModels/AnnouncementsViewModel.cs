@@ -42,6 +42,7 @@ namespace StudySpot.ViewModels
             GetAnnouncements.Add(new Announcement
             {
                 Unit = "CAB303",
+                UnitColour = "Blue",
                 Date = "28 Jul",
                 Title = "Annoucement 2",
                 Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +

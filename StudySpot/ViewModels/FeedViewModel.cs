@@ -15,8 +15,11 @@ namespace StudySpot.ViewModels
         // Properties
         public ObservableCollection<Announcement> GetImportantAnnouncements { get; private set; }
         public ObservableCollection<Announcement> GetReminderAnnouncements { get; private set; }
+        public ObservableCollection<Assessment> GetDueDateFeed { get; private set; }
         public ObservableCollection<Grade> GetGradesFeed { get; private set; }
         public Command<string> GoToAnnouncements { get; }
+        public Command<string> GoToDueDates { get; }
+        public Command<string> GoToGrades { get; }
 
         // Constructor
         public FeedViewModel()
@@ -25,11 +28,13 @@ namespace StudySpot.ViewModels
             Title = "My feed";
             GetImportantAnnouncements = new ObservableCollection<Announcement>();
             GetReminderAnnouncements = new ObservableCollection<Announcement>();
+            GetDueDateFeed = new ObservableCollection<Assessment>();
             GetGradesFeed = new ObservableCollection<Grade>();
             GetData();
 
             // Button click method with parameter
-            GoToAnnouncements = new Command<string>(onAnnouncementClick);
+            GoToAnnouncements = new Command<string>(onAnnouncementClick); 
+            GoToDueDates = new Command<string>(onDueDateClick);
         }
 
         private void GetData()
@@ -41,94 +46,119 @@ namespace StudySpot.ViewModels
                 Unit = "CAB303",
                 UnitColour = "Blue",
                 Date = "28 Jul",
-                Title = "Room Change",
-                Description = "Should ignore",
-                Type = "Should ignore"
+                Title = "Room Change"
             });
             GetImportantAnnouncements.Add(new Announcement
             {
                 Unit = "IAB305",
                 UnitColour = "Red",
                 Date = "10 Aug",
-                Title = "Due Date",
-                Description = "Should ignore",
-                Type = "Should ignore"
+                Title = "Due Date"
             });
             GetImportantAnnouncements.Add(new Announcement
             {
                 Unit = "IAB303",
                 UnitColour = "LimeGreen",
                 Date = "15 Aug",
-                Title = "Room Change",
-                Description = "Should ignore",
-                Type = "Should ignore"
+                Title = "Room Change"
             });
             GetImportantAnnouncements.Add(new Announcement
             {
                 Unit = "CAB420",
                 UnitColour = "Orange",
                 Date = "1 Aug",
-                Title = "Quiz 5",
-                Description = "Should ignore",
-                Type = "Should ignore"
+                Title = "Quiz 5"
             });
 
             // Get newest announcement of each unit with type reminder
-            // MAX(Date), Type = Reminder, Group by Unit
+            // MAX(ResultDate), Type = Reminder, Group by Unit
             GetReminderAnnouncements.Add(new Announcement
             {
                 Unit = "CAB303",
+                UnitColour = "Blue",
                 Date = "15 Aug",
-                Title = "Assignment 1",
-                Description = "Should ignore",
-                Type = "Should ignore"
+                Title = "Assignment 1"
             });
             GetReminderAnnouncements.Add(new Announcement
             {
                 Unit = "IAB305",
+                UnitColour = "Red",
                 Date = "10 Aug",
-                Title = "Due Date",
-                Description = "Should ignore",
-                Type = "Should ignore"
+                Title = "Due Date"
             });
             GetReminderAnnouncements.Add(new Announcement
             {
                 Unit = "IAB303",
+                UnitColour = "LimeGreen",
                 Date = "12 Aug",
-                Title = "Assignment 2 release",
-                Description = "Should ignore",
-                Type = "Should ignore"
+                Title = "Assignment 2 release"
             });
             GetReminderAnnouncements.Add(new Announcement
             {
                 Unit = "CAB420",
+                UnitColour = "Orange",
                 Date = "5 Aug",
-                Title = "Quiz question",
-                Description = "Should ignore",
-                Type = "Should ignore"
+                Title = "Quiz question"
+            });
+
+            // Get closest duedate for each unit
+            // MIN(CurrentDate - DueDate), Group by Unit
+            GetDueDateFeed.Add(new Assessment
+            {
+                Unit = "CAB303",
+                UnitColour = "Blue",
+                AssessmentName = "Assignment 1",
+                DueDate = "1 Oct"
+            });
+            GetDueDateFeed.Add(new Assessment
+            {
+                Unit = "IAB305",
+                UnitColour = "Red",
+                AssessmentName = "PST2",
+                DueDate = "21 Aug"
+            });
+            GetDueDateFeed.Add(new Assessment
+            {
+                Unit = "IAB303",
+                UnitColour = "LimeGreen",
+                AssessmentName = "Research Task",
+                DueDate = "5 Oct"
+            });
+            GetDueDateFeed.Add(new Assessment
+            {
+                Unit = "CAB420",
+                UnitColour = "Orange",
+                AssessmentName = "Quiz 7",
+                DueDate = "13 Aug"
             });
 
             // Get newest grades of each unit
-            // MAX(Date), Group by Unit
+            // MAX(ResultDate), Group by Unit
             GetGradesFeed.Add(new Grade
             {
                 Unit = "CAB303",
+                UnitColour = "Blue",
                 AssessmentName = "Quiz 4",
                 Result = "85%"
             });
             GetGradesFeed.Add(new Grade
             {
-                Unit = "IAB305"
+                Unit = "IAB305",
+                UnitColour = "Red",
+                AssessmentName = "None",
+                Result = "N/A"
             });
             GetGradesFeed.Add(new Grade
             {
                 Unit = "IAB303",
+                UnitColour = "LimeGreen",
                 AssessmentName = "Assignment 1",
                 Result = "95%"
             });
             GetGradesFeed.Add(new Grade
             {
                 Unit = "CAB420",
+                UnitColour = "Orange",
                 AssessmentName = "Problem Solving Task 1",
                 Result = "70%"
             });
@@ -141,6 +171,13 @@ namespace StudySpot.ViewModels
             string newObj = announcementType;
             // Navigate to announcements page view
             await Shell.Current.GoToAsync("AnnouncementsPage");
+        }
+        private async void onDueDateClick(string announcementType)
+        {
+            // Test
+            string newObj = announcementType;
+            // Navigate to announcements page view
+            await Shell.Current.GoToAsync("TasksPage");
         }
     }
 }

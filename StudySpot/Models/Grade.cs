@@ -4,11 +4,9 @@ using System.Text;
 
 namespace StudySpot.Models
 {
-    public class Grade
+    public class Grade : Assessment
     {
-        public string Unit { get; set; }
-        public string UnitColour { get; set; }
-        public string AssessmentName { get; set; }
+        public string ResultDate { get; set; }
         public string Result { get; set; }
     }
 }
