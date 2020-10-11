@@ -17,90 +17,81 @@
     <ContentPage.Content>
         <StackLayout Padding="20">
             <!-- Announcements -->
-            <Label Text="Announcements" FontSize="Subtitle" FontAttributes="Bold" />
-                <!-- Important -->
-            <Label Text="Important" FontSize="Subtitle" />
-            <StackLayout x:Name="Important">
-                <!--  Implement later
-                <ListView x:Name="AnnouncementList"
-                      ItemsSource="{Binding GetAnnouncements}"
-                      SelectedItem="{Binding UnitAndType, Mode=TwoWay}"
+            <Label Text="Announcements" FontSize="Subtitle" TextColor="Black" FontAttributes="Bold" />
+            <!-- Important -->
+            <Label Text="Important" FontSize="Small" TextColor="Black" />
+            <ListView x:Name="ImportantFeedList"
+                      ItemsSource="{Binding GetImportantAnnouncements}"
+                      HasUnevenRows="True"
                       CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!-- Tab -->
+                            <Grid BackgroundColor="#FAFAFA"
+                                    Grid.Row="0" Margin="0, 0, 0, 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"/>
+                                </Grid.ColumnDefinitions>
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Margin="8">
-                                    <Label Text="{Binding Title}"
-                                   FontAttributes="Bold" />
-                                    <Label Text="{Binding Description}" />
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+                                <!-- Template -->
+                                <!-- Rounded, coloured box on the left -->
+                                <BoxView Color="{Binding UnitColour}"
+                                                CornerRadius="5, 0, 5, 0"
+                                                WidthRequest="20"
+                                                HeightRequest="50"
+                                                Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
+                                <!-- Rounded 'unit code' text box -->
+                                <Frame BackgroundColor="{Binding UnitColour}"
+                                            CornerRadius="15" HasShadow="False"
+                                            Margin="8, 6, 0, 0" Padding="0, 2, 0, 2"
+                                            Grid.Row="0" Grid.Column="1">
+                                    <Label Text="{Binding Unit}"
+                                                FontAttributes="Bold"
+                                                TextColor="White" BackgroundColor="Transparent"
+                                                HorizontalTextAlignment="Center" />
+                                </Frame>
+                                <!-- Content -->
+                                <Label Margin="5, 0" TextColor="Black"
+                                       Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Date}"/>
+                                            <Span Text=" | " />
+                                            <Span Text="{Binding Title}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
 
-                </ListView>
-                -->
+                                <!-- Button -->
+                                <Label Text=">"
+                                       FontFamily="" FontSize="25"
+                                       TextColor="{Binding UnitColour}"
+                                       Padding="0, 0, 15, 0"
+                                       VerticalTextAlignment="Center" HorizontalTextAlignment="End"
+                                       Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
-                <!-- Tab -->
-                <Grid BackgroundColor="#FAFAFA"
-                      Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <!-- Template -->
-                    <!-- Rounded, coloured box on the left -->
-                    <BoxView Color="Blue"
-                             CornerRadius="5, 0, 5, 0"
-                             WidthRequest="20"
-                             HeightRequest="50"
-                             Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
-                    <!-- Rounded 'unit code' text box -->
-                    <Frame BackgroundColor="Blue"
-                           CornerRadius="15" HasShadow="False"
-                           Margin="8, 6, 0, 0" Padding="0, 2, 0, 2"
-                           Grid.Row="0" Grid.Column="1">
-                        <Label Text="CAB303"
-                               FontAttributes="Bold"
-                               TextColor="White" BackgroundColor="Transparent"
-                               HorizontalTextAlignment="Center" />
-                    </Frame>
-                    <!-- Content -->
-                    <Label Text="28 Jul | Room Change"
-                           Margin="5, 0" TextColor="Black"
-                           Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-                    
-                    <!-- Button -->
-                    <Label Text=">"
-                           FontFamily="" FontSize="25"
-                           TextColor="Blue"
-                           Padding="0, 0, 15, 0"
-                           VerticalTextAlignment="Center" HorizontalTextAlignment="End"
-                           Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
-                    
-                    <!-- Make Clickable (button covering entire thing) -->
-                    <Button Command="{Binding GoToAnnouncements}"
-                            CommandParameter="Important_CAB303"
-                            BackgroundColor="Transparent"
-                            Grid.Row="0"  Grid.Column="0"
-                            Grid.RowSpan="2"  Grid.ColumnSpan="4" />
-                </Grid>
-            </StackLayout>
-                <!-- Reminders -->
-            <Label Text="Reminders" FontSize="Subtitle" />
-            <StackLayout x:Name="Reminders">
-            </StackLayout>
+                                <!-- Make Clickable (button covering entire thing) -->
+                                <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
+                                        Command="{Binding GoToAnnouncements}"
+                                        CommandParameter="Important"
+                                        BackgroundColor="Transparent"
+                                        Grid.Row="0"  Grid.Column="0"
+                                        Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Reminders -->
+            <Label Text="Reminders" FontSize="Small" TextColor="Black" />
 
             <!-- Due Dates -->
-            <Label Text="Due Dates" FontSize="Subtitle" FontAttributes="Bold" />
-            <StackLayout x:Name="DueDates">
-            </StackLayout>
+            <Label Text="Due Dates" FontSize="Subtitle" FontAttributes="Bold" TextColor="Black" />
 
             <!-- Grades -->
-            <StackLayout x:Name="Grades">
-                <Label Text="Grades" FontSize="Subtitle" FontAttributes="Bold" />
-            </StackLayout>
+            <Label Text="Grades" FontSize="Subtitle" FontAttributes="Bold" TextColor="Black" />
 
         </StackLayout>
     </ContentPage.Content>

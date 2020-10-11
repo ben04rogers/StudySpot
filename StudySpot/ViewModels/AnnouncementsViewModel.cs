@@ -18,28 +18,38 @@ namespace StudySpot.ViewModels
         // Constructor
         public AnnouncementsViewModel()
         {
-            // Initialise
+            // Initialise data
             Title = "Announcements";
+            TopNavSubtitle = "CAB303";
             GetAnnouncements = new ObservableCollection<Announcement>();
 
             GetData();
         }
 
         // Methods
-        void GetData()
+        private void GetData()
         {
             // Get announcement text
             GetAnnouncements.Add(new Announcement
             {
+                Unit = "CAB303",
+                UnitColour = "Blue",
                 Date = "21 Jul",
                 Title = "Annoucement 1",
-                Description = "Lorem Ipsum"
+                Description = "Lorem Ipsum",
+                Type = "Important"
             });
             GetAnnouncements.Add(new Announcement
             {
+                Unit = "CAB303",
                 Date = "28 Jul",
                 Title = "Annoucement 2",
-                Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+                Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
+                "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+                Type = "Important"
             });
         }
     }

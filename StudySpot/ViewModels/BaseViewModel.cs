@@ -12,6 +12,12 @@ namespace StudySpot.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        // Default constructor
+        public BaseViewModel()
+        {
+            TopNavSubtitle = currDate;
+        }
+
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
@@ -29,13 +35,8 @@ namespace StudySpot.ViewModels
         }
 
         // Property for Top Nav Bar
-        public string Date
-        {
-            get
-            {
-                return DateTime.Today.ToString("D");
-            }
-        }
+        public string currDate = DateTime.Today.ToString("D");
+        public string TopNavSubtitle { get; set; }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",

@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
              xmlns:controls="clr-namespace:StudySpot.Controls"
              x:Class="StudySpot.Views.AnnouncementsPage"
-             Title="My Announcements">
+             Title="Announcements">
 
     <ContentPage.BindingContext>
         <viewmodel:AnnouncementsViewModel/>
@@ -16,13 +16,13 @@
     
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <Label Text="ANNOUNCEMENTS PAGE"></Label>
-        
+            <!-- Heading -->
+            <Label Text="ANNOUNCEMENTS PAGE" TextColor="Black"></Label>
+            <!-- Announcements -->
             <ListView x:Name="AnnouncementList"
                       ItemsSource="{Binding GetAnnouncements}"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True">
-
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -30,7 +30,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                
+
                                 <Label Text="{Binding Date}"
                                        FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"
                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" />
@@ -44,8 +44,9 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
             </ListView>
+            <!-- Footer -->
+            <Label Text="End of announcements" TextColor="LightGray" FontAttributes="Italic"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
