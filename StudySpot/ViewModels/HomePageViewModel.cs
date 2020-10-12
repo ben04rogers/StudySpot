@@ -6,6 +6,7 @@ using StudySpot.Models;
 
 namespace StudySpot.ViewModels
 {
+    [QueryProperty("BgColorChoice", "bgcolor")]
     public class HomePageViewModel : BaseViewModel
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
@@ -49,6 +50,21 @@ namespace StudySpot.ViewModels
             GoToUnit2 = new Command(GoToUnit2Page);
             GoToUnit3 = new Command(GoToUnit3Page);
             GoToUnit4 = new Command(GoToUnit4Page);
+
+            // Set default background colour (if user does not select one in settings)
+            BgColorChoice = "00A6FF";
+
+        }
+
+        string bgcolor;
+        public string BgColorChoice
+        {
+            get => bgcolor;
+            set
+            {
+                SetProperty(ref bgcolor, value); //MvvmHelpers Implementation
+                OnPropertyChanged(nameof(BgColorChoice));
+            }
         }
 
         async void GoToSettingsPage()

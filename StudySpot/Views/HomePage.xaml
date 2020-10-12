@@ -15,7 +15,7 @@
     <ContentPage.Content>
 
         <ScrollView HeightRequest="3000">
-            <StackLayout Padding="0, 20, 0, 0" BackgroundColor="#00A6FF">
+            <StackLayout Padding="0, 20, 0, 0" BackgroundColor="{Binding BgColorChoice, StringFormat='#{0}'}">
 
                 <StackLayout Padding="20, 0, 20, 10" Orientation="Horizontal">
                     <Label Text="{Binding Title}"
@@ -24,7 +24,6 @@
                            TextColor="White"></Label>
                     <ImageButton Source="icon_settings.png" Command="{Binding GoToSettings}" HorizontalOptions="EndAndExpand" HeightRequest="35" Margin="0, 0, 20, 0" BackgroundColor="Transparent"></ImageButton>
                 </StackLayout>
-
 
                 <Frame Padding="20, 0, 20, 20" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     <StackLayout>

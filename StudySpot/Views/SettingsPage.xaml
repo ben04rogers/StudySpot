@@ -14,19 +14,19 @@
     </Shell.TitleView>
 
     <ContentPage.Content>
-        <StackLayout Padding="20" BackgroundColor="{Binding BackgroundColor}">
+        <StackLayout Padding="20" BackgroundColor="{Binding BgColorChoice}">
             <Label Text="Background" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
             <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#00A6FF">
-                <RadioButton GroupName="colors"></RadioButton>
+                <RadioButton GroupName="colors" Command="{Binding ChangeBgBlue}"></RadioButton>
             </Frame>
             <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#13CE66">
-                <RadioButton GroupName="colors" Command="{Binding ChangeBgColorGreen}"></RadioButton>
+                <RadioButton GroupName="colors" Command="{Binding ChangeBgGreen}"></RadioButton>
             </Frame>
             <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#FFD185">
-                <RadioButton GroupName="colors"></RadioButton>
+                <RadioButton GroupName="colors" Command="{Binding ChangeBgYellow}"></RadioButton>
             </Frame>
             <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#F95F62">
-                <RadioButton GroupName="colors"></RadioButton>
+                <RadioButton GroupName="colors" Command="{Binding ChangeBgRed}"></RadioButton>
             </Frame>
         </StackLayout>
     </ContentPage.Content>
