@@ -11,10 +11,31 @@ namespace StudySpot.ViewModels
     public class AnnouncementsViewModel : BaseViewModel
     {
         // Fields
+        private bool isImportantSelected;
+        private ObservableCollection<Announcement> announcementsList;
+        private ObservableCollection<Announcement> importantAnnouncements;
+        private ObservableCollection<Announcement> reminderAnnouncements;
 
         // Properties
-        public ObservableCollection<Announcement> GetImportant { get; private set; }
-        public ObservableCollection<Announcement> GetReminders { get; private set; }
+        public ObservableCollection<Announcement> GetAnnouncements
+        {
+            get => announcementsList;
+            set
+            {
+                SetProperty(ref announcementsList, value);
+                OnPropertyChanged(nameof(GetAnnouncements)); // Update listview
+            }
+        }
+        public bool IsImportantSelected {
+            get => isImportantSelected;
+            set
+            {
+                SetProperty(ref isImportantSelected, value);
+                OnPropertyChanged(nameof(IsImportantSelected)); // Update buttons
+            }
+        }
+        public ICommand ChangeToImportant { get; }
+        public ICommand ChangeToReminders { get; }
 
         // Constructor
         public AnnouncementsViewModel()
@@ -22,11 +43,21 @@ namespace StudySpot.ViewModels
             // Initialise data
             Title = "Announcements";
             TopNavSubtitle = "CAB303";
-            GetImportant = new ObservableCollection<Announcement>();
-            GetReminders = new ObservableCollection<Announcement>();
+            announcementsList = new ObservableCollection<Announcement>();
+            importantAnnouncements = new ObservableCollection<Announcement>();
+            reminderAnnouncements = new ObservableCollection<Announcement>();
 
+            // Get Data
             GetImportantData();
             GetReminderData();
+
+            // Default - important announcements
+            GetAnnouncements = importantAnnouncements;
+            isImportantSelected = true;
+
+            // Button click methods
+            ChangeToImportant = new Command(toImportant);
+            ChangeToReminders = new Command(toReminders);
         }
 
         // Methods
@@ -34,13 +65,13 @@ namespace StudySpot.ViewModels
         {
             // Get announcement text
             // Unit = url get param, Type = Important
-            GetImportant.Add(new Announcement
+            importantAnnouncements.Add(new Announcement
             {
                 Date = "21 Jul",
                 Title = "Annoucement 1",
                 Description = "Lorem Ipsum"
             });
-            GetImportant.Add(new Announcement
+            importantAnnouncements.Add(new Announcement
             {
                 Date = "28 Jul",
                 Title = "Annoucement 2",
@@ -55,7 +86,7 @@ namespace StudySpot.ViewModels
         {
             // Get announcement text
             // Unit = url get param, Type = Important
-            GetReminders.Add(new Announcement
+            reminderAnnouncements.Add(new Announcement
             {
                 Date = "5 Aug",
                 Title = "Reminder 1",
@@ -65,13 +96,55 @@ namespace StudySpot.ViewModels
                 "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
                 "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
             });
-            GetReminders.Add(new Announcement
+            reminderAnnouncements.Add(new Announcement
             {
                 Date = "7 Aug",
                 Title = "Reminder 2",
                 Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
                 "Ipsum Lorem Ipsum Lorem Ipsum Lorem"
             });
+            reminderAnnouncements.Add(new Announcement
+            {
+                Date = "6 Aug",
+                Title = "Reminder 3",
+                Description = "Another Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
+                "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+            });
+            reminderAnnouncements.Add(new Announcement
+            {
+                Date = "5 Aug",
+                Title = "Reminder 4",
+                Description = "Another 2 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
+                "Lorem Ipsum Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+            });
+            reminderAnnouncements.Add(new Announcement
+            {
+                Date = "4 Aug",
+                Title = "Reminder 5",
+                Description = "Another 3 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
+                "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
+                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+            });
+        }
+
+        // Button methods
+        private void toImportant()
+        {
+            IsImportantSelected = true;
+            GetAnnouncements = importantAnnouncements;
+        }
+        private void toReminders()
+        {
+            IsImportantSelected = false;
+            GetAnnouncements = reminderAnnouncements;
         }
     }
 }
