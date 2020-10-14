@@ -122,6 +122,19 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\icon_settings.png" />
+    <BundleResource Include="Resources\msteams.png" />
+    <BundleResource Include="Resources\laptop.png" />
+    <BundleResource Include="Resources\icon_home.png" />
+    <BundleResource Include="Resources\icon_chat.png" />
+    <BundleResource Include="Resources\icon_feed.png" />
+    <BundleResource Include="Resources\icon_tasks.png" />
+    <BundleResource Include="Resources\icon_caret.png" />
+    <BundleResource Include="Resources\jakethompson.png" />
+    <BundleResource Include="Resources\jamesross.png" />
+    <BundleResource Include="Resources\joshhaan.png" />
+    <BundleResource Include="Resources\zoom.png" />
+    <BundleResource Include="Resources\bobsmith.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
