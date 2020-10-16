@@ -33,7 +33,11 @@
                    IsPassword="True"
                    ></Entry>
 
-            <Label Text="Forgot Password" HorizontalOptions="End"></Label>
+            <Label Text="Forgot Password" HorizontalOptions="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotPassword}"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
 
             <Button x:Name="LoginButton" Text="Login"
                     TextColor="White"

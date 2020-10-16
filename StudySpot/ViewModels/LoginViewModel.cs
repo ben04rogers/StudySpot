@@ -12,12 +12,12 @@ namespace StudySpot.ViewModels
     {
         public Command LoginCommand { get; }
         public Command SignUpCommand { get; }
-
+        public Command ForgotPassword { get; }
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLoginClicked);
             SignUpCommand = new Command(OnSignUpClicked);
-
+            ForgotPassword = new Command(OnForgotPasswordClicked);
         }
 
         private void OnLoginClicked(object obj)
@@ -36,6 +36,11 @@ namespace StudySpot.ViewModels
             Application.Current.MainPage = new SignUpPage();
 
 
+        }
+
+        async void OnForgotPasswordClicked()
+        {
+            await Application.Current.MainPage.DisplayAlert("Reset Passwsord", "Would you like to reset your password?", "Yes");
         }
     }
 
