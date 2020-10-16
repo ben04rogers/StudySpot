@@ -23,7 +23,7 @@
                     <Label Text="Last Name"></Label>
                     <Entry Placeholder="Last Name" Margin="0, 0, 0, 10"></Entry>
 
-                    <Label Text="Email"></Label>
+                    <Label Text="University Email"></Label>
                     <Entry Placeholder="Email"
                            Margin="0, 0, 0, 10"
                            Keyboard="Email"></Entry>
@@ -34,7 +34,7 @@
                            IsPassword="True"></Entry>
 
                     <Label Text="Password"></Label>
-                    <Entry Placeholder="Password"
+                    <Entry Placeholder="Re-enter password"
                            Margin="0, 0, 0, 10"
                            IsPassword="True"></Entry>
                 </StackLayout>
