@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudySpot.Views.SignUpPage"
+             xmlns:viewmodel="clr-namespace:StudySpot.ViewModels">
+
+    <ContentPage.BindingContext>
+        <viewmodel:SignUpPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="30, 20, 30, 20">
+
+            <Label Text="Sign Up"
+                   FontSize="35"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"></Label>
+            <ScrollView>
+                <StackLayout Margin="0, 30, 0, 0">
+                    <Label Text="First Name"></Label>
+                    <Entry Placeholder="First Name" Margin="0, 0, 0, 10"></Entry>
+
+                    <Label Text="Last Name"></Label>
+                    <Entry Placeholder="Last Name" Margin="0, 0, 0, 10"></Entry>
+
+                    <Label Text="Email"></Label>
+                    <Entry Placeholder="Email"
+                           Margin="0, 0, 0, 10"
+                           Keyboard="Email"></Entry>
+
+                    <Label Text="Password"></Label>
+                    <Entry Placeholder="Password"
+                           Margin="0, 0, 0, 10"
+                           IsPassword="True"></Entry>
+
+                    <Label Text="Password"></Label>
+                    <Entry Placeholder="Password"
+                           Margin="0, 0, 0, 10"
+                           IsPassword="True"></Entry>
+                </StackLayout>
+            </ScrollView>
+            <Button x:Name="SignUpButton"
+                    Text="Sign Up"
+                    TextColor="White"
+                    WidthRequest="250"
+                    CornerRadius="5"
+                    Padding="0, 20, 0, 20"
+                    BackgroundColor="#F95F62"
+                    Command="{Binding SignUpComplete}"/>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

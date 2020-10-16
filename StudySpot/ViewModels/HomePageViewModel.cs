@@ -166,7 +166,7 @@ namespace StudySpot.ViewModels
                     Sender = "BOB SMITH",
                     UnitCode = "CAB301",
                     UnitColor = "#FFD185",
-                    Content = "Room Change for tutorial today",
+                    Content = "Room Change for tutorial today. This is a long message to show that it automatically cuts off",
                     UserImageName = "bobsmith.png"
                 },
                  new Message
@@ -185,8 +185,6 @@ namespace StudySpot.ViewModels
                     Content = "Please refer to CRA for more details",
                     UserImageName = "jakethompson.png"
                 }
-               
-               
             };
         }
     }
