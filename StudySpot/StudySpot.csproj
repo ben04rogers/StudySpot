@@ -26,6 +26,9 @@
     <Compile Update="Controls\TopNavBar.xaml.cs">
       <DependentUpon>TopNavBar.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\NotificationsPage.xaml.cs">
+      <DependentUpon>NotificationsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Controls\TopNavBar.xaml">

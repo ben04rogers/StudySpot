@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
+             xmlns:controls="clr-namespace:StudySpot.Controls"
+             x:Class="StudySpot.Views.NotificationsPage"
+             Title="Notifications">
+
+    <ContentPage.BindingContext>
+        <viewmodel:NotificationsViewModel/>
+    </ContentPage.BindingContext>
+
+    <Shell.TitleView>
+        <controls:TopNavBarSettings/>
+    </Shell.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Switches -->
+            <Style TargetType="Switch">
+                <Setter Property="OnColor" Value="#E0E0E0" />
+                
+                <Style.Triggers>
+                    <Trigger TargetType="Switch"
+                         Property="IsToggled" Value="True">
+                        <Setter Property="ThumbColor" Value="#00A6FF" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <!-- StackLayouts -->
+            <Style x:Key="SettingStackStyle" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="BackgroundColor" Value="#FAFAFA" />
+                <Setter Property="Padding" Value="10, 12" />
+                <Setter Property="Padding" Value="10, 12" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <!-- Announcements Heading -->
+            <Label Text="My Announcements" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"
+                   VerticalOptions="Center" />
+            <!-- Important -->
+            <StackLayout Style="{StaticResource SettingStackStyle}">
+                <Switch x:Name="Important"
+                        IsToggled="{Binding Important}" />
+                <Label Text="Important announcements" TextColor="Black" VerticalOptions="Center" />
+            </StackLayout>
+            <!-- Reminder -->
+            <StackLayout Style="{StaticResource SettingStackStyle}">
+                <Switch x:Name="Reminder"
+                        IsToggled="{Binding Reminder}" />
+                <Label Text="Reminder announcements" TextColor="Black" VerticalOptions="Center" />
+            </StackLayout>
+
+            <!-- Calendar Heading -->
+            <Label Text="My Calendar" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"
+                   VerticalOptions="Center" />
+            <!-- Due Dates -->
+            <StackLayout Style="{StaticResource SettingStackStyle}">
+                <Switch x:Name="DueDates"
+                        IsToggled="{Binding DueDates}" />
+                <Label Text="Due dates" TextColor="Black" VerticalOptions="Center" />
+            </StackLayout>
+            <!-- Due dates Reminder -->
+            <StackLayout Style="{StaticResource SettingStackStyle}">
+                <Switch x:Name="DueDateReminder"
+                        IsToggled="{Binding Path=NotificationSettings[DueDateReminder]}" />
+                <Label Text="Due dates (1 week before)" TextColor="Black" VerticalOptions="Center" />
+            </StackLayout>
+            <!-- Grades -->
+            <StackLayout Style="{StaticResource SettingStackStyle}">
+                <Switch x:Name="Grades"
+                        IsToggled="{Binding Grades}" />
+                <Label Text="Grades" TextColor="Black" VerticalOptions="Center" />
+            </StackLayout>
+            <!-- Tasks -->
+            <StackLayout Style="{StaticResource SettingStackStyle}">
+                <Switch x:Name="Tasks"
+                        IsToggled="{Binding Tasks}" />
+                <Label Text="Tasks" TextColor="Black" VerticalOptions="Center" />
+            </StackLayout>
+            
+            <!-- Messages Heading -->
+            <Label Text="My Messages" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"
+                   VerticalOptions="Center" />
+            <!-- Teams -->
+            <StackLayout Style="{StaticResource SettingStackStyle}">
+                <Switch x:Name="Teams"
+                        IsToggled="{Binding Teams}" />
+                <Label Text="Team messages" TextColor="Black" VerticalOptions="Center" />
+            </StackLayout>
+            <!-- Private Messages -->
+            <StackLayout Style="{StaticResource SettingStackStyle}">
+                <Switch x:Name="PrivateMessages"
+                        IsToggled="{Binding PrivateMessages}" />
+                <Label Text="Private messages" TextColor="Black" VerticalOptions="Center" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

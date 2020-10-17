@@ -12,10 +12,17 @@ namespace StudySpot.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        public Command GoToNotifications { get; }
         // Default constructor
         public BaseViewModel()
         {
-            TopNavSubtitle = currDate;
+            // Top nav bar
+            TopNavSubtitle = currDate; // Heading
+            GoToNotifications = new Command(GoToNotificationsPage); // Profile button
+        }
+        async void GoToNotificationsPage()
+        {
+            await Shell.Current.GoToAsync("NotificationsPage");
         }
 
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
