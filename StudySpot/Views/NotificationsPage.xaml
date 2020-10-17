@@ -67,7 +67,7 @@
             <!-- Due dates Reminder -->
             <StackLayout Style="{StaticResource SettingStackStyle}">
                 <Switch x:Name="DueDateReminder"
-                        IsToggled="{Binding Path=NotificationSettings[DueDateReminder]}" />
+                        IsToggled="{Binding DueDateReminder}" />
                 <Label Text="Due dates (1 week before)" TextColor="Black" VerticalOptions="Center" />
             </StackLayout>
             <!-- Grades -->
