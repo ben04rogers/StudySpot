@@ -22,7 +22,7 @@
                            FontSize="Title"
                            FontAttributes="Bold"
                            TextColor="White"></Label>
-                    <ImageButton Source="icon_settings.png" Command="{Binding GoToSettings}" HorizontalOptions="EndAndExpand" HeightRequest="35" Margin="0, 0, 20, 0" BackgroundColor="Transparent"></ImageButton>
+                    <ImageButton Source="settings_white.png" Command="{Binding GoToSettings}" HorizontalOptions="EndAndExpand" HeightRequest="35" Margin="0, 0, 20, 0" BackgroundColor="Transparent"></ImageButton>
                 </StackLayout>
 
                 <Frame Padding="20, 0, 20, 20" VerticalOptions="FillAndExpand" BackgroundColor="White">

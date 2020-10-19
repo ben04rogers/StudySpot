@@ -9,7 +9,7 @@
             <Label Text="{Binding TopNavSubtitle}"
                TextColor="Black" FontSize="Micro" />
         </StackLayout>
-        <ImageButton Source="profile.png" Command="{Binding GoToNotifications}"
+        <ImageButton Source="settings_black.png" Command="{Binding GoToNotifications}"
                      HorizontalOptions="EndAndExpand"
                      HeightRequest="35" Margin="0, 0, 20, 0" Grid.Column="1"
                      BackgroundColor="Transparent" />
