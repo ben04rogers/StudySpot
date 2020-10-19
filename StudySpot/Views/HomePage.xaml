@@ -13,23 +13,53 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-
         <ScrollView HeightRequest="3000">
-            <StackLayout Padding="0, 20, 0, 0" BackgroundColor="{Binding BgColorChoice, StringFormat='#{0}'}">
+            <StackLayout Padding="0, 15, 0, 0" BackgroundColor="{Binding BgColorChoice, StringFormat='#{0}'}">
 
-                <StackLayout Padding="20, 0, 20, 10" Orientation="Horizontal">
+                <Grid Padding="20, 0, 20, 0">
                     <Label Text="{Binding Title}"
                            FontSize="Title"
                            FontAttributes="Bold"
-                           TextColor="White"></Label>
-                    <ImageButton Source="settings_white.png" Command="{Binding GoToSettings}" HorizontalOptions="EndAndExpand" HeightRequest="35" Margin="0, 0, 20, 0" BackgroundColor="Transparent"></ImageButton>
-                </StackLayout>
+                           TextColor="White"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="4"></Label>
 
+                    <ImageButton Grid.Row="0"
+                                 Grid.Column="4"
+                                 Grid.RowSpan="2"
+                                 Source="settings_white.png"
+                                 Command="{Binding GoToSettings}"
+                                 HorizontalOptions="EndAndExpand"
+                                 HeightRequest="50"
+                                 WidthRequest="50"
+                                 Margin="0, 0, 20, 0"
+                                 BackgroundColor="Transparent"></ImageButton>
+
+                    <StackLayout Orientation="Horizontal" Padding="0, 0, 0, 10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+                        <Label Padding="0, 0, 0, 0"
+                               TextColor="White"
+                               FontSize="Subtitle"
+                               Text="You have "></Label>
+
+                        <Frame Background="red" Padding="5, 0, 5, 0" CornerRadius="7">
+                            <Label TextColor="White"
+                                   FontSize="Subtitle"
+                                   FontAttributes="Bold"
+                                   Text="{Binding TodaysClassesCount}"></Label>
+                        </Frame>
+
+                        <Label TextColor="White"
+                               FontSize="Subtitle"
+                               Text="classes today"></Label>
+                    </StackLayout>
+                </Grid>
+                
                 <Frame Padding="20, 0, 20, 20" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     <StackLayout>
                         <!-- Todays Classes List -->
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding TodaysClassesCount}" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
+                            <Label Text="{Binding TodaysClassesLabel}" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
                             <Button Text="See all" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToTodaysClasses}"></Button>
                         </StackLayout>
 

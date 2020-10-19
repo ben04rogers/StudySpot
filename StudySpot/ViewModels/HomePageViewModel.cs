@@ -14,8 +14,9 @@ namespace StudySpot.ViewModels
         public ObservableCollection<Message> RecentMessages { get; set; }
 
         public Student user;
-        public String TodaysClassesCount { get; set; }
+        public String TodaysClassesLabel { get; set; }
         public String MessagesCount { get; set; }
+        public String TodaysClassesCount { get; set; }
 
         // Button commands
         public Command GoToSettings { get; }
@@ -37,11 +38,14 @@ namespace StudySpot.ViewModels
 
             // Todays Classes Count Label
             String ClassCountLabel = $"Todays Classes ({TodaysClasses.Count})";
-            TodaysClassesCount = ClassCountLabel;
+            TodaysClassesLabel = ClassCountLabel;
 
             // Messages Count Label
             String MessagesCountLabel = $"Messages ({RecentMessages.Count})";
             MessagesCount = MessagesCountLabel;
+
+            // Messages Count (red indicator at top)
+            TodaysClassesCount = TodaysClasses.Count.ToString();
 
             GoToSettings = new Command(GoToSettingsPage);
             GoToTodaysClasses = new Command(GoToTodaysClassesPage);
@@ -101,7 +105,8 @@ namespace StudySpot.ViewModels
         }
 
 
-        // Dummy Data to test with
+        // Mock Data for testing
+
         void SetupData()
         {
             TodaysClasses = new ObservableCollection<TodaysClass>()
