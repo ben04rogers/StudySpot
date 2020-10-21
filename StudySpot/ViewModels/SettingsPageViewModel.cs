@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MvvmHelpers;
 using Xamarin.Forms;
-
+using StudySpot.Views;
 
 namespace StudySpot.ViewModels
 {
@@ -13,6 +13,8 @@ namespace StudySpot.ViewModels
         public Command ChangeBgYellow { get; }
         public Command ChangeBgGreen { get; }
         public Command ChangeBgBlue { get; }
+        public Command LogoutCommand { get; }
+
 
 
         public SettingsPageViewModel()
@@ -22,6 +24,7 @@ namespace StudySpot.ViewModels
             ChangeBgYellow = new Command(ChangeBgColorYellow);
             ChangeBgGreen = new Command(ChangeBgColorGreen);
             ChangeBgBlue = new Command(ChangeBgColorBlue);
+            LogoutCommand = new Command(OnLogoutClicked);
 
         }
 
@@ -55,6 +58,12 @@ namespace StudySpot.ViewModels
         {
             string colorchoice = "00A6FF";
             await Shell.Current.GoToAsync($"//HomePage?bgcolor={colorchoice}");
+        }
+
+        private void OnLogoutClicked(object obj)
+        {
+            // Logout Command
+
         }
 
 
