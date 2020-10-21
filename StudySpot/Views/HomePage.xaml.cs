@@ -13,6 +13,9 @@ namespace StudySpot.Views
 
         }
 
+        void RecentMesssagesList_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+        }
 
     }
 }

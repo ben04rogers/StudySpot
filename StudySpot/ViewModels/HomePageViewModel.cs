@@ -10,8 +10,8 @@ namespace StudySpot.ViewModels
     public class HomePageViewModel : BaseViewModel
     {
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
-        //public ObservableCollection<Student> StudentUser { get; set; }
         public ObservableCollection<Message> RecentMessages { get; set; }
+        public ObservableCollection<Unit> Units { get; set; }
 
         public Student user;
         public String TodaysClassesLabel { get; set; }
@@ -29,7 +29,7 @@ namespace StudySpot.ViewModels
 
         public HomePageViewModel()
         {
-            // Test data
+            // Setup Mock Data
             SetupData();
 
             // Top Welcome greeting
@@ -189,6 +189,38 @@ namespace StudySpot.ViewModels
                     UnitColor = "#F95F62",
                     Content = "Please refer to CRA for more details",
                     UserImageName = "jakethompson.png"
+                }
+            };
+
+            Units = new ObservableCollection<Unit>()
+            {
+                new Unit
+                {
+                    UnitName = "Microprocessors and Digital Systems",
+                    UnitCode = "CAB202",
+                    Description = "C programming",
+                    Color = "#00A6FF",
+                },
+                new Unit
+                {
+                    UnitName = "Mobile Application Development",
+                    UnitCode = "IAB330",
+                    Description = "Xamarin Forms and MVVM",
+                    Color = "#F95F62"
+                },
+                new Unit
+                {
+                    UnitName = "Networks",
+                    UnitCode = "CAB303",
+                    Description = "Computer Networks",
+                    Color = "#13CE66"
+                },
+                new Unit
+                {
+                    UnitName = "Algorithms and Complexity",
+                    UnitCode = "CAB301",
+                    Description = "Fundamental Principles of Software Algorithms",
+                    Color = "#FFD185"
                 }
             };
         }

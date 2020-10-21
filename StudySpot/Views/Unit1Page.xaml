@@ -4,7 +4,7 @@
              x:Class="StudySpot.Views.Unit1Page">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="CAB202 Page"
+            <Label Text="CAB202 Page (Peter)"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

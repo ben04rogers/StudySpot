@@ -176,7 +176,6 @@
                                                Grid.Row="0" Grid.Column="2"
                                                Grid.RowSpan="1" Grid.ColumnSpan="2"/>
 
-
                                                 <Label Text="{Binding Content}"
                                                 Margin="10, 0" TextColor="#47525E" FontSize="Small"
                                                 Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>

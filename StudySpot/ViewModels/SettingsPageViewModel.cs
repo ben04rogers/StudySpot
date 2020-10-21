@@ -17,7 +17,7 @@ namespace StudySpot.ViewModels
 
         public SettingsPageViewModel()
         {
-            Title = "Dashboard ";
+            Title = "Home";
             ChangeBgRed = new Command(ChangeBgColorRed);
             ChangeBgYellow = new Command(ChangeBgColorYellow);
             ChangeBgGreen = new Command(ChangeBgColorGreen);

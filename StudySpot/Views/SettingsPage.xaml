@@ -15,6 +15,9 @@
 
     <ContentPage.Content>
         <StackLayout Padding="20" BackgroundColor="{Binding BgColorChoice}">
+
+            <!-- Choose Background -->
+
             <Label Text="Background" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
             <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#00A6FF">
                 <RadioButton GroupName="colors" Command="{Binding ChangeBgBlue}"></RadioButton>
@@ -27,6 +30,28 @@
             </Frame>
             <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#F95F62">
                 <RadioButton GroupName="colors" Command="{Binding ChangeBgRed}"></RadioButton>
+            </Frame>
+
+            <!-- Choose Layout -->
+
+            <Label Text="Layout" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="Center"></Label>
+            <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#FAFAFA">
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="layout"></RadioButton>
+                    <Label Text="Todays Classes / Calendar / My Units" FontAttributes="Bold" Padding="10, 5, 0, 0"></Label>
+                </StackLayout>
+            </Frame>
+            <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#FAFAFA">
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="layout"></RadioButton>
+                    <Label Text="Messages / My Feed / My Units" FontAttributes="Bold" Padding="10, 5, 0, 0"></Label>
+                </StackLayout>
+            </Frame>
+            <Frame CornerRadius="10" Padding="10" Margin="0, 0, 0, 10" BackgroundColor="#FAFAFA">
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="layout"></RadioButton>
+                    <Label Text="Announcements / Calendar / My Units" FontAttributes="Bold" Padding="10, 5, 0, 0"></Label>
+                </StackLayout>
             </Frame>
         </StackLayout>
     </ContentPage.Content>
