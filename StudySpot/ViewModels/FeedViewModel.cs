@@ -17,9 +17,9 @@ namespace StudySpot.ViewModels
         public ObservableCollection<Announcement> GetReminderAnnouncements { get; private set; }
         public ObservableCollection<Assessment> GetDueDateFeed { get; private set; }
         public ObservableCollection<Grade> GetGradesFeed { get; private set; }
-        public Command<string> GoToAnnouncements { get; }
-        public Command<string> GoToDueDates { get; }
-        public Command<string> GoToGrades { get; }
+        public Command<object> GoToAnnouncements { get; } // With command parameter
+        public Command GoToDueDates { get; }
+        public Command<string> GoToGrades { get; } // With command parameter
 
         // Constructor
         public FeedViewModel()
@@ -38,8 +38,8 @@ namespace StudySpot.ViewModels
             GetGradeData();
 
             // Button click method with parameter
-            GoToAnnouncements = new Command<string>(onAnnouncementClick); 
-            GoToDueDates = new Command<string>(onDueDateClick);
+            GoToAnnouncements = new Command<object>(onAnnouncementClick); 
+            GoToDueDates = new Command(onDueDateClick);
         }
 
         private void GetImportantData()
@@ -51,28 +51,32 @@ namespace StudySpot.ViewModels
                 Unit = "CAB303",
                 UnitColour = "Blue",
                 Date = "28 Jul",
-                Title = "Room Change"
+                Title = "Room Change",
+                Type = "Important"
             });
             GetImportantAnnouncements.Add(new Announcement
             {
                 Unit = "IAB305",
                 UnitColour = "Red",
                 Date = "10 Aug",
-                Title = "Due Date"
+                Title = "Due Date",
+                Type = "Important"
             });
             GetImportantAnnouncements.Add(new Announcement
             {
                 Unit = "IAB303",
                 UnitColour = "LimeGreen",
                 Date = "15 Aug",
-                Title = "Room Change"
+                Title = "Room Change",
+                Type = "Important"
             });
             GetImportantAnnouncements.Add(new Announcement
             {
                 Unit = "CAB420",
                 UnitColour = "Orange",
                 Date = "1 Aug",
-                Title = "Quiz 5"
+                Title = "Quiz 5",
+                Type = "Important"
             });
         }
         private void GetReminderData()
@@ -84,28 +88,32 @@ namespace StudySpot.ViewModels
                 Unit = "CAB303",
                 UnitColour = "Blue",
                 Date = "15 Aug",
-                Title = "Assignment 1"
+                Title = "Assignment 1",
+                Type = "Reminder"
             });
             GetReminderAnnouncements.Add(new Announcement
             {
                 Unit = "IAB305",
                 UnitColour = "Red",
                 Date = "10 Aug",
-                Title = "Due Date"
+                Title = "Due Date",
+                Type = "Reminder"
             });
             GetReminderAnnouncements.Add(new Announcement
             {
                 Unit = "IAB303",
                 UnitColour = "LimeGreen",
                 Date = "12 Aug",
-                Title = "Assignment 2 release"
+                Title = "Assignment 2 release",
+                Type = "Reminder"
             });
             GetReminderAnnouncements.Add(new Announcement
             {
                 Unit = "CAB420",
                 UnitColour = "Orange",
                 Date = "5 Aug",
-                Title = "Quiz question"
+                Title = "Quiz question",
+                Type = "Reminder"
             });
         }
         private void GetDueDateData()
@@ -176,18 +184,15 @@ namespace StudySpot.ViewModels
         }
 
         // Methods
-        private async void onAnnouncementClick(string announcementType)
+        private async void onAnnouncementClick(object announcementType)
         {
-            // Test
-            string newObj = announcementType;
-            // Navigate to announcements page view
-            await Shell.Current.GoToAsync("AnnouncementsPage");
+            Announcement announcement = (Announcement)announcementType; // Convert to announcement object
+            // Navigate to announcements page
+            await Shell.Current.GoToAsync($"AnnouncementsPage?unit={announcement.Unit}&type={announcement.Type}");
         }
-        private async void onDueDateClick(string announcementType)
+        private async void onDueDateClick()
         {
-            // Test
-            string newObj = announcementType;
-            // Navigate to announcements page view
+            // Navigate to task page view
             await Shell.Current.GoToAsync("TasksPage");
         }
     }

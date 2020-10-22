@@ -74,9 +74,8 @@
                                            Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
                                     <!-- Make Clickable (button covering entire thing) -->
-                                    <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
-                                            Command="{Binding GoToAnnouncements}"
-                                            CommandParameter="Important"
+                                    <Button Command="{Binding Source={viewmodel:FeedViewModel}, Path=GoToAnnouncements}"
+                                            CommandParameter="{Binding .}"
                                             BackgroundColor="Transparent"
                                             Grid.Row="0"  Grid.Column="0"
                                             Grid.RowSpan="2"  Grid.ColumnSpan="4" />
@@ -141,9 +140,8 @@
                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
                                     <!-- Make Clickable (button covering entire thing) -->
-                                    <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
-                                        Command="{Binding GoToAnnouncements}"
-                                        CommandParameter="Important"
+                                    <Button Command="{Binding Source={viewmodel:FeedViewModel}, Path=GoToAnnouncements}"
+                                        CommandParameter="{Binding .}"
                                         BackgroundColor="Transparent"
                                         Grid.Row="0"  Grid.Column="0"
                                         Grid.RowSpan="2"  Grid.ColumnSpan="4" />
@@ -210,9 +208,7 @@
                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
                                     <!-- Make Clickable (button covering entire thing) -->
-                                    <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
-                                        Command="{Binding GoToDueDates}"
-                                        CommandParameter="Important"
+                                    <Button Command="{Binding Source={viewmodel:FeedViewModel}, Path=GoToDueDates}"
                                         BackgroundColor="Transparent"
                                         Grid.Row="0"  Grid.Column="0"
                                         Grid.RowSpan="2"  Grid.ColumnSpan="4" />
@@ -279,8 +275,7 @@
                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
                                     <!-- Make Clickable (button covering entire thing) -->
-                                    <Button BindingContext="{Binding Source={viewmodel:FeedViewModel}}"
-                                        Command="{Binding GoToGrades}"
+                                    <Button Command="{Binding Source={viewmodel:FeedViewModel}, Path= GoToGrades}"
                                         CommandParameter="Important"
                                         BackgroundColor="Transparent"
                                         Grid.Row="0"  Grid.Column="0"

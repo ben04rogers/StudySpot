@@ -43,7 +43,16 @@ namespace StudySpot.ViewModels
 
         // Property for Top Nav Bar
         public string currDate = DateTime.Today.ToString("D");
-        public string TopNavSubtitle { get; set; }
+        protected string topNavSubtitle;
+        public string TopNavSubtitle
+        {
+            get => topNavSubtitle;
+            set
+            {
+                SetProperty(ref topNavSubtitle, value);
+                OnPropertyChanged(nameof(TopNavSubtitle));
+            }
+        }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
