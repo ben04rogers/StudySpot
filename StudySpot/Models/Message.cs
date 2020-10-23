@@ -6,6 +6,7 @@ namespace StudySpot.Models
 {
     public class Message
     {
+        public string Id { get; set; }
         public string Sender { get; set; }
         public string UnitCode { get; set; }
         public string UnitColor { get; set; }

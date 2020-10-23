@@ -26,6 +26,10 @@ namespace StudySpot.ViewModels
         }
 
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<TodaysClass> DataStore2 => DependencyService.Get<IDataStore<TodaysClass>>();
+        public IDataStore<Message> DataStore3 => DependencyService.Get<IDataStore<Message>>();
+        public IDataStore<Unit> DataStore4 => DependencyService.Get<IDataStore<Unit>>();
+
 
         bool isBusy = false;
         public bool IsBusy
@@ -43,7 +47,16 @@ namespace StudySpot.ViewModels
 
         // Property for Top Nav Bar
         public string currDate = DateTime.Today.ToString("D");
-        public string TopNavSubtitle { get; set; }
+        protected string topNavSubtitle;
+        public string TopNavSubtitle
+        {
+            get => topNavSubtitle;
+            set
+            {
+                SetProperty(ref topNavSubtitle, value);
+                OnPropertyChanged(nameof(TopNavSubtitle));
+            }
+        }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",

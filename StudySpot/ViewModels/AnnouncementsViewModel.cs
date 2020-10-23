@@ -8,15 +8,42 @@ using Xamarin.Forms;
 
 namespace StudySpot.ViewModels
 {
+    [QueryProperty("Unit", "unit")]
+    [QueryProperty("Type", "type")]
     public class AnnouncementsViewModel : BaseViewModel
     {
         // Fields
         private bool isImportantSelected;
-        private ObservableCollection<Announcement> announcementsList;
         private ObservableCollection<Announcement> importantAnnouncements;
         private ObservableCollection<Announcement> reminderAnnouncements;
 
         // Properties
+        // Queries
+        public string Unit
+        {
+            set
+            {
+                // Top nav bar subtitle has OnPropertyChanged()
+                TopNavSubtitle = value;
+            }
+        }
+        public string Type
+        {
+            set
+            {
+                // Swap to appropriate announcement type tab
+                if (value == "Important")
+                {
+                    toImportant();
+                }
+                else if (value == "Reminder")
+                {
+                    toReminders();
+                }
+            }
+        }
+        // Viewmodel
+        private ObservableCollection<Announcement> announcementsList;
         public ObservableCollection<Announcement> GetAnnouncements
         {
             get => announcementsList;
@@ -42,7 +69,6 @@ namespace StudySpot.ViewModels
         {
             // Initialise data
             Title = "Announcements";
-            TopNavSubtitle = "CAB303";
             announcementsList = new ObservableCollection<Announcement>();
             importantAnnouncements = new ObservableCollection<Announcement>();
             reminderAnnouncements = new ObservableCollection<Announcement>();
