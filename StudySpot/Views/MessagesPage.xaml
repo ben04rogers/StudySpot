@@ -21,7 +21,9 @@
         <ScrollView HeightRequest="5000">
             <StackLayout Padding="25, 15, 25, 25">
                 <!--Left, Top, Right, Bottom  -->
-                
+
+                <Button Text="Go to Chat" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToChatBox}"></Button>
+
                 <!-- View All or Unread Messages Buttons -->
                 <StackLayout>
                     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">

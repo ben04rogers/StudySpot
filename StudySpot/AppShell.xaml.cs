@@ -25,6 +25,7 @@ namespace StudySpot
             routes.Add("LoginPage", typeof(LoginPage));
             routes.Add("HomePage", typeof(HomePage));
             routes.Add("FeedPage", typeof(FeedPage));
+            routes.Add("ChatBoxPage", typeof(ChatBoxPage));
             routes.Add("AnnouncementsPage", typeof(AnnouncementsPage));
             routes.Add("TodaysClassesPage", typeof(TodaysClassesPage));
             routes.Add("SettingsPage", typeof(SettingsPage));

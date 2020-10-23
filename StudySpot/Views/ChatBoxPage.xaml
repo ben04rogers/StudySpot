@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
+             xmlns:controls="clr-namespace:StudySpot.Controls"
+             x:Class="StudySpot.Views.ChatBoxPage"
+             Title="User">
+        
+    <!-- Binding ViewModel -->
+    <ContentPage.BindingContext>
+        <viewmodel:ChatBoxViewModel/>
+    </ContentPage.BindingContext>
+    
+    <!-- Default Nav Components -->
+    <Shell.TitleView>
+        <controls:TopNavBar />
+    </Shell.TitleView>
+
+    <!-- Start of Contents -->
+    <ContentPage.Content>
+        <ScrollView HeightRequest="3000">
+            <StackLayout>
+                <StackLayout Padding="25, 15, 25, 25">
+
+                <!-- Recieved Message -->
+
+                <ListView x:Name="RecentMesssagesList" 
+                    ItemsSource="{Binding RecentMessages}"
+                    RowHeight="0"
+                    SeparatorVisibility="Default"     
+                    SelectionMode="None"
+                    HasUnevenRows="True"    >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="#FAFAFA"
+                                    Margin="0, 8"
+                                    Grid.Row="0"
+                                    HeightRequest="80"  >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame BackgroundColor="LightBlue"
+                                    Padding="10"
+                                    HasShadow="false"
+                                   
+                                    Margin="10,10,80,10"
+                                    Grid.Column="1" 
+                                    Grid.Row="0">
+                                        
+                                        <Label Text="{Binding Content}"/>
+                                    </Frame>
+
+                                    <Image Grid.Column="0" Grid.Row="0" Source="{Binding UserImageName}">
+
+                                    </Image>
+                                    
+                                </Grid>
+
+
+
+
+
+                                </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+                    <!--Sent Message -->
+                <Frame BackgroundColor="Gray"
+                    Padding="10"
+                    HasShadow="false"
+                    Margin="80,10,10,10">
+                    <Label Text="{Binding Text}"
+                          TextColor="White"/>
+                </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand" Padding="25, 25, 25 ,25">
+
+                    <Grid>
+                        <Frame BackgroundColor="AliceBlue"
+                           Padding = "10"
+                           
+                           CornerRadius     ="90"
+                           IsClippedToBounds="true">
+                            
+                            <Entry x:Name="chatTextInput" 
+                            Text="{Binding TextToSend}" 
+                            Margin="1"  
+                            TextColor="Black" 
+                            Keyboard="Chat"  
+                            HorizontalOptions="FillAndExpand" 
+                            PlaceholderColor="Black"
+                            Placeholder="Type your message here..." />
+
+
+                        </Frame>
+                    </Grid>
+                    
+                </StackLayout>
+                
+                
+                
+           </StackLayout>    
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
