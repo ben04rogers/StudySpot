@@ -8,6 +8,7 @@ namespace StudySpot.Models
 {
     public class TodaysClass
     {
+        public string Id { get; set; }
         public string UnitCode { get; set; }
         public string Time { get; set; }
         public string TimePeriod { get; set; }

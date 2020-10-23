@@ -9,33 +9,88 @@ using Xamarin.Forms;
 using StudySpot.Views;
 using Xamarin.Essentials;
 using System.Dynamic;
+using System.Diagnostics;
+using System.Threading.Tasks;
+
 
 namespace StudySpot.ViewModels
 {
     public class TodaysClassesPageViewModel : BaseViewModel
     {
+        private Item _selectedItem;
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
 
         public Command ClassDetails { get; }
-        public String ClassCountMessage { get; set; }
-        public String PlatformImage { get; set; }
+
+        public Command LoadItemsCommand { get; }
+
+        // Todays Classes(X) Label
+        private String _todaysClassesLabel;
+        public String TodaysClassesLabel
+        {
+            get => _todaysClassesLabel;
+            set
+            {
+                SetProperty(ref _todaysClassesLabel, value);
+                OnPropertyChanged(nameof(TodaysClassesLabel));
+            }
+        }
 
         public TodaysClassesPageViewModel()
         {
-            SetupData();
+            // Load Mock Data
+            TodaysClasses = new ObservableCollection<TodaysClass>();
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             Title = "Todays Classes";
-
-            // Todays Class Count Message 
-            String ClassCountMessageLabel = $"You have {TodaysClasses.Count} classes today";
-            ClassCountMessage = ClassCountMessageLabel;
 
             // Class Details Button
             ClassDetails = new Command(DisplayClassDetails);
         }
 
-        TodaysClass todaysclass;
+        async Task ExecuteLoadItemsCommand()
+        {
+            IsBusy = true;
 
+            try
+            {
+                TodaysClasses.Clear();
+
+                var todaysclasses = await DataStore2.GetItemsAsync(true);
+                foreach (var todaysclass in todaysclasses)
+                {
+                    TodaysClasses.Add(todaysclass);
+                }
+
+                // Count number of classes today
+                TodaysClassesLabel = $"Todays Classes ({TodaysClasses.Count})";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public void OnAppearing()
+        {
+            IsBusy = true;
+            SelectedItem = null;
+        }
+
+        public Item SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                SetProperty(ref _selectedItem, value);
+            }
+        }
+
+        TodaysClass todaysclass;
         public TodaysClass SelectedTodaysClass
         {
             get => todaysclass;
@@ -48,7 +103,6 @@ namespace StudySpot.ViewModels
 
         async void DisplayClassDetails()
         {
-
             if (SelectedTodaysClass != null)
             {
                 
@@ -60,49 +114,6 @@ namespace StudySpot.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", "Nothing Selected!", "OK");
                 return;
             }
-        }
-
-        // Dummy Data to test with
-        void SetupData()
-        {
-            TodaysClasses = new ObservableCollection<TodaysClass>()
-            {
-                new TodaysClass
-                {
-                    UnitCode = "CAB303",
-                    Time = "9:00",
-                    TimePeriod = "AM",
-                    LessonType = "Online Workshop",
-                    Platform = "Zoom",
-                    Link = "9201291021",
-                    UnitColor = "#13CE66",
-                    ImageName = "zoom.png"
-                },
-                new TodaysClass
-                {
-                    UnitCode = "IAB330",
-                    Time = "11:00",
-                    TimePeriod = "AM",
-                    LessonType = "Online Tutorial",
-                    Platform = "Microsoft Teams",
-                    Link = "https://teams.microsoft.com/IAB330",
-                    UnitColor = "#F95F62",
-                    ImageName = "msteams.png"
-
-
-                },
-                new TodaysClass
-                {
-                    UnitCode = "CAB202",
-                    Time = "11:00",
-                    TimePeriod = "AM",
-                    LessonType = "Online Tutorial",
-                    Platform = "Microsoft Teams",
-                    Link = "https://teams.microsoft.com/CAB202",
-                    UnitColor = "#00A6FF",
-                    ImageName = "msteams.png"
-                }
-            };
         }
     }
 }

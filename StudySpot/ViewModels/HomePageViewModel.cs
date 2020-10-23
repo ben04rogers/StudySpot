@@ -2,21 +2,25 @@
 using Xamarin.Forms;
 using MvvmHelpers;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using StudySpot.Models;
+using StudySpot.Views;
+using StudySpot.Services;
+using System.Diagnostics;
 
 namespace StudySpot.ViewModels
 {
     [QueryProperty("BgColorChoice", "bgcolor")]
     public class HomePageViewModel : BaseViewModel
     {
+        private Item _selectedItem;
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
         public ObservableCollection<Message> RecentMessages { get; set; }
         public ObservableCollection<Unit> Units { get; set; }
-
         public Student user;
-        public String TodaysClassesLabel { get; set; }
-        public String MessagesCount { get; set; }
-        public String TodaysClassesCount { get; set; }
+
+        // Load mock data 
+        public Command LoadItemsCommand { get; }
 
         // Button commands
         public Command GoToSettings { get; }
@@ -27,8 +31,49 @@ namespace StudySpot.ViewModels
         public Command GoToUnit3 { get; }
         public Command GoToUnit4 { get; }
 
+
+        // Todays Classes(X) Label
+        private String _todaysClassesLabel;
+        public String TodaysClassesLabel
+        {
+            get => _todaysClassesLabel;
+            set
+            {
+                SetProperty(ref _todaysClassesLabel, value);
+                OnPropertyChanged(nameof(TodaysClassesLabel));
+            }
+        }
+
+        // Todays Classes Count
+        private String _todaysClassesCount;
+        public String TodaysClassesCount
+        {
+            get => _todaysClassesCount;
+            set
+            {
+                SetProperty(ref _todaysClassesCount, value);
+                OnPropertyChanged(nameof(TodaysClassesCount));
+            }
+        }
+
+        // Messages Label
+        private String _recentMessagesLabel;
+        public String RecentMessagesLabel
+        {
+            get => _recentMessagesLabel;
+            set
+            {
+                SetProperty(ref _recentMessagesLabel, value);
+                OnPropertyChanged(nameof(RecentMessagesLabel));
+            }
+        }
+
         public HomePageViewModel()
         {
+            TodaysClasses = new ObservableCollection<TodaysClass>();
+            RecentMessages = new ObservableCollection<Message>();
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+
             // Setup Mock Data
             SetupData();
 
@@ -36,17 +81,7 @@ namespace StudySpot.ViewModels
             String greeting = $"Welcome {user.FirstName},";
             Title = greeting;
 
-            // Todays Classes Count Label
-            String ClassCountLabel = $"Todays Classes ({TodaysClasses.Count})";
-            TodaysClassesLabel = ClassCountLabel;
-
-            // Messages Count Label
-            String MessagesCountLabel = $"Messages ({RecentMessages.Count})";
-            MessagesCount = MessagesCountLabel;
-
-            // Messages Count (red indicator at top)
-            TodaysClassesCount = TodaysClasses.Count.ToString();
-
+            // Buttons
             GoToSettings = new Command(GoToSettingsPage);
             GoToTodaysClasses = new Command(GoToTodaysClassesPage);
             GoToMessages = new Command(GoToMessagesPage);
@@ -57,7 +92,59 @@ namespace StudySpot.ViewModels
 
             // Set default background colour (if user does not select one in settings)
             BgColorChoice = "00A6FF";
+        }
 
+        async Task ExecuteLoadItemsCommand()
+        {
+            IsBusy = true;
+
+            try
+            {
+                RecentMessages.Clear();
+                TodaysClasses.Clear();
+
+                var todaysclasses = await DataStore2.GetItemsAsync(true);
+                foreach (var todaysclass in todaysclasses)
+                {
+                    TodaysClasses.Add(todaysclass);
+                }
+
+                var recentmessages = await DataStore3.GetItemsAsync(true);
+                foreach (var recentmessage in recentmessages)
+                {
+                    RecentMessages.Add(recentmessage);
+                }
+
+                // Count number of classes today
+                TodaysClassesLabel = $"Todays Classes ({TodaysClasses.Count})";
+                TodaysClassesCount = TodaysClasses.Count.ToString();
+
+                // Count number of recent messages
+                RecentMessagesLabel = $"Messages ({RecentMessages.Count})";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public void OnAppearing()
+        {
+            IsBusy = true;
+            SelectedItem = null;
+        }
+
+        public Item SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                SetProperty(ref _selectedItem, value);
+            }
         }
 
         string bgcolor;
@@ -66,7 +153,7 @@ namespace StudySpot.ViewModels
             get => bgcolor;
             set
             {
-                SetProperty(ref bgcolor, value); //MvvmHelpers Implementation
+                SetProperty(ref bgcolor, value);
                 OnPropertyChanged(nameof(BgColorChoice));
             }
         }
@@ -104,49 +191,10 @@ namespace StudySpot.ViewModels
             await Shell.Current.GoToAsync("Unit4Page");
         }
 
-
-        // Mock Data for testing
-
+        // Mock Data for testing 
+        
         void SetupData()
         {
-            TodaysClasses = new ObservableCollection<TodaysClass>()
-            {
-                new TodaysClass
-                {
-                    UnitCode = "CAB303",
-                    Time = "9:00",
-                    TimePeriod = "AM",
-                    LessonType = "Online Workshop",
-                    Platform = "Zoom",
-                    Link = "www.test.com",
-                    UnitColor = "#13CE66",
-                    ImageName = "zoom.png"
-
-                },
-                new TodaysClass
-                {
-                    UnitCode = "IAB330",
-                    Time = "11:00",
-                    TimePeriod = "AM",
-                    LessonType = "Online Tutorial",
-                    Platform = "Microsoft Teams",
-                    Link = "www.test.com",
-                    UnitColor = "#F95F62",
-                    ImageName = "msteams.png"
-                },
-                new TodaysClass
-                {
-                    UnitCode = "CAB202",
-                    Time = "11:00",
-                    TimePeriod = "AM",
-                    LessonType = "Online Tutorial",
-                    Platform = "Microsoft Teams",
-                    Link = "www.test.com",
-                    UnitColor = "#00A6FF",
-                    ImageName = "msteams.png"
-                },
-            };
-
             user = new Student
             {
                 FirstName = "James",
@@ -155,43 +203,7 @@ namespace StudySpot.ViewModels
                 Email = "james@gmail.com",
                 Password = "testpassword123"
             };
-
-            RecentMessages = new ObservableCollection<Message>()
-            {
-                 new Message
-                {
-                    Sender = "JAMES ROSS",
-                    UnitCode = "CAB202",
-                    UnitColor = "#00A6FF",
-                    Content = "Assignment marks are available...",
-                    UserImageName = "jamesross.png"
-                },
-                  new Message
-                {
-                    Sender = "BOB SMITH",
-                    UnitCode = "CAB301",
-                    UnitColor = "#FFD185",
-                    Content = "Room Change for tutorial today. This is a long message to show that it automatically cuts off",
-                    UserImageName = "bobsmith.png"
-                },
-                 new Message
-                {
-                    Sender = "JOSH HAAN",
-                    UnitCode = "CAB303",
-                    UnitColor = "#13CE66",
-                    Content = "Great work! Looks great",
-                    UserImageName = "joshhaan.png"
-                },
-                new Message
-                {
-                    Sender = "JAKE THOMPSON",
-                    UnitCode = "IAB330",
-                    UnitColor = "#F95F62",
-                    Content = "Please refer to CRA for more details",
-                    UserImageName = "jakethompson.png"
-                }
-            };
-
+            
             Units = new ObservableCollection<Unit>()
             {
                 new Unit
