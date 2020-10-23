@@ -9,7 +9,8 @@ namespace StudySpot.ViewModels
     
     public class MessagesViewModel : BaseViewModel
     {
-       
+        public Command GoToChatBox { get; }
+
         public ObservableCollection<Message> RecentMessages { get; set; }
 
         public Student user;
@@ -26,14 +27,16 @@ namespace StudySpot.ViewModels
             String MessagesCountLabel = $"Messages ({RecentMessages.Count})";
             MessagesCount = MessagesCountLabel;
 
-           
+
+            GoToChatBox = new Command(GoToChatBoxPage);
+
 
         }
         public static void Init() { }
 
-        async void GoToMessagesPage()
+        async void GoToChatBoxPage()
         {
-            await Shell.Current.GoToAsync("MessagesPage");
+            await Shell.Current.GoToAsync("ChatBoxPage");
         }
 
 
