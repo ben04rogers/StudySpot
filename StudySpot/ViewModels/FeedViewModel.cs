@@ -5,6 +5,9 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 using StudySpot.Models;
 using Xamarin.Forms;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace StudySpot.ViewModels
 {
@@ -32,8 +35,7 @@ namespace StudySpot.ViewModels
             GetGradesFeed = new ObservableCollection<Grade>();
 
             // Get Data
-            GetImportantData();
-            GetReminderData();
+            GetData();
             GetDueDateData();
             GetGradeData();
 
@@ -42,80 +44,41 @@ namespace StudySpot.ViewModels
             GoToDueDates = new Command(onDueDateClick);
         }
 
-        private void GetImportantData()
+        private async void GetData()
         {
-            // Get newest announcement of each unit with type important
-            // MAX(Date), Type = Important, Group by Unit
-            GetImportantAnnouncements.Add(new Announcement
+            try
             {
-                Unit = "CAB303",
-                UnitColour = "Blue",
-                Date = "28 Jul",
-                Title = "Room Change",
-                Type = "Important"
-            });
-            GetImportantAnnouncements.Add(new Announcement
+                GetReminderAnnouncements.Clear();
+                GetImportantAnnouncements.Clear();
+
+                // All Announcements
+                IEnumerable<Announcement> announcements = await DataStoreAnnouncement.GetItemsAsync(true);
+
+                // Query qnnouncements - 
+                // Important
+                IEnumerable<Announcement> queryImportant = announcements.Where(a => a.Type == "Important")
+                    .GroupBy(b => b.Unit).Select(group => group.OrderByDescending(c => c.Date).First())
+                    .OrderBy(d => d.Unit);
+                // Reminders
+                IEnumerable<Announcement> queryReminders = announcements.Where(a => a.Type == "Reminder")
+                    .GroupBy(b => b.Unit).Select(group => group.OrderByDescending(c => c.Date).First())
+                    .OrderBy(d => d.Unit);
+
+                foreach (Announcement announcement in queryImportant)
+                {
+                    GetImportantAnnouncements.Add(announcement);
+                }
+                foreach (Announcement announcement in queryReminders)
+                {
+                    GetReminderAnnouncements.Add(announcement);
+                }
+            }
+            catch (Exception ex)
             {
-                Unit = "IAB305",
-                UnitColour = "Red",
-                Date = "10 Aug",
-                Title = "Due Date",
-                Type = "Important"
-            });
-            GetImportantAnnouncements.Add(new Announcement
-            {
-                Unit = "IAB303",
-                UnitColour = "LimeGreen",
-                Date = "15 Aug",
-                Title = "Room Change",
-                Type = "Important"
-            });
-            GetImportantAnnouncements.Add(new Announcement
-            {
-                Unit = "CAB420",
-                UnitColour = "Orange",
-                Date = "1 Aug",
-                Title = "Quiz 5",
-                Type = "Important"
-            });
+                Debug.WriteLine(ex);
+            }
         }
-        private void GetReminderData()
-        {
-            // Get newest announcement of each unit with type reminder
-            // MAX(ResultDate), Type = Reminder, Group by Unit
-            GetReminderAnnouncements.Add(new Announcement
-            {
-                Unit = "CAB303",
-                UnitColour = "Blue",
-                Date = "15 Aug",
-                Title = "Assignment 1",
-                Type = "Reminder"
-            });
-            GetReminderAnnouncements.Add(new Announcement
-            {
-                Unit = "IAB305",
-                UnitColour = "Red",
-                Date = "10 Aug",
-                Title = "Due Date",
-                Type = "Reminder"
-            });
-            GetReminderAnnouncements.Add(new Announcement
-            {
-                Unit = "IAB303",
-                UnitColour = "LimeGreen",
-                Date = "12 Aug",
-                Title = "Assignment 2 release",
-                Type = "Reminder"
-            });
-            GetReminderAnnouncements.Add(new Announcement
-            {
-                Unit = "CAB420",
-                UnitColour = "Orange",
-                Date = "5 Aug",
-                Title = "Quiz question",
-                Type = "Reminder"
-            });
-        }
+
         private void GetDueDateData()
         {
             // Get closest duedate for each unit

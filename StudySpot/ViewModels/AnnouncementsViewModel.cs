@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using StudySpot.Models;
 using Xamarin.Forms;
 using System.Linq;
+using System.Diagnostics;
+using System.Collections.Specialized;
 
 namespace StudySpot.ViewModels
 {
@@ -19,13 +21,19 @@ namespace StudySpot.ViewModels
         private ObservableCollection<Announcement> reminderAnnouncements;
 
         // Properties
-        // Queries
+        // URL Queries
+        private string unit;
         public string Unit
         {
+            get => unit;
             set
             {
+                unit = value;
                 // Top nav bar subtitle has OnPropertyChanged()
                 TopNavSubtitle = value;
+
+                // Get Data
+                GetData();
             }
         }
         public string Type
@@ -76,10 +84,6 @@ namespace StudySpot.ViewModels
             importantAnnouncements = new ObservableCollection<Announcement>();
             reminderAnnouncements = new ObservableCollection<Announcement>();
 
-            // Get Data
-            GetImportantData();
-            GetReminderData();
-
             // Default - important announcements
             GetAnnouncements = importantAnnouncements;
             isImportantSelected = true;
@@ -91,135 +95,76 @@ namespace StudySpot.ViewModels
         }
 
         // Methods
-        private void GetImportantData()
+        private async void GetData()
         {
             // Get announcement text
             // Unit = url get param, Type = Important
-            importantAnnouncements.Add(new Announcement
+            try
             {
-                Id = "1",
-                Date = "21 Jul",
-                Title = "Annoucement 1",
-                Description = "Lorem Ipsum",
-                Unread = "true",
-                Type = "Important"
-            });
-            importantAnnouncements.Add(new Announcement
+                importantAnnouncements.Clear();
+                reminderAnnouncements.Clear();
+
+                // All Announcements
+                IEnumerable<Announcement> announcements = await DataStoreAnnouncement.GetItemsAsync(true);
+
+                // Query qnnouncements
+                // Get unit predicate
+                // Important
+                IEnumerable<Announcement> queryImportant = announcements
+                    .Where(a => a.Type == "Important" && a.Unit == Unit)
+                    .OrderByDescending(c => c.Date);
+                // Reminders
+                IEnumerable<Announcement> queryReminders = announcements
+                    .Where(a => a.Type == "Reminder" && a.Unit == Unit)
+                    .OrderByDescending(c => c.Date);
+
+                foreach (Announcement announcement in queryImportant)
+                {
+                    importantAnnouncements.Add(announcement);
+                }
+                foreach (Announcement announcement in queryReminders)
+                {
+                    reminderAnnouncements.Add(announcement);
+                }
+            }
+            catch (Exception ex)
             {
-                Id = "2",
-                Date = "28 Jul",
-                Title = "Annoucement 2",
-                Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
-                "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-                Unread = "false",
-                Type = "Important"
-            });
-        }
-        private void GetReminderData()
-        {
-            // Get announcement text
-            // Unit = url get param, Type = Important
-            reminderAnnouncements.Add(new Announcement
-            {
-                Id = "3",
-                Date = "5 Aug",
-                Title = "Reminder 1",
-                Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
-                "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-                Unread = "true",
-                Type = "Reminder"
-            });
-            reminderAnnouncements.Add(new Announcement
-            {
-                Id = "4",
-                Date = "7 Aug",
-                Title = "Reminder 2",
-                Description = "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem",
-                Unread = "true",
-                Type = "Reminder"
-            });
-            reminderAnnouncements.Add(new Announcement
-            {
-                Id = "5",
-                Date = "6 Aug",
-                Title = "Reminder 3",
-                Description = "Another Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
-                "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-                Unread = "true",
-                Type = "Reminder"
-            });
-            reminderAnnouncements.Add(new Announcement
-            {
-                Id = "6",
-                Date = "5 Aug",
-                Title = "Reminder 4",
-                Description = "Another 2 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
-                "Lorem Ipsum Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-                Unread = "false",
-                Type = "Reminder"
-            });
-            reminderAnnouncements.Add(new Announcement
-            {
-                Id = "7",
-                Date = "4 Aug",
-                Title = "Reminder 5",
-                Description = "Another 3 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum " +
-                "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem " +
-                "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-                Unread = "false",
-                Type = "Reminder"
-            });
+                Debug.WriteLine(ex);
+            }
         }
 
         // Button methods
         private void toImportant()
         {
+            GetData();
             IsImportantSelected = true;
             GetAnnouncements = importantAnnouncements;
         }
         private void toReminders()
         {
+            GetData();
             IsImportantSelected = false;
             GetAnnouncements = reminderAnnouncements;
         }
-        private void makeRead(object tappedItem)
+        private async void makeRead(object tappedItem)
         {
             Announcement announcement = (Announcement)tappedItem;
 
             // Check if announcement is unread
-            if (announcement.Unread == "true")
+            if (announcement.Unread == true)
             {
-                // Update appropriate announcement
-                if (announcement.Type == "Important")
-                {
-                    int indx = importantAnnouncements.IndexOf(announcement);
-                    importantAnnouncements[indx].Unread = "false";
+                // Update database
+                announcement.Unread = false;
+                await DataStoreAnnouncement.UpdateItemAsync(announcement);
 
-                    // Update UI
-                    GetAnnouncements = importantAnnouncements;
+                // Update UI
+                if (IsImportantSelected)
+                {
+                    toImportant();
                 }
-                else if (announcement.Type == "Reminder")
+                else
                 {
-                    int indx = reminderAnnouncements.IndexOf(announcement);
-                    reminderAnnouncements[indx].Unread = "false";
-
-                    // Update UI
-                    GetAnnouncements = reminderAnnouncements;
+                    toReminders();
                 }
             }
         }

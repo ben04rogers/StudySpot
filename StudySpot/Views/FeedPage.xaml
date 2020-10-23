@@ -59,7 +59,7 @@
                                            Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding Date}"/>
+                                                <Span Text="{Binding Date, StringFormat='{0:d MMM}'}"/>
                                                 <Span Text=" | " />
                                                 <Span Text="{Binding Title}" />
                                             </FormattedString>
@@ -74,7 +74,7 @@
                                            VerticalTextAlignment="Center" HorizontalTextAlignment="End"
                                            Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
-                                    <!-- Make Clickable (button covering entire thing) -->
+                                    <!-- Make Clickable -->
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Command="{Binding BindingContext.GoToAnnouncements, Source={x:Reference Name=FeedPageRef}}"
@@ -125,7 +125,7 @@
                                        Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding Date}"/>
+                                                <Span Text="{Binding Date, StringFormat='{0:d MMM}'}"/>
                                                 <Span Text=" | " />
                                                 <Span Text="{Binding Title}" />
                                             </FormattedString>
@@ -140,7 +140,7 @@
                                        VerticalTextAlignment="Center" HorizontalTextAlignment="End"
                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
-                                    <!-- Make Clickable (button covering entire thing) -->
+                                    <!-- Make Clickable -->
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Command="{Binding BindingContext.GoToAnnouncements, Source={x:Reference Name=FeedPageRef}}"
