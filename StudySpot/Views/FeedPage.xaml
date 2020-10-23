@@ -4,6 +4,7 @@
              xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
              xmlns:controls="clr-namespace:StudySpot.Controls"
              x:Class="StudySpot.Views.FeedPage"
+             x:Name="FeedPageRef"
              Title="My Feed">
 
     <ContentPage.BindingContext>
@@ -74,11 +75,11 @@
                                            Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
                                     <!-- Make Clickable (button covering entire thing) -->
-                                    <Button Command="{Binding Source={viewmodel:FeedViewModel}, Path=GoToAnnouncements}"
-                                            CommandParameter="{Binding .}"
-                                            BackgroundColor="Transparent"
-                                            Grid.Row="0"  Grid.Column="0"
-                                            Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding BindingContext.GoToAnnouncements, Source={x:Reference Name=FeedPageRef}}"
+                                            CommandParameter="{Binding .}" />
+                                    </Grid.GestureRecognizers>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -140,11 +141,11 @@
                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
                                     <!-- Make Clickable (button covering entire thing) -->
-                                    <Button Command="{Binding Source={viewmodel:FeedViewModel}, Path=GoToAnnouncements}"
-                                        CommandParameter="{Binding .}"
-                                        BackgroundColor="Transparent"
-                                        Grid.Row="0"  Grid.Column="0"
-                                        Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding BindingContext.GoToAnnouncements, Source={x:Reference Name=FeedPageRef}}"
+                                            CommandParameter="{Binding .}" />
+                                    </Grid.GestureRecognizers>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -207,11 +208,11 @@
                                        VerticalTextAlignment="Center" HorizontalTextAlignment="End"
                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
-                                    <!-- Make Clickable (button covering entire thing) -->
-                                    <Button Command="{Binding Source={viewmodel:FeedViewModel}, Path=GoToDueDates}"
-                                        BackgroundColor="Transparent"
-                                        Grid.Row="0"  Grid.Column="0"
-                                        Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                                    <!-- Make Clickable -->
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding BindingContext.GoToDueDates, Source={x:Reference Name=FeedPageRef}}"/>
+                                    </Grid.GestureRecognizers>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -274,12 +275,12 @@
                                        VerticalTextAlignment="Center" HorizontalTextAlignment="End"
                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" />
 
-                                    <!-- Make Clickable (button covering entire thing) -->
-                                    <Button Command="{Binding Source={viewmodel:FeedViewModel}, Path= GoToGrades}"
-                                        CommandParameter="Important"
-                                        BackgroundColor="Transparent"
-                                        Grid.Row="0"  Grid.Column="0"
-                                        Grid.RowSpan="2"  Grid.ColumnSpan="4" />
+                                    <!-- Make Clickable -->
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding BindingContext.GoToGrades, Source={x:Reference Name=FeedPageRef}}"
+                                            CommandParameter="Important" />
+                                    </Grid.GestureRecognizers>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

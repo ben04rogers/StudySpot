@@ -4,7 +4,8 @@
              xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
              xmlns:controls="clr-namespace:StudySpot.Controls"
              x:Class="StudySpot.Views.AnnouncementsPage"
-             Title="Announcements">
+             Title="Announcements"
+             x:Name="AnnouncementsPageRef">
 
     <ContentPage.BindingContext>
         <viewmodel:AnnouncementsViewModel/>
@@ -27,7 +28,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <!-- Important -->
+                <!-- Important button -->
                 <Button CornerRadius="90" Padding="0"
                         Text="Important" x:Name="btnImportant"
                         BackgroundColor="Transparent" TextColor="Black"
@@ -45,7 +46,7 @@
                     </Button.Triggers>
                 </Button>
 
-                <!-- Reminders -->
+                <!-- Reminders button -->
                 <Button CornerRadius="90" Padding="0"
                         Text="Reminders" x:Name="btnReminders"
                         BackgroundColor="Transparent" TextColor="Black"
@@ -63,7 +64,7 @@
                     </Button.Triggers>
                 </Button>
             </Grid>
-
+            
             <!-- Announcements -->
             <ListView x:Name="AnnouncementList"
                       ItemsSource="{Binding GetAnnouncements}"
@@ -75,7 +76,7 @@
                     <StackLayout Orientation="Horizontal">
                         <Label Text="End of announcements"
                                TextColor="LightGray" FontAttributes="Italic"
-                               HorizontalOptions="CenterAndExpand" Margin="0, 10" />
+                               HorizontalOptions="CenterAndExpand" Padding="0, 10" />
                     </StackLayout>
                 </ListView.Footer>
                 
@@ -83,12 +84,17 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Grid Margin="0, 7">
+                                <Grid Padding="0, 7">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
                                     <!-- UI elements -->
+                                    <BoxView Color="#00A6FF" IsVisible="{Binding Unread}"
+                                             Margin="5" CornerRadius="7"
+                                             HorizontalOptions="Start" VerticalOptions="Start"
+                                             WidthRequest="7" HeightRequest="7"
+                                             Grid.Row="0" Grid.Column="0" />
                                     <Label Text="{Binding Date}"
                                            FontAttributes="Bold" TextColor="#00A6FF"
                                            HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
@@ -101,6 +107,13 @@
                                            Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />
                                 </Grid>
                                 <BoxView HeightRequest="1" Color="LightGray" />
+
+                                <!-- Button -->
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding BindingContext.MakeRead, Source={x:Reference Name=AnnouncementsPageRef}}"
+                                        CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
