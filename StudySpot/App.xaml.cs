@@ -18,6 +18,7 @@ namespace StudySpot
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<TodaysClassesDataStore>();
             DependencyService.Register<MessagesDataStore>();
+            DependencyService.Register<UnitsDataStore>();
 
             MainPage = new LoginPage();
         }

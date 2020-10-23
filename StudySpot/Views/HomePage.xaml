@@ -195,7 +195,6 @@
                             </ListView>
                         </RefreshView>
                             
-
                         <!-- _____________________________ My Units _____________________________ -->
 
                         <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 10">
@@ -203,43 +202,21 @@
                         </StackLayout>
 
                         <ScrollView Orientation="Horizontal">
-                            <StackLayout Orientation="Horizontal">
-                                <Button CornerRadius="10"
-                                        Text="CAB202"
-                                        FontSize="Subtitle"
-                                        FontAttributes="Bold"
-                                        WidthRequest="100"
-                                        HeightRequest="100"
-                                        BackgroundColor="#00A6FF"
-                                        Command="{Binding GoToUnit1}">
-                                </Button>
-                                <Button CornerRadius="10"
-                                        Text="IAB330"
-                                        FontSize="Subtitle"
-                                        FontAttributes="Bold"
-                                        WidthRequest="100"
-                                        HeightRequest="100"
-                                        BackgroundColor="#F95F62"
-                                        Command="{Binding GoToUnit2}">
-                                </Button>
-                                <Button CornerRadius="10"
-                                        Text="CAB303"
-                                        FontSize="Subtitle"
-                                        FontAttributes="Bold"
-                                        WidthRequest="100"
-                                        HeightRequest="100"
-                                        BackgroundColor="#13CE66"
-                                        Command="{Binding GoToUnit3}">
-                                </Button>
-                                <Button CornerRadius="10"
-                                        Text="CAB301"
-                                        FontSize="Subtitle"
-                                        FontAttributes="Bold"
-                                        WidthRequest="100"
-                                        HeightRequest="100"
-                                        BackgroundColor="#FFD185"
-                                        Command="{Binding GoToUnit4}">
-                                </Button>
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Units}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button CornerRadius="10"
+                                                Text="{Binding UnitCode}"
+                                                FontSize="Subtitle"
+                                                FontAttributes="Bold"
+                                                WidthRequest="100"
+                                                HeightRequest="100"
+                                                BackgroundColor="{Binding Color}"
+                                                Command="{Binding Source={viewmodel:HomePageViewModel}, Path=GoToUnit}"
+                                                CommandParameter="{Binding .}">
+                                        </Button>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>

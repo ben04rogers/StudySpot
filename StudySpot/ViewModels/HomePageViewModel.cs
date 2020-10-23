@@ -26,11 +26,7 @@ namespace StudySpot.ViewModels
         public Command GoToSettings { get; }
         public Command GoToTodaysClasses { get; }
         public Command GoToMessages { get; }
-        public Command GoToUnit1 { get; }
-        public Command GoToUnit2 { get; }
-        public Command GoToUnit3 { get; }
-        public Command GoToUnit4 { get; }
-
+        public Command<object> GoToUnit { get; }
 
         // Todays Classes(X) Label
         private String _todaysClassesLabel;
@@ -72,10 +68,11 @@ namespace StudySpot.ViewModels
         {
             TodaysClasses = new ObservableCollection<TodaysClass>();
             RecentMessages = new ObservableCollection<Message>();
+            Units = new ObservableCollection<Unit>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            // Setup Mock Data
-            SetupData();
+            // Setup New User
+            NewUser();
 
             // Top Welcome greeting
             String greeting = $"Welcome {user.FirstName},";
@@ -85,10 +82,8 @@ namespace StudySpot.ViewModels
             GoToSettings = new Command(GoToSettingsPage);
             GoToTodaysClasses = new Command(GoToTodaysClassesPage);
             GoToMessages = new Command(GoToMessagesPage);
-            GoToUnit1 = new Command(GoToUnit1Page);
-            GoToUnit2 = new Command(GoToUnit2Page);
-            GoToUnit3 = new Command(GoToUnit3Page);
-            GoToUnit4 = new Command(GoToUnit4Page);
+            GoToUnit = new Command<object>(GoToUnitPage);
+
 
             // Set default background colour (if user does not select one in settings)
             BgColorChoice = "00A6FF";
@@ -102,6 +97,7 @@ namespace StudySpot.ViewModels
             {
                 RecentMessages.Clear();
                 TodaysClasses.Clear();
+                Units.Clear();
 
                 var todaysclasses = await DataStore2.GetItemsAsync(true);
                 foreach (var todaysclass in todaysclasses)
@@ -113,6 +109,12 @@ namespace StudySpot.ViewModels
                 foreach (var recentmessage in recentmessages)
                 {
                     RecentMessages.Add(recentmessage);
+                }
+
+                var units = await DataStore4.GetItemsAsync(true);
+                foreach (var unit in units)
+                {
+                    Units.Add(unit);
                 }
 
                 // Count number of classes today
@@ -173,27 +175,37 @@ namespace StudySpot.ViewModels
             await Shell.Current.GoToAsync("MessagesPage");
         }
 
-        async void GoToUnit1Page()
+       
+        private async void GoToUnitPage(object unitobject)
         {
-            await Shell.Current.GoToAsync("Unit1Page");
-        }
+            // Convert to Unit Object
+            Unit unit = (Unit)unitobject; 
 
-        async void GoToUnit2Page()
-        {
-            await Shell.Current.GoToAsync("Unit2Page");
-        }
-        async void GoToUnit3Page()
-        {
-            await Shell.Current.GoToAsync("Unit3Page");
-        }
-        async void GoToUnit4Page()
-        {
-            await Shell.Current.GoToAsync("Unit4Page");
+            if (unit.Id == "1")
+            {
+                await Shell.Current.GoToAsync("Unit1Page");
+
+            }
+            else if (unit.Id == "2")
+            {
+                await Shell.Current.GoToAsync("Unit2Page");
+
+            }
+            else if (unit.Id == "3")
+            {
+                await Shell.Current.GoToAsync("Unit3Page");
+
+            }
+            else if (unit.Id == "4")
+            {
+                await Shell.Current.GoToAsync("Unit4Page");
+            }
+
         }
 
         // Mock Data for testing 
-        
-        void SetupData()
+
+        void NewUser()
         {
             user = new Student
             {
@@ -202,38 +214,6 @@ namespace StudySpot.ViewModels
                 Id = "1",
                 Email = "james@gmail.com",
                 Password = "testpassword123"
-            };
-            
-            Units = new ObservableCollection<Unit>()
-            {
-                new Unit
-                {
-                    UnitName = "Microprocessors and Digital Systems",
-                    UnitCode = "CAB202",
-                    Description = "C programming",
-                    Color = "#00A6FF",
-                },
-                new Unit
-                {
-                    UnitName = "Mobile Application Development",
-                    UnitCode = "IAB330",
-                    Description = "Xamarin Forms and MVVM",
-                    Color = "#F95F62"
-                },
-                new Unit
-                {
-                    UnitName = "Networks",
-                    UnitCode = "CAB303",
-                    Description = "Computer Networks",
-                    Color = "#13CE66"
-                },
-                new Unit
-                {
-                    UnitName = "Algorithms and Complexity",
-                    UnitCode = "CAB301",
-                    Description = "Fundamental Principles of Software Algorithms",
-                    Color = "#FFD185"
-                }
             };
         }
     }
