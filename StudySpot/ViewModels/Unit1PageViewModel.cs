@@ -12,6 +12,7 @@ namespace StudySpot.ViewModels
 
         public Command Staffdetail { get; }
 
+        public String PlatformImage { get; set; }
 
         public Unit1PageViewModel()
         {
