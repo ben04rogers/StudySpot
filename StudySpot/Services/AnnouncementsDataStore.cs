@@ -17,7 +17,8 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "CAB301",
+                    Unit = "IAB305",
+                    UnitColour = "Red",
                     Date = new DateTime(2020,8,3),
                     Title = "Due Date",
                     Type = "Important",
@@ -28,6 +29,7 @@ namespace StudySpot.Services
                 {
                     Id = Guid.NewGuid().ToString(),
                     Unit = "CAB303",
+                    UnitColour = "Blue",
                     Date = new DateTime(2020,8,16),
                     Title = "Room Change",
                     Type = "Important",
@@ -37,7 +39,8 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "CAB301",
+                    Unit = "IAB305",
+                    UnitColour = "Red",
                     Date = new DateTime(2020,8,10),
                     Title = "Due Date",
                     Type = "Important",
@@ -47,9 +50,10 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "CAB301",
+                    Unit = "IAB305",
+                    UnitColour = "Red",
                     Date = new DateTime(2020,8,11),
-                    Title = "Due Date submission details - double check that you have submitted these!",
+                    Title = "Due Date",
                     Type = "Important",
                     Description = "Also, please make sure you submit your assignment in a .zip file. This will include all your code, documentation, and readme files.",
                     Unread = false
@@ -57,7 +61,8 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "IAB330",
+                    Unit = "IAB303",
+                    UnitColour = "LimeGreen",
                     Date = new DateTime(2020,8,15),
                     Title = "Room Change",
                     Type = "Important",
@@ -67,7 +72,8 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "CAB202",
+                    Unit = "CAB420",
+                    UnitColour = "Orange",
                     Date = new DateTime(2020,8,1),
                     Title = "Quiz 5",
                     Type = "Important",
@@ -78,6 +84,7 @@ namespace StudySpot.Services
                 {
                     Id = Guid.NewGuid().ToString(),
                     Unit = "CAB303",
+                    UnitColour = "Blue",
                     Date = new DateTime(2020,8,15),
                     Title = "Assignment 1",
                     Type = "Reminder",
@@ -87,7 +94,8 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "CAB301",
+                    Unit = "IAB305",
+                    UnitColour = "Red",
                     Date = new DateTime(2020,8,10),
                     Title = "Lectorial",
                     Type = "Reminder",
@@ -97,7 +105,8 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "CAB301",
+                    Unit = "IAB305",
+                    UnitColour = "Red",
                     Date = new DateTime(2020,8,10),
                     Title = "Due Date",
                     Type = "Reminder",
@@ -107,7 +116,8 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "IAB330",
+                    Unit = "IAB303",
+                    UnitColour = "LimeGreen",
                     Date = new DateTime(2020,8,12),
                     Title = "Assignment 2 release",
                     Type = "Reminder",
@@ -117,7 +127,8 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "IAB330",
+                    Unit = "IAB303",
+                    UnitColour = "LimeGreen",
                     Date = new DateTime(2020,8,12),
                     Title = "Quiz 5",
                     Type = "Reminder",
@@ -127,7 +138,19 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
+                    Unit = "CAB420",
+                    UnitColour = "Orange",
+                    Date = new DateTime(2020,8,5),
+                    Title = "Quiz question",
+                    Type = "Reminder",
+                    Description = "Because we are getting so many questions about this: we cannot help you with the questions. But these questions were covered in the tutorial worksheets, so check these first and ask the teaching staff if you have any questions about these worksheet questions.",
+                    Unread = true
+                },
+                new Announcement
+                {
+                    Id = Guid.NewGuid().ToString(),
                     Unit = "CAB303",
+                    UnitColour = "Blue",
                     Date = new DateTime(2020,8,14),
                     Title = "Review Sessions for Practical Test 2",
                     Description = "Hi all, The results for Practical Test 2 have been released.We will offer 2 review sessions to provide feedback:\n" +
@@ -142,6 +165,7 @@ namespace StudySpot.Services
                 {
                     Id = Guid.NewGuid().ToString(),
                     Unit = "CAB303",
+                    UnitColour = "Blue",
                     Date = new DateTime(2020,8,7),
                     Title = "Import notes for the assessment items",
                     Description = "Hi all,\n\nPlease be reminded the due date and important notes on the assessment items. Use the marking criteria to self-assess before submission.",
@@ -152,6 +176,7 @@ namespace StudySpot.Services
                 {
                     Id = Guid.NewGuid().ToString(),
                     Unit = "CAB303",
+                    UnitColour = "Blue",
                     Date = new DateTime(2020,8,6),
                     Title = "Fix to Practical Exam 2 Questions",
                     Description = "Hi all,\n" +
@@ -166,6 +191,7 @@ namespace StudySpot.Services
                 {
                     Id = Guid.NewGuid().ToString(),
                     Unit = "CAB303",
+                    UnitColour = "Blue",
                     Date = new DateTime(2020,8,5),
                     Title = "Important note for CAB303 Practical Test 2",
                     Description = "Hi all,\nThis is an important note for Practical Test 2, held on Sat 10 / 10 / 20, 10:00am - 10:50am AEST.\n" +
@@ -180,6 +206,7 @@ namespace StudySpot.Services
                 {
                     Id = Guid.NewGuid().ToString(),
                     Unit = "CAB303",
+                    UnitColour = "Blue",
                     Date = new DateTime(2020,8,10),
                     Title = "Reminder - No Pracs This Week",
                     Description = "Hi All,\nJust a reminder, no pracs this week as per the weekly schedule as it is an assessment week.",
@@ -188,11 +215,9 @@ namespace StudySpot.Services
                 }
             };
 
-            // Default colour
-            for (int i=0; i < items.Count; i++)
-            {
-                items[i].UnitColour = "Black";
-            }
+            // Get unit colours
+            // ...
+
         }
 
         public async Task<bool> AddItemAsync(Announcement item)
