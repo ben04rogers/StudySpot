@@ -127,16 +127,6 @@ namespace StudySpot.Services
                 new Announcement
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Unit = "CAB202",
-                    Date = new DateTime(2020,8,5),
-                    Title = "Quiz question",
-                    Type = "Reminder",
-                    Description = "Because we are getting so many questions about this: we cannot help you with the questions. But these questions were covered in the tutorial worksheets, so check these first and ask the teaching staff if you have any questions about these worksheet questions.",
-                    Unread = true
-                },
-                new Announcement
-                {
-                    Id = Guid.NewGuid().ToString(),
                     Unit = "CAB303",
                     Date = new DateTime(2020,8,14),
                     Title = "Review Sessions for Practical Test 2",
