@@ -30,6 +30,7 @@ namespace StudySpot.ViewModels
         public IDataStore<Message> DataStore3 => DependencyService.Get<IDataStore<Message>>();
         public IDataStore<Unit> DataStore4 => DependencyService.Get<IDataStore<Unit>>();
         public IDataStore<Announcement> DataStoreAnnouncement => DependencyService.Get<IDataStore<Announcement>>();
+        public IDataStore<Grade> DataStoreAssessment => DependencyService.Get<IDataStore<Grade>>();
 
 
         bool isBusy = false;

@@ -36,8 +36,6 @@ namespace StudySpot.ViewModels
 
             // Get Data
             GetData();
-            GetDueDateData();
-            GetGradeData();
 
             // Button click method with parameter
             GoToAnnouncements = new Command<object>(onAnnouncementClick); 
@@ -50,100 +48,145 @@ namespace StudySpot.ViewModels
             {
                 GetReminderAnnouncements.Clear();
                 GetImportantAnnouncements.Clear();
+                GetDueDateFeed.Clear();
+                GetGradesFeed.Clear();
 
+                // Units
+                IEnumerable<Unit> units = await DataStore4.GetItemsAsync(true);
+                units = units.GroupBy(a => a.UnitCode).Select(b => b.First());
+
+                // Queries - grouped by units, ordered by units, top-most relevant feed item
                 // All Announcements
                 IEnumerable<Announcement> announcements = await DataStoreAnnouncement.GetItemsAsync(true);
-
-                // Query qnnouncements - 
                 // Important
                 IEnumerable<Announcement> queryImportant = announcements.Where(a => a.Type == "Important")
                     .GroupBy(b => b.Unit).Select(group => group.OrderByDescending(c => c.Date).First())
-                    .OrderBy(d => d.Unit);
+                    .OrderBy(a => a.Unit);
                 // Reminders
                 IEnumerable<Announcement> queryReminders = announcements.Where(a => a.Type == "Reminder")
                     .GroupBy(b => b.Unit).Select(group => group.OrderByDescending(c => c.Date).First())
-                    .OrderBy(d => d.Unit);
+                    .OrderBy(a => a.Unit);
 
+                // All Assessments
+                IEnumerable<Grade> assessments = await DataStoreAssessment.GetItemsAsync(true);
+                // Grades - result date is not empty (default), most recent
+                IEnumerable<Grade> queryGrades = assessments.Where(a => a.ResultDate != DateTime.MinValue)
+                    .GroupBy(b => b.Unit).Select(group => group.OrderByDescending(c => c.ResultDate).First())
+                    .OrderBy(a => a.Unit);
+                // Due dates - result date is empty (default), closest to current date,
+                // ignoring any due dates that passed today
+                IEnumerable<Assessment> queryDuedates = assessments.Where(a => a.ResultDate == DateTime.MinValue && 
+                    DateTime.Compare(a.DueDate, DateTime.Today) > 0)
+                    .GroupBy(b => b.Unit).Select(group => group.OrderBy(c => c.DueDate).First())
+                    .OrderBy(a => a.Unit);
+
+                // Announcements
                 foreach (Announcement announcement in queryImportant)
                 {
+                    // Change colour from unit DB
+                    announcement.UnitColour = units.LastOrDefault(a => a.UnitCode == announcement.Unit).Color;
                     GetImportantAnnouncements.Add(announcement);
                 }
                 foreach (Announcement announcement in queryReminders)
                 {
+                    // Change colour from unit DB
+                    announcement.UnitColour = units.LastOrDefault(a => a.UnitCode == announcement.Unit).Color;
                     GetReminderAnnouncements.Add(announcement);
+                }
+
+                // Assessments
+                foreach (Grade grade in queryGrades)
+                {
+                    // Change colour from unit DB
+                    grade.UnitColour = units.LastOrDefault(a => a.UnitCode == grade.Unit).Color;
+                    GetGradesFeed.Add(grade);
+                }
+                foreach (Assessment assessment in queryDuedates)
+                {
+                    // Change colour from unit DB
+                    assessment.UnitColour = units.LastOrDefault(a => a.UnitCode == assessment.Unit).Color;
+                    GetDueDateFeed.Add(assessment);
+                }
+
+                // Check if each unit has something -> if not, add a default placeholder
+                foreach (Unit unit in units)
+                {
+                    // Default important
+                    try
+                    {
+                        string id = GetImportantAnnouncements.Where(a => a.Unit == unit.UnitCode).First().Id;
+                    }
+                    catch
+                    {
+                        // Not found -> make default
+                        GetImportantAnnouncements.Add(new Announcement()
+                        {
+                            Title = "None",
+                            Description = "N/a",
+                            Unit = unit.UnitCode,
+                            UnitColour = unit.Color,
+                            Type = "Important"
+                        });
+                    }
+
+                    // Default reminder
+                    try
+                    {
+                        string id = GetReminderAnnouncements.Where(a => a.Unit == unit.UnitCode).First().Id;
+                    }
+                    catch
+                    {
+                        // Not found -> make default
+                        GetReminderAnnouncements.Add(new Announcement()
+                        {
+                            Title = "None",
+                            Description = "N/a",
+                            Unit = unit.UnitCode,
+                            UnitColour = unit.Color,
+                            Type = "Reminder"
+                        });
+                    }
+
+                    // Default grade
+                    try
+                    {
+                        string id = GetGradesFeed.Where(a => a.Unit == unit.UnitCode).First().Id;
+                    }
+                    catch
+                    {
+                        // Not found -> make default
+                        GetGradesFeed.Add(new Grade()
+                        {
+                            AssessmentName = "None",
+                            Result = "N/a",
+                            ResultDate = DateTime.Today,
+                            Unit = unit.UnitCode,
+                            UnitColour = unit.Color
+                        });
+                    }
+
+                    // Default due date
+                    try
+                    {
+                        string id = GetDueDateFeed.Where(a => a.Unit == unit.UnitCode).First().Id;
+                    }
+                    catch
+                    {
+                        // Not found -> make default
+                        GetDueDateFeed.Add(new Assessment()
+                        {
+                            AssessmentName = "None",
+                            DueDate = DateTime.Today,
+                            Unit = unit.UnitCode,
+                            UnitColour = unit.Color
+                        });
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
-        }
-
-        private void GetDueDateData()
-        {
-            // Get closest duedate for each unit
-            // MIN(CurrentDate - DueDate), Group by Unit
-            GetDueDateFeed.Add(new Assessment
-            {
-                Unit = "CAB303",
-                UnitColour = "Blue",
-                AssessmentName = "Assignment 1",
-                DueDate = "1 Oct"
-            });
-            GetDueDateFeed.Add(new Assessment
-            {
-                Unit = "IAB305",
-                UnitColour = "Red",
-                AssessmentName = "PST2",
-                DueDate = "21 Aug"
-            });
-            GetDueDateFeed.Add(new Assessment
-            {
-                Unit = "IAB303",
-                UnitColour = "LimeGreen",
-                AssessmentName = "Research Task",
-                DueDate = "5 Oct"
-            });
-            GetDueDateFeed.Add(new Assessment
-            {
-                Unit = "CAB420",
-                UnitColour = "Orange",
-                AssessmentName = "Quiz 7",
-                DueDate = "13 Aug"
-            });
-        }
-        private void GetGradeData()
-        {
-            // Get newest grades of each unit
-            // MAX(ResultDate), Group by Unit
-            GetGradesFeed.Add(new Grade
-            {
-                Unit = "CAB303",
-                UnitColour = "Blue",
-                AssessmentName = "Quiz 4",
-                Result = "85%"
-            });
-            GetGradesFeed.Add(new Grade
-            {
-                Unit = "IAB305",
-                UnitColour = "Red",
-                AssessmentName = "None",
-                Result = "N/A"
-            });
-            GetGradesFeed.Add(new Grade
-            {
-                Unit = "IAB303",
-                UnitColour = "LimeGreen",
-                AssessmentName = "Assignment 1",
-                Result = "95%"
-            });
-            GetGradesFeed.Add(new Grade
-            {
-                Unit = "CAB420",
-                UnitColour = "Orange",
-                AssessmentName = "Problem Solving Task 1",
-                Result = "70%"
-            });
         }
 
         // Methods
