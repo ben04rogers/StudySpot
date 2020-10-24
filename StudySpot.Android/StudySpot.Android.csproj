@@ -145,12 +145,6 @@
     <AndroidResource Include="Resources\drawable\msteams.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\profile.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\jamesross.png" />
   </ItemGroup>
   <ItemGroup>
