@@ -15,6 +15,15 @@
         <controls:TopNavBar />
     </Shell.TitleView>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Labels styles -->
+            <Style TargetType="Label">
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20">
@@ -193,7 +202,7 @@
                                        Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding DueDate}"/>
+                                                <Span Text="{Binding DueDate, StringFormat='{0:d MMM}'}}"/>
                                                 <Span Text=" | " />
                                                 <Span Text="{Binding AssessmentName}" />
                                             </FormattedString>
