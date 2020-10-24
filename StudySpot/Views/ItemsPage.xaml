@@ -12,7 +12,7 @@
     <Shell.TitleView>
         <controls:TopNavBar />
     </Shell.TitleView>
-
+    
     <!--
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
@@ -26,6 +26,35 @@
 
     <ContentPage.Content>
         <StackLayout Padding="20">
+
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <!--Count Tasks -->
+                <Label TextColor="#969FAA"
+                    FontSize="Small"
+                    FontAttributes="Bold" Grid.Column="0"
+                    Text="{Binding TasksLabel}">
+                </Label>
+
+                <!-- Add Task Button -->
+                <Button CornerRadius="90" Padding="0"
+                        Text="Add A Task" x:Name="btnImportant"
+                        BackgroundColor="#00A6FF" TextColor="White"
+                        FontSize="Small" FontAttributes="Bold"
+                        WidthRequest="100" HeightRequest="20"
+                        HorizontalOptions="End" VerticalOptions="CenterAndExpand"
+                        Command="{Binding AddItemCommand}"
+                        Grid.Column="1">
+                </Button>
+            </Grid>
+
             <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                 <CollectionView x:Name="ItemsListView" ItemsSource="{Binding Items}" SelectionMode="None">
                     <CollectionView.ItemTemplate>
@@ -60,14 +89,15 @@
                                     <!-- Rounded 'unit code' text box -->
 
                                     <Frame BackgroundColor="{Binding Colour}"
-                                                
+                                               HorizontalOptions="End" 
                                                CornerRadius="15" HasShadow="False" 
-                                               Margin="5" Padding="1"
-                                               Grid.Row="0" Grid.Column="2">
+                                               Margin="5" Padding="4,0,4,0"
+                                               Grid.Row="0" Grid.Column="3">
                                         <Label Text="{Binding TaskCode}"
+                                               FontSize="12"
                                                HorizontalOptions="Center"
                                                FontAttributes="Bold"
-                                               TextColor="White" BackgroundColor="Transparent" Padding="1"
+                                               TextColor="White" BackgroundColor="Transparent" Padding="2"
                                                />
                                     </Frame>
 

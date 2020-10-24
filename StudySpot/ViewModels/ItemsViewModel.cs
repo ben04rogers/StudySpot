@@ -21,7 +21,8 @@ namespace StudySpot.ViewModels
 
         public ItemsViewModel()
         {
-            Title = "Your Tasks";
+            Title = "My Tasks and Reminders";
+         
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
@@ -29,6 +30,31 @@ namespace StudySpot.ViewModels
 
             AddItemCommand = new Command(OnAddItem);
         }
+
+        // Tasks(X) Label
+        private String _TasksLabel;
+        public String TasksLabel
+        {
+            get => _TasksLabel;
+            set
+            {
+                SetProperty(ref _TasksLabel, value);
+                OnPropertyChanged(nameof(TasksLabel));
+            }
+        }
+
+        // Tasks Count
+        private String _TasksCount;
+        public String TasksCount
+        {
+            get => _TasksCount;
+            set
+            {
+                SetProperty(ref _TasksCount, value);
+                OnPropertyChanged(nameof(TasksCount));
+            }
+        }
+
 
         async Task ExecuteLoadItemsCommand()
         {
@@ -51,6 +77,11 @@ namespace StudySpot.ViewModels
             {
                 IsBusy = false;
             }
+
+            // Count number of classes today
+            TasksLabel = $"You have ({Items.Count}) tasks";
+            TasksCount = Items.Count.ToString();
+
         }
 
         public void OnAppearing()

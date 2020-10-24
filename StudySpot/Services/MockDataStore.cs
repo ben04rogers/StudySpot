@@ -33,26 +33,34 @@ namespace StudySpot.Services
                 new Item 
                 { 
                     Id = Guid.NewGuid().ToString(), 
-                    Text = "Third item", 
-                    Description="This is an item description." 
+                    Text = "Start on Assignment 1 Report", 
+                    Description="Get started on the Introduction and Research by this Weekend",
+                    Colour = "#F95F62",
+                    TaskCode = "IAB305"
+                },
+                new Item
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Text = "Do Quiz 13 (30/10)",
+                    Description="Nothing just a reminder",
+                    Colour = "#FFBA5C",
+                    TaskCode = "CAB420"
+                },
+                new Item
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Text = "Study Session for Exam upcoming",
+                    Description="Remember to go over the lecture and tutorial slides",
+                    Colour = "#FFBA5C",
+                    TaskCode = "CAB420"
                 },
                 new Item 
                 { 
                     Id = Guid.NewGuid().ToString(), 
                     Text = "Fourth item", 
-                    Description="This is an item description." 
-                },
-                new Item 
-                { 
-                    Id = Guid.NewGuid().ToString(), 
-                    Text = "Fifth item", 
-                    Description="This is an item description." 
-                },
-                new Item 
-                { 
-                    Id = Guid.NewGuid().ToString(), 
-                    Text = "Sixth item", 
-                    Description="This is an item description." 
+                    Description="This is an item description.",
+                    Colour = "#13CE66",
+                    TaskCode = "IAB303"
                 }
             };
         }
