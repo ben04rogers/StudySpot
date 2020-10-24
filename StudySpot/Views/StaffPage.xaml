@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              
              xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
-             x:Class="StudySpot.Views.Unit1Page">
+             x:Class="StudySpot.Views.StaffPage">
 
 
 

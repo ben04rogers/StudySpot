@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace StudySpot.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Unit2Page : ContentPage
+    public partial class StaffPage : ContentPage
     {
-        public Unit2Page()
+        public StaffPage()
         {
             InitializeComponent();
         }
