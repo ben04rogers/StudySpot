@@ -30,8 +30,6 @@
             <!-- StackLayouts -->
             <Style x:Key="SettingStackStyle" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Horizontal" />
-                <Setter Property="BackgroundColor" Value="#FAFAFA" />
-                <Setter Property="Padding" Value="10, 12" />
                 <Setter Property="Padding" Value="10, 12" />
             </Style>
         </ResourceDictionary>
@@ -39,6 +37,14 @@
     
     <ContentPage.Content>
         <StackLayout Padding="15">
+            <!-- Save Button -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="Saved" TextColor="Transparent" VerticalOptions="CenterAndExpand" />
+                <Button x:Name="SaveButton" Text="Save Settings" FontSize="12"
+                    TextColor="White" BackgroundColor="#00A6FF" Padding="10, 0" CornerRadius="5"
+                    Command="{Binding SaveNotifSettings}" />
+            </StackLayout>
+
             <!-- Announcements Heading -->
             <Label Text="My Announcements" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"
                    VerticalOptions="Center" />

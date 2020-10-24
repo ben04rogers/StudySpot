@@ -21,6 +21,7 @@ namespace StudySpot
             DependencyService.Register<UnitsDataStore>();
             DependencyService.Register<AnnouncementsDataStore>();
             DependencyService.Register<AssessmentDataStore>();
+            DependencyService.Register<NotificationsDataStore>();
 
             MainPage = new LoginPage();
         }
