@@ -40,6 +40,7 @@ namespace StudySpot.ViewModels
             // Button click method with parameter
             GoToAnnouncements = new Command<object>(onAnnouncementClick); 
             GoToDueDates = new Command(onDueDateClick);
+            GoToGrades = new Command<string>(onGradeClick);
         }
 
         private async void GetData()
@@ -199,7 +200,12 @@ namespace StudySpot.ViewModels
         private async void onDueDateClick()
         {
             // Navigate to task page view
-            await Shell.Current.GoToAsync("TasksPage");
+            await Shell.Current.GoToAsync("ItemsPage");
+        }
+        private async void onGradeClick(string unitCode)
+        {
+            // Navigate to task page view
+            await Shell.Current.GoToAsync("Unit1Page");
         }
     }
 }
