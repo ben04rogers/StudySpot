@@ -16,19 +16,10 @@ namespace StudySpot.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TodaysClassesPage : ContentPage
     {
-        TodaysClassesPageViewModel _viewModel;
-
         public TodaysClassesPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new TodaysClassesPageViewModel();
 
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            _viewModel.OnAppearing();
         }
     }
 }

@@ -13,7 +13,6 @@ namespace StudySpot.ViewModels
     [QueryProperty("BgColorChoice", "bgcolor")]
     public class HomePageViewModel : BaseViewModel
     {
-        private Item _selectedItem;
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
         public ObservableCollection<Message> RecentMessages { get; set; }
         public ObservableCollection<Unit> Units { get; set; }
@@ -83,21 +82,6 @@ namespace StudySpot.ViewModels
 
             // Set default background colour (if user does not select one in settings)
             BgColorChoice = "00A6FF";
-        }
-
-        public void OnAppearing()
-        {
-            IsBusy = true;
-            SelectedItem = null;
-        }
-
-        public Item SelectedItem
-        {
-            get => _selectedItem;
-            set
-            {
-                SetProperty(ref _selectedItem, value);
-            }
         }
 
         string bgcolor;

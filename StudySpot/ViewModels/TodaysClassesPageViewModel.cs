@@ -17,9 +17,7 @@ namespace StudySpot.ViewModels
 {
     public class TodaysClassesPageViewModel : BaseViewModel
     {
-        private Item _selectedItem;
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
-
         public Command ClassDetails { get; }
 
         // Todays Classes(X) Label
@@ -46,21 +44,6 @@ namespace StudySpot.ViewModels
 
             // Class Details Button
             ClassDetails = new Command(DisplayClassDetails);
-        }
-
-        public void OnAppearing()
-        {
-            IsBusy = true;
-            SelectedItem = null;
-        }
-
-        public Item SelectedItem
-        {
-            get => _selectedItem;
-            set
-            {
-                SetProperty(ref _selectedItem, value);
-            }
         }
 
         TodaysClass todaysclass;

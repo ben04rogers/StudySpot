@@ -15,23 +15,10 @@ namespace StudySpot.Views
 {
     public partial class HomePage : ContentPage
     {
-        HomePageViewModel _viewModel;
-
         public HomePage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new HomePageViewModel();
         }
-
-        void RecentMesssagesList_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
-        {
-        }
-        
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            _viewModel.OnAppearing();
-        }
-        
+       
     }
 }
