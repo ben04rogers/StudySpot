@@ -14,7 +14,7 @@ namespace StudySpot.Views
         public Item Item { get; set; }
 
         public NewItemPage()
-        {
+        {  
             InitializeComponent();
             BindingContext = new NewItemViewModel();
         }

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using StudySpot.Models;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace StudySpot.ViewModels
@@ -12,6 +13,9 @@ namespace StudySpot.ViewModels
         private string itemId;
         private string text;
         private string description;
+        private string colour;
+        private string taskcode;
+        private string location;
         public string Id { get; set; }
 
         public string Text
@@ -25,6 +29,22 @@ namespace StudySpot.ViewModels
             get => description;
             set => SetProperty(ref description, value);
         }
+        public string Colour
+        {
+            get => colour;
+            set => SetProperty(ref colour, value);
+        }
+        public string TaskCode
+        {
+            get => taskcode;
+            set => SetProperty(ref taskcode, value);
+        }
+        public string Location
+        {
+            get => location;
+            set => SetProperty(ref location, value);
+        }
+
 
         public string ItemId
         {
@@ -47,6 +67,9 @@ namespace StudySpot.ViewModels
                 Id = item.Id;
                 Text = item.Text;
                 Description = item.Description;
+                Colour = item.Colour;
+                TaskCode = item.TaskCode;
+                Location = item.Location;
             }
             catch (Exception)
             {

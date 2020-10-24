@@ -20,7 +20,8 @@ namespace StudySpot.Services
                     Text = "Study Session", 
                     Description="Study at home for IAB303 for 2hours before the upcoming Exam",
                     Colour = "#13CE66",
-                    TaskCode = "CAB303"
+                    TaskCode = "CAB303",
+                    Location =  "Home"
                 },
                 new Item 
                 { 
@@ -28,7 +29,8 @@ namespace StudySpot.Services
                     Text = "ID Card", 
                     Description="Pickup ID Card from HIQ",
                     Colour = "#000000",
-                    TaskCode = "General"
+                    TaskCode = "General",
+                    Location =  "QUT GP Campus Library"
                 },
                 new Item 
                 { 
@@ -36,7 +38,8 @@ namespace StudySpot.Services
                     Text = "Start on Assignment 1 Report", 
                     Description="Get started on the Introduction and Research by this Weekend",
                     Colour = "#F95F62",
-                    TaskCode = "IAB305"
+                    TaskCode = "IAB305",
+                    Location =  "Home"
                 },
                 new Item
                 {
@@ -44,7 +47,8 @@ namespace StudySpot.Services
                     Text = "Do Quiz 13 (30/10)",
                     Description="Nothing just a reminder",
                     Colour = "#FFBA5C",
-                    TaskCode = "CAB420"
+                    TaskCode = "CAB420",
+                    Location =  "Home"
                 },
                 new Item
                 {
@@ -52,15 +56,17 @@ namespace StudySpot.Services
                     Text = "Study Session for Exam upcoming",
                     Description="Remember to go over the lecture and tutorial slides",
                     Colour = "#FFBA5C",
-                    TaskCode = "CAB420"
+                    TaskCode = "CAB420",
+                    Location =  "Home"
                 },
                 new Item 
                 { 
                     Id = Guid.NewGuid().ToString(), 
-                    Text = "Fourth item", 
+                    Text = "IAB303 A3 Submit on 1/11", 
                     Description="This is an item description.",
                     Colour = "#13CE66",
-                    TaskCode = "IAB303"
+                    TaskCode = "IAB303",
+                    Location =  "Home"
                 }
             };
         }
