@@ -51,6 +51,8 @@ namespace StudySpot.ViewModels
                 GetReminderAnnouncements.Clear();
                 GetImportantAnnouncements.Clear();
 
+                // Units
+                IEnumerable<Unit> units = await DataStore4.GetItemsAsync(true);
                 // All Announcements
                 IEnumerable<Announcement> announcements = await DataStoreAnnouncement.GetItemsAsync(true);
 
@@ -66,10 +68,14 @@ namespace StudySpot.ViewModels
 
                 foreach (Announcement announcement in queryImportant)
                 {
+                    // Change colour from unit DB
+                    announcement.UnitColour = units.LastOrDefault(a => a.UnitCode == announcement.Unit).Color;
                     GetImportantAnnouncements.Add(announcement);
                 }
                 foreach (Announcement announcement in queryReminders)
                 {
+                    // Change colour from unit DB
+                    announcement.UnitColour = units.LastOrDefault(a => a.UnitCode == announcement.Unit).Color;
                     GetReminderAnnouncements.Add(announcement);
                 }
             }
