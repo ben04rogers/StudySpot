@@ -22,8 +22,6 @@ namespace StudySpot.ViewModels
 
         public Command ClassDetails { get; }
 
-        public Command LoadItemsCommand { get; }
-
         // Todays Classes(X) Label
         private String _todaysClassesLabel;
         public String TodaysClassesLabel
@@ -40,39 +38,14 @@ namespace StudySpot.ViewModels
         {
             // Load Mock Data
             TodaysClasses = new ObservableCollection<TodaysClass>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+
+            // Load Data
+            GetData();
 
             Title = "Todays Classes";
 
             // Class Details Button
             ClassDetails = new Command(DisplayClassDetails);
-        }
-
-        async Task ExecuteLoadItemsCommand()
-        {
-            IsBusy = true;
-
-            try
-            {
-                TodaysClasses.Clear();
-
-                var todaysclasses = await DataStore2.GetItemsAsync(true);
-                foreach (var todaysclass in todaysclasses)
-                {
-                    TodaysClasses.Add(todaysclass);
-                }
-
-                // Count number of classes today
-                TodaysClassesLabel = $"Todays Classes ({TodaysClasses.Count})";
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
         }
 
         public void OnAppearing()
@@ -113,6 +86,33 @@ namespace StudySpot.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Nothing Selected!", "OK");
                 return;
+            }
+        }
+
+        private async void GetData()
+        {
+            IsBusy = true;
+
+            try
+            {
+                TodaysClasses.Clear();
+
+                var todaysclasses = await DataStore2.GetItemsAsync(true);
+                foreach (var todaysclass in todaysclasses)
+                {
+                    TodaysClasses.Add(todaysclass);
+                }
+
+                // Count number of classes today
+                TodaysClassesLabel = $"Todays Classes ({TodaysClasses.Count})";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
     }

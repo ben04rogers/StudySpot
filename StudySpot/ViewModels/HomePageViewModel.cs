@@ -17,10 +17,8 @@ namespace StudySpot.ViewModels
         public ObservableCollection<TodaysClass> TodaysClasses { get; set; }
         public ObservableCollection<Message> RecentMessages { get; set; }
         public ObservableCollection<Unit> Units { get; set; }
-        public Student user;
 
-        // Load mock data 
-        public Command LoadItemsCommand { get; }
+        public Student user;
 
         // Button commands
         public Command GoToSettings { get; }
@@ -69,10 +67,9 @@ namespace StudySpot.ViewModels
             TodaysClasses = new ObservableCollection<TodaysClass>();
             RecentMessages = new ObservableCollection<Message>();
             Units = new ObservableCollection<Unit>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-            // Setup New User
-            NewUser();
+           
+            // Load Data
+            GetData();
 
             // Top Welcome greeting
             String greeting = $"Welcome {user.FirstName},";
@@ -84,54 +81,8 @@ namespace StudySpot.ViewModels
             GoToMessages = new Command(GoToMessagesPage);
             GoToUnit = new Command<object>(GoToUnitPage);
 
-
             // Set default background colour (if user does not select one in settings)
             BgColorChoice = "00A6FF";
-        }
-
-        async Task ExecuteLoadItemsCommand()
-        {
-            IsBusy = true;
-
-            try
-            {
-                RecentMessages.Clear();
-                TodaysClasses.Clear();
-                Units.Clear();
-
-                var todaysclasses = await DataStore2.GetItemsAsync(true);
-                foreach (var todaysclass in todaysclasses)
-                {
-                    TodaysClasses.Add(todaysclass);
-                }
-
-                var recentmessages = await DataStore3.GetItemsAsync(true);
-                foreach (var recentmessage in recentmessages)
-                {
-                    RecentMessages.Add(recentmessage);
-                }
-
-                var units = await DataStore4.GetItemsAsync(true);
-                foreach (var unit in units)
-                {
-                    Units.Add(unit);
-                }
-
-                // Count number of classes today
-                TodaysClassesLabel = $"Todays Classes ({TodaysClasses.Count})";
-                TodaysClassesCount = TodaysClasses.Count.ToString();
-
-                // Count number of recent messages
-                RecentMessagesLabel = $"Messages ({RecentMessages.Count})";
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
         }
 
         public void OnAppearing()
@@ -205,8 +156,51 @@ namespace StudySpot.ViewModels
 
         // Mock Data for testing 
 
-        void NewUser()
+        private async void GetData()
         {
+            IsBusy = true;
+
+            try
+            {
+                RecentMessages.Clear();
+                TodaysClasses.Clear();
+                Units.Clear();
+
+                var todaysclasses = await DataStore2.GetItemsAsync(true);
+                foreach (var todaysclass in todaysclasses)
+                {
+                    TodaysClasses.Add(todaysclass);
+                }
+
+                var recentmessages = await DataStore3.GetItemsAsync(true);
+                foreach (var recentmessage in recentmessages)
+                {
+                    RecentMessages.Add(recentmessage);
+                }
+
+                var units = await DataStore4.GetItemsAsync(true);
+                foreach (var unit in units)
+                {
+                    Units.Add(unit);
+                }
+
+                // Count number of classes today
+                TodaysClassesLabel = $"Todays Classes ({TodaysClasses.Count})";
+                TodaysClassesCount = TodaysClasses.Count.ToString();
+
+                // Count number of recent messages
+                RecentMessagesLabel = $"Messages ({RecentMessages.Count})";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+
+            // New User 
             user = new Student
             {
                 FirstName = "James",
