@@ -23,7 +23,7 @@
                    WidthRequest="250"
                    HorizontalOptions="Center"
                    Margin="0, 10, 0, 10"
-                   Text="{Binding Email}"
+                   Text="{Binding Email, Mode=TwoWay}"
                    ></Entry>
 
             <Entry Placeholder="Password"
@@ -31,6 +31,7 @@
                    WidthRequest="250"
                    HorizontalOptions="Center"
                    IsPassword="True"
+                   Text="{Binding Password, Mode=TwoWay}"
                    ></Entry>
 
             <Label Text="Forgot Password" HorizontalOptions="End">
