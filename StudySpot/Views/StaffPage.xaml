@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             
+             xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
+             x:Class="StudySpot.Views.Unit1Page">
+
+
+
+    <ContentPage.BindingContext>
+        <viewmodel:StaffPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="20">
+                <!-- unitdetail -->
+                <Label Text="Staff Information" FontSize="Title" TextColor="Black" FontAttributes="Bold" />
+                <Grid>
+                    <Label VerticalOptions="Center" Text="" />
+                    <BoxView HeightRequest="3"
+                             VerticalOptions="Center"
+                             Opacity="0.5"
+                             Color="LightGray" />
+                </Grid>
+
+                <Label Text="Browm Anderson" FontSize="Subtitle" TextColor="Black" FontAttributes="Bold"  />
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Science and Engineering Faculty" FontSize="15" TextColor="Black"/>
+
+                    <Frame Margin="10"
+                           BorderColor="Black"
+                           CornerRadius="100"
+                           HeightRequest="100"
+                           WidthRequest="100"
+                           IsClippedToBounds="True"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Start">
+                        <Image Source="joshhaan.png"
+                               Aspect="AspectFill"
+                               Margin="-20"
+                               HeightRequest="100"
+                               WidthRequest="100" />
+                    </Frame>
+                </StackLayout>
+
+                <Grid>
+                    <Label VerticalOptions="Center" Text="" />
+                    <BoxView HeightRequest="3"
+                             VerticalOptions="Center"
+                             Opacity="0.5"
+                             Color="LightGray" />
+                </Grid>
+
+                <Label Text="Personal links:" FontSize="Subtitle" TextColor="Black" FontAttributes="Bold"  />
+                <Label Text="https://staff.qut.edu.au/staff/ad,browm" FontSize="Subtitle" TextColor="Black"/>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
