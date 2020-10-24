@@ -22,52 +22,44 @@
             <StackLayout>
                 <StackLayout Padding="25, 15, 25, 25">
 
-                <!-- Recieved Message -->
-
+                <!-- Recieved Message -->                  
                 <ListView x:Name="RecentMesssagesList" 
                     ItemsSource="{Binding RecentMessages}"
-                    RowHeight="0"
                     SeparatorVisibility="Default"     
                     SelectionMode="None"
                     HasUnevenRows="True"    >
-
+                    
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid BackgroundColor="#FAFAFA"
-                                    Margin="0, 8"
-                                    Grid.Row="0"
-                                    HeightRequest="80"  >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                    </Grid.RowDefinitions>
+
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="0.1*"/>
+                                        <ColumnDefinition Width="0.6*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Frame BackgroundColor="LightBlue"
-                                    Padding="10"
-                                    HasShadow="false"
-                                   
-                                    Margin="10,10,80,10"
-                                    Grid.Column="1" 
-                                    Grid.Row="0">
-                                        
-                                        <Label Text="{Binding Content}"/>
-                                    </Frame>
-
                                     <Image Grid.Column="0" Grid.Row="0" Source="{Binding UserImageName}">
-
                                     </Image>
-                                    
+
+                                    <Frame Grid.Column="1" Grid.Row="0" Margin="10,10,70,10" BackgroundColor="#00A6FF"
+                                    Padding="15" CornerRadius="27"
+                                    HasShadow="false">
+                                        <Label Text="{Binding Content}" TextColor="White"/>
+
+                                    </Frame>
                                 </Grid>
 
-
-
-
-
-                                </ViewCell>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
+                
+                    
+                    
 
                     <!--Sent Message -->
                 <Frame BackgroundColor="Gray"

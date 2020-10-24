@@ -14,12 +14,46 @@ namespace StudySpot.Services
         {
             items = new List<Item>()
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new Item 
+                { 
+                    Id = Guid.NewGuid().ToString(), 
+                    Text = "Study Session", 
+                    Description="Study at home for IAB303 for 2hours before the upcoming Exam",
+                    Colour = "#13CE66",
+                    TaskCode = "CAB303"
+                },
+                new Item 
+                { 
+                    Id = Guid.NewGuid().ToString(), 
+                    Text = "ID Card", 
+                    Description="Pickup ID Card from HIQ",
+                    Colour = "#000000",
+                    TaskCode = "General"
+                },
+                new Item 
+                { 
+                    Id = Guid.NewGuid().ToString(), 
+                    Text = "Third item", 
+                    Description="This is an item description." 
+                },
+                new Item 
+                { 
+                    Id = Guid.NewGuid().ToString(), 
+                    Text = "Fourth item", 
+                    Description="This is an item description." 
+                },
+                new Item 
+                { 
+                    Id = Guid.NewGuid().ToString(), 
+                    Text = "Fifth item", 
+                    Description="This is an item description." 
+                },
+                new Item 
+                { 
+                    Id = Guid.NewGuid().ToString(), 
+                    Text = "Sixth item", 
+                    Description="This is an item description." 
+                }
             };
         }
 

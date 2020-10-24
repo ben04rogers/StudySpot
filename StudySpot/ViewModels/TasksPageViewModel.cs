@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Threading.Tasks;
-
+using System.Diagnostics;
 using Xamarin.Forms;
 
 using StudySpot.Models;
@@ -10,7 +9,7 @@ using StudySpot.Views;
 
 namespace StudySpot.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class TasksPageViewModel : BaseViewModel
     {
         private Item _selectedItem;
 
@@ -19,9 +18,9 @@ namespace StudySpot.ViewModels
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
 
-        public ItemsViewModel()
+        public TasksPageViewModel()
         {
-            Title = "Your Tasks";
+            Title = "My Tasks";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
@@ -82,5 +81,6 @@ namespace StudySpot.ViewModels
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
+
     }
 }
