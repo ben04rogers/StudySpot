@@ -15,7 +15,7 @@
         <StackLayout>
             <StackLayout Padding="20">
                 <!-- unitdetail -->
-                <Label Text="Unitdetail" FontSize="Subtitle" TextColor="Black" FontAttributes="Bold" />
+                <Label Text="Unit detail" FontSize="Title" TextColor="Black" FontAttributes="Bold" />
                 <!-- date -->
                 <Label Text="Wednesday,12 August" FontSize="Small" TextColor="Black" />
 
@@ -139,6 +139,8 @@
                                        WidthRequest="100" />
                             </Frame>
                         </StackLayout>
+                        
+                        
 
                     </StackLayout>
                 </StackLayout>

@@ -7,13 +7,13 @@ using StudySpot.Models;
 namespace StudySpot.ViewModels
 {
 
-    public class Unit1PageViewModel : BaseViewModel
+    public class StaffPageViewModel : BaseViewModel
     {
 
         public Command Staffdetail { get; }
 
 
-        public Unit1PageViewModel()
+        public StaffPageViewModel()
         {
             
             // Staff Details Button
