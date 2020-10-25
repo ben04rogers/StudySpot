@@ -43,6 +43,8 @@ namespace StudySpot.ViewModels
             GoToGrades = new Command<string>(onGradeClick);
         }
 
+        // ---------------- TEMP
+        List<Unit> _Units;
         private async void GetData()
         {
             try
@@ -55,6 +57,9 @@ namespace StudySpot.ViewModels
                 // Units
                 IEnumerable<Unit> units = await DataStore4.GetItemsAsync(true);
                 units = units.GroupBy(a => a.UnitCode).Select(b => b.First());
+
+                // ---------- TEMP
+                _Units = units.ToList();
 
                 // Queries - grouped by units, ordered by units, top-most relevant feed item
                 // All Announcements
@@ -205,7 +210,14 @@ namespace StudySpot.ViewModels
         private async void onGradeClick(string unitCode)
         {
             // Navigate to task page view
-            await Shell.Current.GoToAsync("Unit1Page");
+            //await Shell.Current.GoToAsync($"Unit1Page?unit={unitCode}");
+
+            // ---------------- TEMP
+            // Placeholder get url (units page not complete)
+            if (unitCode == _Units[0].UnitCode) await Shell.Current.GoToAsync($"Unit1Page?unit={_Units[0].UnitCode}");
+            else if (unitCode == _Units[1].UnitCode) await Shell.Current.GoToAsync($"Unit4Page?unit={_Units[1].UnitCode}");
+            else if (unitCode == _Units[2].UnitCode) await Shell.Current.GoToAsync($"Unit3Page?unit={_Units[2].UnitCode}");
+            else if (unitCode == _Units[3].UnitCode) await Shell.Current.GoToAsync($"Unit2Page?unit={_Units[3].UnitCode}");
         }
     }
 }
