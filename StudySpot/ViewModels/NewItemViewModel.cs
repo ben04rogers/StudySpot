@@ -11,6 +11,9 @@ namespace StudySpot.ViewModels
     {
         private string text;
         private string description;
+        private string location;
+        private string taskcode;
+        private string colour;
 
         public NewItemViewModel()
         {
@@ -38,6 +41,23 @@ namespace StudySpot.ViewModels
             set => SetProperty(ref description, value);
         }
 
+        public string Location
+        {
+            get => location;
+            set => SetProperty(ref location, value);
+        }
+        public string TaskCode
+        {
+            get => taskcode;
+            set => SetProperty(ref taskcode, value);
+        }
+        public string Colour
+        {
+            get => colour;
+            set => SetProperty(ref colour, value);
+        }
+
+
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
@@ -53,7 +73,10 @@ namespace StudySpot.ViewModels
             {
                 Id = Guid.NewGuid().ToString(),
                 Text = Text,
-                Description = Description
+                Description = Description,
+                Location = Location,
+                TaskCode = TaskCode,
+                Colour = Colour
             };
 
             await DataStore.AddItemAsync(newItem);

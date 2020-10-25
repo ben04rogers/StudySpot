@@ -29,8 +29,8 @@
     <Compile Update="Views\NotificationsPage.xaml.cs">
       <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\StaffPage.xaml.cs">
-      <DependentUpon>StaffPage.xaml</DependentUpon>
+    <Compile Update="Views\Staff1Page.xaml.cs">
+      <DependentUpon>Staff1Page.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
