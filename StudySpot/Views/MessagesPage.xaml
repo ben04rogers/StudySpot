@@ -22,8 +22,6 @@
             <StackLayout Padding="25, 15, 25, 25">
                 <!--Left, Top, Right, Bottom  -->
 
-                <Button Text="Go to Chat" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToChatBox}"></Button>
-
                 <!-- View All or Unread Messages Buttons -->
                 <StackLayout>
                     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
@@ -62,7 +60,9 @@
                             VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1" />
                     </Grid>
                 </StackLayout>
-                
+
+                <Button Text="Go to Chat" FontAttributes="Bold" FontSize="Small" TextColor="#969FAA" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" 
+                        Command="{Binding GoToChatBox}"></Button>
                 
                 <!-- Message Blocks -->
                 <ListView x:Name="RecentMesssagesList" 
@@ -119,6 +119,7 @@
                                             Margin="10, 0" TextColor="#47525E" FontSize="Small"
                                             Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
                                 </Grid>
+
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

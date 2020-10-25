@@ -21,8 +21,7 @@
         <ScrollView HeightRequest="3000">
             <StackLayout>
                 <StackLayout Padding="25, 15, 25, 25">
-
-                <!-- Recieved Message -->                  
+                    <!-- Recieved Message -->                  
                 <ListView x:Name="RecentMesssagesList" 
                     ItemsSource="{Binding RecentMessages}"
                     SeparatorVisibility="Default"     
