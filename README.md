@@ -1,6 +1,8 @@
 # StudySpot
 IAB330 Mobile Application Development Assignment
 
+Team 3
+
 # Authors
 
 - Benjamin Rogers (ben04rogers)
