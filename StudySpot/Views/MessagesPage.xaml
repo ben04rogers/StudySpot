@@ -47,7 +47,7 @@
                             VerticalOptions="CenterAndExpand" />
 
                         <Button CornerRadius="90" Grid.Column="1"
-                            Text="Recent Chat" x:Name="cmdSubmit"
+                            Text="Recent Chat" x:Name="recentChat"
                             Padding="0"
                             BackgroundColor="Gray"
                             FontSize="12"

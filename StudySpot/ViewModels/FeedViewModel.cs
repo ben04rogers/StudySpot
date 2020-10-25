@@ -28,7 +28,7 @@ namespace StudySpot.ViewModels
         public FeedViewModel()
         {
             // Initialise data
-            Title = "My feed";
+            Title = "My Feed";
             GetImportantAnnouncements = new ObservableCollection<Announcement>();
             GetReminderAnnouncements = new ObservableCollection<Announcement>();
             GetDueDateFeed = new ObservableCollection<Assessment>();
