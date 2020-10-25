@@ -139,13 +139,8 @@
                                        WidthRequest="100" />
                             </Frame>
                         </StackLayout>
-
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="willsmith" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Command="{Binding GoToStaff1DetailPage}"></Button>
-                            <Button Text="lucaspodolski" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Command="{Binding GoToStaff1DetailPage}"></Button>
-                            <Button Text="davidparker" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToStaff1DetailPage}"></Button>
-                        </StackLayout>
-
+                        
+                        
 
                     </StackLayout>
                 </StackLayout>
