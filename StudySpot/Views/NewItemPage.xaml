@@ -66,14 +66,14 @@
                        Grid.Column="1" Grid.Row="2" />
 
                 <!--  Title Label -->
-                <Label Text="Label Code" TextColor="Black" 
+                <Label Text="Task Code" TextColor="Black" 
                        VerticalOptions="Center" 
                        FontAttributes="Bold" 
                        FontSize="Medium" 
                        Grid.Column="0" Grid.Row="3" />
                 
                 <!--  Title Input Line -->
-                <Editor Text="{Binding Location, Mode=TwoWay}" 
+                <Editor Text="{Binding TaskCode, Mode=TwoWay}" 
                        VerticalOptions="Center" 
                        AutoSize="TextChanges" 
                        FontSize="Medium" 
@@ -82,14 +82,14 @@
                        Grid.Column="1" Grid.Row="3" />
 
                 <!--  Title Label -->
-                <Label Text="Label Colour" TextColor="Black" 
+                <Label Text="Task Colour" TextColor="Black" 
                        VerticalOptions="Center" 
                        FontAttributes="Bold" 
                        FontSize="Medium" 
                        Grid.Column="0" Grid.Row="4" />
 
                 <!--  Title Input Line -->
-                <Editor Text="{Binding Location, Mode=TwoWay}" 
+                <Editor Text="{Binding Colour, Mode=TwoWay}" 
                        VerticalOptions="Center" 
                        AutoSize="TextChanges" 
                        FontSize="Medium" 

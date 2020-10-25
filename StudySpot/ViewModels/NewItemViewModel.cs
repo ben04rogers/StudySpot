@@ -82,7 +82,7 @@ namespace StudySpot.ViewModels
             await DataStore.AddItemAsync(newItem);
 
             // This will pop the current page off the navigation stack Culprit
-            await Shell.Current.GoToAsync("ItemsPage");
+            await Shell.Current.Navigation.PopAsync();
         }
     }
 }

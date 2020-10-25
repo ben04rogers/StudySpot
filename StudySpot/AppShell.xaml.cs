@@ -20,7 +20,6 @@ namespace StudySpot
 
         void RegisterRoutes()
         {
-            routes.Add("TasksPage", typeof(TasksPage));
             routes.Add("NewItemPage", typeof(NewItemPage));
             routes.Add("ItemsPage", typeof(ItemsPage));
             routes.Add("ItemDetailPage", typeof(ItemDetailPage));
