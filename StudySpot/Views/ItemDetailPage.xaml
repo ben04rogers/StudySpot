@@ -40,7 +40,7 @@
                 Grid.Row="1" />
 
                 <!-- Field Title -->
-                <Label Text="Task or Reminder" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Grid.Row="2"/>
+                <Label Text="Task Title" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Grid.Row="2"/>
                 <!-- Field Description -->
                 <Label Text="{Binding Text}" FontSize="Small" Grid.Row="3" />
                 <!-- Line break -->
