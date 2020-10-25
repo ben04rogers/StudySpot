@@ -39,7 +39,7 @@ namespace StudySpot
             routes.Add("Unit4Page", typeof(Unit4Page));
             routes.Add("Staff1Page",typeof(StaffPage));
             routes.Add("Staff2Page",typeof(Staff2Page));
-            routes.Add("Staff2Page", typeof(Staff3Page));
+            routes.Add("Staff3Page", typeof(Staff3Page));
 
             foreach (var item in routes)
             {
