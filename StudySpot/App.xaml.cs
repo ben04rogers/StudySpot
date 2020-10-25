@@ -15,7 +15,7 @@ namespace StudySpot
 
             Device.SetFlags(new string[] { "RadioButton_Experimental" });
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<TaskDataStore>();
             DependencyService.Register<TodaysClassesDataStore>();
             DependencyService.Register<MessagesDataStore>();
             DependencyService.Register<UnitsDataStore>();

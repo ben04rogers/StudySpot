@@ -6,11 +6,11 @@ using StudySpot.Models;
 
 namespace StudySpot.Services
 {
-    public class MockDataStore : IDataStore<Item>
+    public class TaskDataStore : IDataStore<Item>
     {
         readonly List<Item> items;
 
-        public MockDataStore()
+        public TaskDataStore()
         {
             items = new List<Item>()
             {

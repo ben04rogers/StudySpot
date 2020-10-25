@@ -78,7 +78,7 @@ namespace StudySpot.ViewModels
                 IsBusy = false;
             }
 
-            // Count number of classes today
+            // Count number of tasks
             TasksLabel = $"You have ({Items.Count}) tasks";
             TasksCount = Items.Count.ToString();
 
