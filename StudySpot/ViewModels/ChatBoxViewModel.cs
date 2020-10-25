@@ -22,7 +22,6 @@ namespace StudySpot.ViewModels
 
 
         }
-
         void SetupData()
         {
 
@@ -48,7 +47,6 @@ namespace StudySpot.ViewModels
                 },
             };
         }
-
 
 
     }

@@ -21,82 +21,53 @@
         <ScrollView HeightRequest="3000">
             <StackLayout>
                 <StackLayout Padding="25, 15, 25, 25">
-                    <!-- Recieved Message -->                  
-                <ListView x:Name="RecentMesssagesList" 
+                    <!-- Recieved Message -->
+                    <ListView x:Name="RecentMesssagesList" 
                     ItemsSource="{Binding RecentMessages}"
                     SeparatorVisibility="Default"     
                     SelectionMode="None"
                     HasUnevenRows="True"    >
-                    
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="100" />
-                                    </Grid.RowDefinitions>
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.1*"/>
-                                        <ColumnDefinition Width="0.6*"/>
-                                    </Grid.ColumnDefinitions>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100" />
+                                        </Grid.RowDefinitions>
 
-                                    <Image Grid.Column="0" Grid.Row="0" Source="{Binding UserImageName}">
-                                    </Image>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.1*"/>
+                                            <ColumnDefinition Width="0.6*"/>
+                                        </Grid.ColumnDefinitions>
 
-                                    <Frame Grid.Column="1" Grid.Row="0" Margin="10,10,70,10" BackgroundColor="#00A6FF"
+                                        <Image Grid.Column="0" Grid.Row="0" Source="{Binding UserImageName}">
+                                        </Image>
+
+                                        <Frame Grid.Column="1" Grid.Row="0" Margin="10,10,70,10" BackgroundColor="#00A6FF"
                                     Padding="15" CornerRadius="27"
                                     HasShadow="false">
-                                        <Label Text="{Binding Content}" TextColor="White"/>
+                                            <Label Text="{Binding Content}" TextColor="White"/>
 
-                                    </Frame>
-                                </Grid>
+                                        </Frame>
+                                        
+                                        <Frame BackgroundColor="Gray"
+                                            Padding="10" CornerRadius="27"
+                                            HasShadow="false" Grid.Column="1" Grid.Row="1"
+                                            Margin="80,10,10,10">
+                                            <Label Text="Ok, thanks." HorizontalTextAlignment="End"
+                                                TextColor="White"/>
+                                        </Frame>
+   
+                                    </Grid>
 
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                
-                    
-                    
-
-                    <!--Sent Message -->
-                <Frame BackgroundColor="Gray"
-                    Padding="10"
-                    HasShadow="false"
-                    Margin="80,10,10,10">
-                    <Label Text="{Binding Text}"
-                          TextColor="White"/>
-                </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                   
                 </StackLayout>
-
-                <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand" Padding="25, 25, 25 ,25">
-
-                    <Grid>
-                        <Frame BackgroundColor="AliceBlue"
-                           Padding = "10"
-                           
-                           CornerRadius     ="90"
-                           IsClippedToBounds="true">
-                            
-                            <Entry x:Name="chatTextInput" 
-                            Text="{Binding TextToSend}" 
-                            Margin="1"  
-                            TextColor="Black" 
-                            Keyboard="Chat"  
-                            HorizontalOptions="FillAndExpand" 
-                            PlaceholderColor="Black"
-                            Placeholder="Type your message here..." />
-
-
-                        </Frame>
-                    </Grid>
-                    
-                </StackLayout>
-                
-                
-                
-           </StackLayout>    
+            </StackLayout>    
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
