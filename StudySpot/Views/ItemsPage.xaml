@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:StudySpot.ViewModels" 
              xmlns:model="clr-namespace:StudySpot.Models" 
              x:Class="StudySpot.Views.ItemsPage" 
-             Title="My Tasklist"
+             Title="My Tasks"
              x:Name="BrowseItemsPage">
 
     <Shell.TitleView>
