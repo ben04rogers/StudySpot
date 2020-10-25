@@ -69,7 +69,9 @@ namespace StudySpot.ViewModels
             // Save to DB
             await DataStoreNotifications.UpdateItemAsync(Settings);
 
-            await Application.Current.MainPage.DisplayAlert("Saved", "Your settings have been saved.", "OK");
+            await Shell.Current.DisplayAlert("Saved", "Your settings have been saved.", "OK");
+
+            await Shell.Current.Navigation.PopAsync();
         }
     }
 }
