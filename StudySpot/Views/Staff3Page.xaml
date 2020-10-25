@@ -3,13 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              
              xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
-             x:Class="StudySpot.Views.StaffPage">
+             x:Class="StudySpot.Views.Staff3Page">
 
-
-
-    <ContentPage.BindingContext>
-        <viewmodel:StaffPageViewModel/>
-    </ContentPage.BindingContext>
     
     
     <ContentPage.Content>
@@ -25,10 +20,11 @@
                              Color="LightGray" />
                 </Grid>
 
-                <Label Text="Will Smith" FontSize="Subtitle" TextColor="Black" FontAttributes="Bold"  />
+                <Label Text="David Parker " FontSize="Subtitle" TextColor="Black" FontAttributes="Bold"  />
 
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Science and Engineering Faculty,
+                    <Label Text="Senior Lecturer
+                           Science and Engineering Faculty,
                            School of Computer Science" FontSize="15" TextColor="Black"/>
 
                     <Frame Margin="10"
@@ -39,7 +35,7 @@
                            IsClippedToBounds="True"
                            HorizontalOptions="Start"
                            VerticalOptions="Start">
-                        <Image Source="joshhaan.png"
+                        <Image Source="jakethompson.png"
                                Aspect="AspectFill"
                                Margin="-20"
                                HeightRequest="100"
@@ -75,9 +71,9 @@
                                    VerticalOptions="Start"/>
 
                     </Frame>
-                    <Label Text="Zoom ID: 981076680132" FontSize="16" TextColor="black" HorizontalTextAlignment="Start"/>
+                    <Label Text="Zoom ID: 9810235920" FontSize="16" TextColor="black" HorizontalTextAlignment="Start"/>
                 </StackLayout>
-                     <Label Text="https://staff.qut.edu.au/staff/w,smith" FontSize="Subtitle" TextColor="Black"/>
+                     <Label Text="https://staff.qut.edu.au/staff/d,parker" FontSize="Subtitle" TextColor="Black"/>
 
             </StackLayout>
         </StackLayout>

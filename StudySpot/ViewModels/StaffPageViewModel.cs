@@ -10,7 +10,7 @@ namespace StudySpot.ViewModels
     public class StaffPageViewModel : BaseViewModel
     {
 
-        public Command Staffdetail { get; }
+
 
 
         public StaffPageViewModel()

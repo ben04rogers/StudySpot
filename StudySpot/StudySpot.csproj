@@ -29,6 +29,12 @@
     <Compile Update="Views\NotificationsPage.xaml.cs">
       <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Staff3Page.xaml.cs">
+      <DependentUpon>Staff3Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Staff2Page.xaml.cs">
+      <DependentUpon>Staff2Page.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Staff1Page.xaml.cs">
       <DependentUpon>Staff1Page.xaml</DependentUpon>
     </Compile>
