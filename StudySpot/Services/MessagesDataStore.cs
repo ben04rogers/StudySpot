@@ -14,31 +14,10 @@ namespace StudySpot.Services
         {
             items = new List<Message>()
             {
-                new Message {
-                    Id = Guid.NewGuid().ToString(), 
-                    Sender="JAMES ROSS", UnitCode="CAB202", 
-                    UnitColor="#00A6FF", Content="Assignment marks are available...", 
-                    UserImageName="jamesross.png"},
-                new Message { 
-                    Id = Guid.NewGuid().ToString(), 
-                    Sender="BOB SMITH", 
-                    UnitCode="CAB301", 
-                    UnitColor="#FFD185", 
-                    Content="Room Change for tutorial today. This is a long message to show that it automatically cuts off", 
-                    UserImageName="bobsmith.png"},
-                new Message { 
-                    Id = Guid.NewGuid().ToString(),
-                    Sender="JOSH HAAN", UnitCode="CAB303", 
-                    UnitColor="#13CE66", 
-                    Content="Great work! Looks great", 
-                    UserImageName="joshhaan.png"},
-                new Message { 
-                    Id = Guid.NewGuid().ToString(), 
-                    Sender="JAKE THOMPSON", 
-                    UnitCode="IAB330", 
-                    UnitColor="#F95F62", 
-                    Content="Please refer to CRA for more details", 
-                    UserImageName="jakethompson.png"},
+                new Message { Id = Guid.NewGuid().ToString(), Sender="JAMES ROSS", UnitCode="CAB202", UnitColor="#00A6FF", Content="Assignment marks are available...", UserImageName="jamesross.png"},
+                new Message { Id = Guid.NewGuid().ToString(), Sender="BOB SMITH", UnitCode="CAB301", UnitColor="#FFD185", Content="Room Change for tutorial today. This is a long message to show that it automatically cuts off", UserImageName="bobsmith.png"},
+                new Message { Id = Guid.NewGuid().ToString(), Sender="JOSH HAAN", UnitCode="CAB303", UnitColor="#13CE66", Content="Great work! Looks great", UserImageName="joshhaan.png"},
+                new Message { Id = Guid.NewGuid().ToString(), Sender="JAKE THOMPSON", UnitCode="IAB330", UnitColor="#F95F62", Content="Please refer to CRA for more details", UserImageName="jakethompson.png"},
 
             };
         }
