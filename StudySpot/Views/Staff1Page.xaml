@@ -55,7 +55,28 @@
                 </Grid>
 
                 <Label Text="Personal links:" FontSize="Subtitle" TextColor="Black" FontAttributes="Bold"  />
-                <Label Text="https://staff.qut.edu.au/staff/ad,browm" FontSize="Subtitle" TextColor="Black"/>
+               
+
+                <StackLayout  Orientation="Horizontal" >
+                    <Frame 
+                                   BorderColor="White"
+                                   CornerRadius="50"
+                                   HeightRequest="-15"
+                                   WidthRequest="-15"
+                                   IsClippedToBounds="True"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start">
+
+                        <Image Source="Zoom.jpg"
+                                   Aspect="AspectFill"
+                                   Margin="-15"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start"/>
+
+                    </Frame>
+                    <Label Text="Zoom ID: 981076680132" FontSize="16" TextColor="black" HorizontalTextAlignment="Start"/>
+                </StackLayout>
+                     <Label Text="https://staff.qut.edu.au/staff/b,anderson" FontSize="Subtitle" TextColor="Black"/>
 
             </StackLayout>
         </StackLayout>

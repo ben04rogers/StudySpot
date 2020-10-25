@@ -141,9 +141,9 @@
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="willsmith" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Command="{Binding GoToStaff1DetailPage}"></Button>
-                            <Button Text="lucaspodolski" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Command="{Binding GoToStaff1DetailPage}"></Button>
-                            <Button Text="davidparker" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding GoToStaff1DetailPage}"></Button>
+                            <Button Text="willsmith" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Command="{Binding Staff1detail}"></Button>
+                            <Button Text="lucaspodolski" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Command="{Binding Staff1detail}"></Button>
+                            <Button Text="davidparker" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding Staff1detail}"></Button>
                         </StackLayout>
 
 
