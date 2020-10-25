@@ -1,12 +1,156 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             
+             xmlns:viewmodel="clr-namespace:StudySpot.ViewModels"
              x:Class="StudySpot.Views.Unit2Page">
+
+
+    <ContentPage.BindingContext>
+        <viewmodel:Unit2PageViewModel/>
+    </ContentPage.BindingContext>
+
+
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="IAB330 Page (Peter)"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Padding="20">
+                <!-- unitdetail -->
+                <Label Text="Unit detail" FontSize="Title" TextColor="Black" FontAttributes="Bold" />
+                <!-- date -->
+                <Label Text="Wednesday,12 August" FontSize="Small" TextColor="Black" />
+
+                <StackLayout Padding="5" BackgroundColor="LightBlue" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <StackLayout  BackgroundColor="LightBlue" HorizontalOptions="FillAndExpand" >
+                        <Label Text="CAB301" FontSize="26" TextColor="White" HorizontalTextAlignment="Start"/>
+                        <Label Text="Algorithms and Complexity" FontSize="16" TextColor="White" HorizontalTextAlignment="Start"/>
+
+                        <Label Text="" FontSize="16" TextColor="Indigo" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <Grid>
+                    <Label VerticalOptions="Center" Text="" />
+                    <BoxView HeightRequest="3"
+                             VerticalOptions="Center"
+                             Opacity="0.5"
+                             Color="LightGray" />
+                </Grid>
+
+                <StackLayout  Margin="1" >
+                    <Label Text="Quick Links" FontSize="Small" TextColor="Black" />
+                    <StackLayout Padding="1" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                        <StackLayout  BackgroundColor="White" Orientation="Horizontal" >
+                            <Frame 
+                                   BorderColor="White"
+                                   CornerRadius="50"
+                                   HeightRequest="-15"
+                                   WidthRequest="-15"
+                                   IsClippedToBounds="True"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start">
+
+                                <Image Source="Zoom.jpg"
+                                   Aspect="AspectFill"
+                                   Margin="-15"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start"/>
+
+                            </Frame>
+                            <Label Text="Zoom ID: 983564102922" FontSize="16" TextColor="black" HorizontalTextAlignment="Start"/>
+
+                        </StackLayout>
+
+                        <StackLayout  BackgroundColor="White" Orientation="Horizontal" >
+                            <Frame 
+                                   BorderColor="White"
+                                   CornerRadius="50"
+                                   HeightRequest="-15"
+                                   WidthRequest="-15"
+                                   IsClippedToBounds="True"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start">
+
+                                <Image Source="msteams.png"
+                                   Aspect="AspectFill"
+                                   Margin="-15"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start"/>
+
+                            </Frame>
+                            <Label Text="Microsoft Teams" FontSize="16" TextColor="black" HorizontalTextAlignment="Start"/>
+
+                        </StackLayout>
+
+                        <Grid>
+                            <Label VerticalOptions="Center" Text="" />
+                            <BoxView HeightRequest="3"
+                             VerticalOptions="Center"
+                             Opacity="0.5"
+                             Color="LightGray" />
+                        </Grid>
+
+                        <Label Text="Staff Team" FontSize="Small" TextColor="Black" />
+
+                        <StackLayout  BackgroundColor="White" Orientation="Horizontal" >
+                            <Frame Margin="10"
+                                   BorderColor="Black"
+                                   CornerRadius="50"
+                                   HeightRequest="50"
+                                   WidthRequest="50"
+                                   IsClippedToBounds="True"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                <Image Source="joshhaan.jpg"
+                                       Aspect="AspectFill"
+                                       Margin="-20"
+                                       HeightRequest="100"
+                                       WidthRequest="100" />
+                            </Frame>
+
+                            <Frame Margin="10"
+                                   BorderColor="Black"
+                                   CornerRadius="50"
+                                   HeightRequest="50"
+                                   WidthRequest="50"
+                                   IsClippedToBounds="True"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                <Image Source="bobsmith.png"
+                                       Aspect="AspectFill"
+                                       Margin="-20"
+                                       HeightRequest="100"
+                                       WidthRequest="100" />
+                            </Frame>
+
+                            <Frame Margin="10"
+                                   BorderColor="Black"
+                                   CornerRadius="50"
+                                   HeightRequest="50"
+                                   WidthRequest="50"
+                                   IsClippedToBounds="True"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                <Image Source="jakethompson.jpg"
+                                       Aspect="AspectFill"
+                                       Margin="-20"
+                                       HeightRequest="100"
+                                       WidthRequest="100" />
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="johnsmith" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Command="{Binding Staff0detail}"></Button>
+                            <Button Text="browmaderson" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Command="{Binding Staff0detail}"></Button>
+                            <Button Text="willionmartin" FontAttributes="Bold" FontSize="Small" TextColor="Black" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding Staff0detail}"></Button>
+                        </StackLayout>
+
+
+                    </StackLayout>
+                </StackLayout>
+
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
