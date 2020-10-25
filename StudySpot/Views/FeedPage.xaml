@@ -288,7 +288,7 @@
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Command="{Binding BindingContext.GoToGrades, Source={x:Reference Name=FeedPageRef}}"
-                                            CommandParameter="{Binding UnitCode}" />
+                                            CommandParameter="{Binding Unit}" />
                                     </Grid.GestureRecognizers>
                                 </Grid>
                             </ViewCell>
