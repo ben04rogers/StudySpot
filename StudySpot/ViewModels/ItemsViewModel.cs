@@ -21,7 +21,7 @@ namespace StudySpot.ViewModels
 
         public ItemsViewModel()
         {
-            Title = "My Tasks and Plans";
+            Title = "My Tasks";
          
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
