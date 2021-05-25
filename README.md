@@ -1,5 +1,5 @@
 # StudySpot
-IAB330 Mobile Application Development Assignment. Used Xamarin.Forms to develop frontend prototype of a learninng management system for university students.
+IAB330 Mobile Application Development Assignment. Used Xamarin to develop frontend prototype of a learninng management system for university students.
 
 # Authors
 
