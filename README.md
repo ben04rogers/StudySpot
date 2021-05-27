@@ -2,6 +2,7 @@
 IAB330 Mobile Application Development Assignment. Used Xamarin to develop frontend prototype of a learning management system for university students.
 
 ## Technologies 
+- Xamarin
 
 ## Authors
 
